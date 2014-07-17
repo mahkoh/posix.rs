@@ -22,6 +22,7 @@ pub mod grp;
 pub mod iconv;
 pub mod langinfo;
 pub mod libgen;
+pub mod limits;
 pub mod locale;
 pub mod netinet;
 pub mod nl_types;
