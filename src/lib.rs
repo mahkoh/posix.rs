@@ -19,6 +19,7 @@ pub mod fnmatch;
 pub mod ftw;
 pub mod glob;
 pub mod grp;
+pub mod iconv;
 pub mod locale;
 pub mod netinet;
 pub mod signal;
