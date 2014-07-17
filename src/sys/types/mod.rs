@@ -1,0 +1,36 @@
+pub use self::os::{blkcnt_t};
+pub use self::os::{blksize_t};
+pub use self::os::{clock_t};
+pub use self::os::{clockid_t};
+pub use self::os::{dev_t};
+pub use self::os::{fsblkcnt_t};
+pub use self::os::{fsfilcnt_t};
+pub use self::os::{gid_t};
+pub use self::os::{id_t};
+pub use self::os::{ino_t};
+pub use self::os::{key_t};
+pub use self::os::{mode_t};
+pub use self::os::{nlink_t};
+pub use self::os::{off_t};
+pub use self::os::{pid_t};
+pub use self::os::{pthread_attr_t};
+pub use self::os::{pthread_barrier_t};
+pub use self::os::{pthread_barrierattr_t};
+pub use self::os::{pthread_cond_t};
+pub use self::os::{pthread_condattr_t};
+pub use self::os::{pthread_key_t};
+pub use self::os::{pthread_mutex_t};
+pub use self::os::{pthread_mutexattr_t};
+pub use self::os::{pthread_once_t};
+pub use self::os::{pthread_rwlock_t};
+pub use self::os::{pthread_rwlockattr_t};
+pub use self::os::{pthread_spinlock_t};
+pub use self::os::{suseconds_t};
+pub use self::os::{pthread_t};
+pub use self::os::{time_t};
+pub use self::os::{timer_t};
+pub use self::os::{uid_t};
+
+#[cfg(target_os = "linux")]
+#[path = "linux/mod.rs"]
+mod os;
