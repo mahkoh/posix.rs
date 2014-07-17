@@ -26,6 +26,7 @@ pub mod limits;
 pub mod locale;
 pub mod monetary;
 pub mod mqueue;
+pub mod ndbm;
 pub mod netinet;
 pub mod nl_types;
 pub mod signal;
