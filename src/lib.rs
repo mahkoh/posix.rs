@@ -14,6 +14,7 @@ pub mod dirent;
 pub mod dlfcn;
 pub mod errno;
 pub mod fcntl;
+pub mod fmtmsg;
 pub mod ftw;
 pub mod locale;
 pub mod netinet;
