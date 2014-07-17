@@ -17,6 +17,7 @@ pub mod fcntl;
 pub mod fmtmsg;
 pub mod fnmatch;
 pub mod ftw;
+pub mod glob;
 pub mod locale;
 pub mod netinet;
 pub mod signal;
