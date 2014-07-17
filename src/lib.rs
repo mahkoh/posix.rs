@@ -15,6 +15,7 @@ pub mod dlfcn;
 pub mod errno;
 pub mod fcntl;
 pub mod fmtmsg;
+pub mod fnmatch;
 pub mod ftw;
 pub mod locale;
 pub mod netinet;
