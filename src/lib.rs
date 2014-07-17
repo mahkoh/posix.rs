@@ -22,6 +22,7 @@ pub mod grp;
 pub mod iconv;
 pub mod locale;
 pub mod netinet;
+pub mod nl_types;
 pub mod signal;
 pub mod sys;
 pub mod time;
