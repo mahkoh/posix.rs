@@ -20,6 +20,7 @@ pub mod ftw;
 pub mod glob;
 pub mod grp;
 pub mod iconv;
+pub mod langinfo;
 pub mod locale;
 pub mod netinet;
 pub mod nl_types;
