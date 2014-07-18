@@ -31,6 +31,7 @@ pub mod net;
 pub mod netdb;
 pub mod netinet;
 pub mod nl_types;
+pub mod poll;
 pub mod signal;
 pub mod sys;
 pub mod time;
