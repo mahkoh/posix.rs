@@ -43,6 +43,7 @@ pub mod stddef;
 pub mod stropts;
 pub mod signal;
 pub mod sys;
+pub mod syslog;
 pub mod tar;
 pub mod time;
 
