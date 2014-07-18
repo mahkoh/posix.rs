@@ -40,6 +40,7 @@ pub mod semaphore;
 pub mod setjmp;
 pub mod spawn;
 pub mod stddef;
+pub mod stropts;
 pub mod signal;
 pub mod sys;
 pub mod time;
