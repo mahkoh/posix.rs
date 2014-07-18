@@ -3,6 +3,7 @@ pub mod mman;
 pub mod msg;
 pub mod resource;
 pub mod select;
+pub mod sem;
 pub mod socket;
 pub mod stat;
 pub mod time;
