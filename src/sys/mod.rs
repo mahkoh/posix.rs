@@ -7,6 +7,7 @@ pub mod sem;
 pub mod shm;
 pub mod socket;
 pub mod stat;
+pub mod statvfs;
 pub mod time;
 pub mod types;
 pub mod uio;
