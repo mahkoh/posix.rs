@@ -48,6 +48,7 @@ pub mod tar;
 pub mod termios;
 pub mod time;
 pub mod ulimit;
+pub mod utime;
 
 #[repr(u8)]
 pub enum void_t {
