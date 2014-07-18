@@ -13,3 +13,4 @@ pub mod times;
 pub mod types;
 pub mod uio;
 pub mod un;
+pub mod utsname;
