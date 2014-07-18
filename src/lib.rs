@@ -45,6 +45,7 @@ pub mod signal;
 pub mod sys;
 pub mod syslog;
 pub mod tar;
+pub mod termios;
 pub mod time;
 
 #[repr(u8)]
