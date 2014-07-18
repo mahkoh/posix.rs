@@ -35,6 +35,7 @@ pub mod poll;
 pub mod pwd;
 pub mod regex;
 pub mod sched;
+pub mod search;
 pub mod signal;
 pub mod sys;
 pub mod time;
