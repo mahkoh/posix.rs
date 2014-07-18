@@ -9,5 +9,6 @@ pub mod socket;
 pub mod stat;
 pub mod statvfs;
 pub mod time;
+pub mod times;
 pub mod types;
 pub mod uio;
