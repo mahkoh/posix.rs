@@ -38,6 +38,7 @@ pub mod sched;
 pub mod search;
 pub mod semaphore;
 pub mod setjmp;
+pub mod spawn;
 pub mod signal;
 pub mod sys;
 pub mod time;
