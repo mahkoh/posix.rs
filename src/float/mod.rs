@@ -1,0 +1,32 @@
+pub use self::os::{FLT_RADIX};
+pub use self::os::{FLT_MANT_DIG};
+pub use self::os::{DBL_MANT_DIG};
+pub use self::os::{LDBL_MANT_DIG};
+pub use self::os::{FLT_DIG};
+pub use self::os::{DBL_DIG};
+pub use self::os::{LDBL_DIG};
+pub use self::os::{FLT_MIN_EXP};
+pub use self::os::{DBL_MIN_EXP};
+pub use self::os::{LDBL_MIN_EXP};
+pub use self::os::{FLT_MIN_10_EXP};
+pub use self::os::{DBL_MIN_10_EXP};
+pub use self::os::{LDBL_MIN_10_EXP};
+pub use self::os::{FLT_MAX_EXP};
+pub use self::os::{DBL_MAX_EXP};
+pub use self::os::{LDBL_MAX_EXP};
+pub use self::os::{FLT_MAX_10_EXP};
+pub use self::os::{DBL_MAX_10_EXP};
+pub use self::os::{LDBL_MAX_10_EXP};
+pub use self::os::{FLT_MAX};
+pub use self::os::{DBL_MAX};
+pub use self::os::{LDBL_MAX};
+pub use self::os::{FLT_EPSILON};
+pub use self::os::{DBL_EPSILON};
+pub use self::os::{LDBL_EPSILON};
+pub use self::os::{FLT_MIN};
+pub use self::os::{DBL_MIN};
+pub use self::os::{LDBL_MIN};
+
+#[cfg(target_os = "linux")]
+#[path = "linux/mod.rs"]
+mod os;

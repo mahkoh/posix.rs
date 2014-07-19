@@ -15,6 +15,7 @@ pub mod dlfcn;
 pub mod errno;
 pub mod fcntl;
 pub mod fenv;
+pub mod float;
 pub mod fmtmsg;
 pub mod fnmatch;
 pub mod ftw;
@@ -63,21 +64,22 @@ pub enum void_t {
 mod os {
     #[cfg(target_arch = "x86_64")]
     pub mod arch {
-        pub type char_t      = i8;
-        pub type schar_t     = i8;
-        pub type uchar_t     = u8;
-        pub type short_t     = i16;
-        pub type ushort_t    = u16;
-        pub type int_t       = i32;
-        pub type uint_t      = u32;
-        pub type long_t      = i64;
-        pub type ulong_t     = u64;
-        pub type longlong_t  = i64;
-        pub type ulonglong_t = u64;
-        pub type float_t     = f32;
-        pub type double_t    = f64;
-        pub type size_t      = u64;
-        pub type ssize_t     = i64;
+        pub type char_t       = i8;
+        pub type schar_t      = i8;
+        pub type uchar_t      = u8;
+        pub type short_t      = i16;
+        pub type ushort_t     = u16;
+        pub type int_t        = i32;
+        pub type uint_t       = u32;
+        pub type long_t       = i64;
+        pub type ulong_t      = u64;
+        pub type longlong_t   = i64;
+        pub type ulonglong_t  = u64;
+        pub type float_t      = f32;
+        pub type double_t     = f64;
+        pub type longdouble_t = f64;
+        pub type size_t       = u64;
+        pub type ssize_t      = i64;
     }
 }
 
