@@ -1,0 +1,32 @@
+pub use self::os::{int8_t};
+pub use self::os::{int16_t};
+pub use self::os::{int32_t};
+pub use self::os::{int64_t};
+pub use self::os::{uint8_t};
+pub use self::os::{uint16_t};
+pub use self::os::{uint32_t};
+pub use self::os::{uint64_t};
+pub use self::os::{int_least8_t};
+pub use self::os::{int_least16_t};
+pub use self::os::{int_least32_t};
+pub use self::os::{int_least64_t};
+pub use self::os::{uint_least8_t};
+pub use self::os::{uint_least16_t};
+pub use self::os::{uint_least32_t};
+pub use self::os::{uint_least64_t};
+pub use self::os::{int_fast8_t};
+pub use self::os::{int_fast16_t};
+pub use self::os::{int_fast32_t};
+pub use self::os::{int_fast64_t};
+pub use self::os::{uint_fast8_t};
+pub use self::os::{uint_fast16_t};
+pub use self::os::{uint_fast32_t};
+pub use self::os::{uint_fast64_t};
+pub use self::os::{intptr_t};
+pub use self::os::{uintptr_t};
+pub use self::os::{intmax_t};
+pub use self::os::{uintmax_t};
+
+#[cfg(target_os = "linux")]
+#[path = "linux/mod.rs"]
+mod os;
