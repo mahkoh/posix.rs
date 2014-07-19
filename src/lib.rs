@@ -14,6 +14,7 @@ pub mod dirent;
 pub mod dlfcn;
 pub mod errno;
 pub mod fcntl;
+pub mod fenv;
 pub mod fmtmsg;
 pub mod fnmatch;
 pub mod ftw;
