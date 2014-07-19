@@ -45,6 +45,7 @@ pub mod setjmp;
 pub mod spawn;
 pub mod stddef;
 pub mod stdint;
+pub mod stdio;
 pub mod stropts;
 pub mod signal;
 pub mod sys;
