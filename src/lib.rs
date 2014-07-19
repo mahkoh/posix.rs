@@ -49,6 +49,7 @@ pub mod termios;
 pub mod time;
 pub mod ulimit;
 pub mod utime;
+pub mod utmpx;
 pub mod wordexp;
 
 #[repr(u8)]
