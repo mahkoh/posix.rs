@@ -1,0 +1,5 @@
+.*
+*.rlib
+*.o
+*.bc
+!.gitignore
