@@ -1,4 +1,5 @@
 pub use self::arch::{wint_t};
+pub use self::arch::{wctype_t};
 pub use self::arch::{mbstate_t};
 pub use self::arch::{WEOF};
 

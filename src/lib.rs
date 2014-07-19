@@ -60,6 +60,7 @@ pub mod ulimit;
 pub mod utime;
 pub mod utmpx;
 pub mod wchar;
+pub mod wctype;
 pub mod wordexp;
 
 #[repr(u8)]
