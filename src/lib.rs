@@ -35,6 +35,7 @@ pub mod netdb;
 pub mod netinet;
 pub mod nl_types;
 pub mod poll;
+pub mod pthread;
 pub mod pwd;
 pub mod regex;
 pub mod sched;
