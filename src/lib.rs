@@ -22,6 +22,7 @@ pub mod ftw;
 pub mod glob;
 pub mod grp;
 pub mod iconv;
+pub mod inttypes;
 pub mod langinfo;
 pub mod libgen;
 pub mod limits;
