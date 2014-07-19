@@ -47,6 +47,7 @@ pub mod stddef;
 pub mod stdint;
 pub mod stdio;
 pub mod stdlib;
+pub mod string;
 pub mod stropts;
 pub mod signal;
 pub mod sys;
