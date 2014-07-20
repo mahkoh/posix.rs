@@ -2,9 +2,25 @@
 #![crate_type = "lib"]
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case_functions)]
+#![feature(macro_rules)]
 
 pub use os::arch::{char_t, schar_t, uchar_t, short_t, ushort_t, int_t, uint_t, long_t};
 pub use os::arch::{ulong_t, longlong_t, ulonglong_t, float_t, double_t, size_t, ssize_t}; 
+
+mod macros {
+    #![macro_escape]
+
+    #[macro_escape]
+    macro_rules! new {
+        ($name:ident) => {
+            impl $name {
+                pub fn new() -> $name {
+                    unsafe { ::std::mem::zeroed() }
+                }
+            }
+        }
+    }
+}
 
 pub mod aio;
 pub mod arpa;
@@ -97,12 +113,18 @@ pub trait NTStr {
     fn as_ptr(&self) -> *const char_t;
 }
 
-pub trait NTStrMut: NTStr {
-    fn as_mut_ptr(&mut self) -> *mut char_t;
+pub struct NTStrBorrowed<'a> {
+    data: &'a [u8],
 }
 
 pub struct NTStrOwned {
     vec: Vec<u8>,
+}
+
+impl<'a> NTStr for NTStrBorrowed<'a> {
+    fn as_ptr(&self) -> *const char_t {
+        self.data.as_ptr() as *const _
+    }
 }
 
 impl NTStr for NTStrOwned {
@@ -111,8 +133,31 @@ impl NTStr for NTStrOwned {
     }
 }
 
-impl NTStrMut for NTStrOwned {
-    fn as_mut_ptr(&mut self) -> *mut char_t {
-        self.vec.as_mut_ptr() as *mut _
+pub trait ToNTStr {
+    fn to_nt_str(&self) -> NTStrOwned;
+}
+
+impl<'a> ToNTStr for &'a [u8] {
+    fn to_nt_str(&self) -> NTStrOwned {
+        let mut vec = Vec::from_slice(*self);
+        vec.push(0);
+        NTStrOwned { vec: vec }
+    }
+}
+
+impl ToNTStr for Path {
+    fn to_nt_str(&self) -> NTStrOwned {
+        use std::path::{BytesContainer};
+        self.container_as_bytes().to_nt_str()
+    }
+}
+
+pub trait AsNTStr<'a> {
+    fn as_nt_str(&'a self) -> NTStrBorrowed<'a>;
+}
+
+impl<'a> AsNTStr<'a> for &'a [u8] {
+    fn as_nt_str(&'a self) -> NTStrBorrowed<'a> {
+        NTStrBorrowed { data: *self }
     }
 }

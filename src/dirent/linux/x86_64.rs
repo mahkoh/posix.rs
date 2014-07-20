@@ -7,4 +7,6 @@ pub struct dirent {
     pub d_name: [::char_t, ..256u],
 }
 
+new!(dirent)
+
 pub type DIR = ::void_t;
