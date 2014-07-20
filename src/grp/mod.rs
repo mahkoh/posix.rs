@@ -26,7 +26,7 @@ pub fn getgrnam_r<'a, T: ::NTStr>(name: &T, dst: &'a mut group, buf: &'a mut [u8
                         buf.len() as ::size_t, res as *mut _ as *mut _) }
 }
 
-extern "C" {
+extern {
     pub fn getgrent() -> *mut group;
     pub fn getgrgid(gid: ::sys::types::gid_t) -> *mut group;
     pub fn getgrnam(name: *const ::char_t) -> *mut group;

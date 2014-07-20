@@ -56,8 +56,8 @@ extern "C" {
     pub fn getchar_unlocked() -> ::int_t;
     pub fn getc(stream: *mut FILE) -> ::int_t;
     pub fn getc_unlocked(stream: *mut FILE) -> ::int_t;
-    pub fn getdelim(lineptr: *mut *mut ::char_t, n: *mut ::size_t, delimiter: ::int_t, stream: *mut FILE) -> ::size_t;
-    pub fn getline(lineptr: *mut *mut ::char_t, n: *mut ::size_t, stream: *mut FILE) -> ::size_t;
+    pub fn getdelim(lineptr: *mut *mut ::char_t, n: *mut ::size_t, delimiter: ::int_t, stream: *mut FILE) -> ::ssize_t;
+    pub fn getline(lineptr: *mut *mut ::char_t, n: *mut ::size_t, stream: *mut FILE) -> ::ssize_t;
     pub fn gets(s: *mut ::char_t) -> *mut ::char_t;
     pub fn getw(stream: *mut FILE) -> ::int_t;
     pub fn open_memstream(bufloc: *mut *mut ::char_t, sizeloc: *mut ::size_t) -> *mut FILE;
