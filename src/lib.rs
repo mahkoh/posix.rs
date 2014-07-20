@@ -57,6 +57,7 @@ pub mod tar;
 pub mod termios;
 pub mod time;
 pub mod ulimit;
+pub mod unistd;
 pub mod utime;
 pub mod utmpx;
 pub mod wchar;
