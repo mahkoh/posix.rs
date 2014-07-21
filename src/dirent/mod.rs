@@ -48,7 +48,7 @@ pub fn telldir(dirp: *mut DIR) -> long_t {
     unsafe { telldir(dirp) }
 }
 
-extern "C" {
+extern {
     pub fn alphasort(e1: *mut *const dirent, e2: *mut *const dirent) -> int_t;
     pub fn readdir(dirp: *mut DIR) -> *mut dirent;
     pub fn scandir(dir: *const char_t,
@@ -74,7 +74,7 @@ mod tests {
         let path = tmp.path().to_nt_str();
         let dirp = super::opendir(&path);
         let mut ent = super::dirent::new();
-        let mut res = 0;
+        let mut res = 1;
         for _ in range(0u, 2) {
             for (i, _) in [".", "..", "0", "1", "2", "3"].iter().enumerate() {
                 assert!(super::readdir_r(dirp, &mut ent, &mut res) != -1);
@@ -85,6 +85,7 @@ mod tests {
                 assert_eq!(ent.d_off, i as ::sys::types::off_t + 1);
                 assert_eq!(super::telldir(dirp), i as ::long_t + 1);
             }
+            assert_eq!(res, 0);
             super::rewinddir(dirp);
         }
         super::closedir(dirp);
