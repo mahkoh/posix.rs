@@ -4,6 +4,8 @@ pub struct timespec {
     pub tv_nsec: i64,
 }
 
+new!(timespec)
+
 #[repr(C)]
 pub struct tm {
     pub tm_sec: i32,
@@ -19,11 +21,15 @@ pub struct tm {
     pub tm_zone: *const i8,
 }
 
+new!(tm)
+
 #[repr(C)]
 pub struct itimerspec {
     pub it_interval: timespec,
     pub it_value: timespec,
 }
+
+new!(itimerspec)
 
 pub static CLOCKS_PER_SEC: ::sys::types::clock_t = 1000000;
 
@@ -34,6 +40,7 @@ pub static CLOCK_THREAD_CPUTIME_ID:  ::sys::types::clockid_t = 3;
 
 pub static TIMER_ABSTIME: ::uint_t = 1;
 
-extern {
-    pub static mut getdate_err: ::int_t;
+pub fn getdate_err() -> &'static mut ::int_t {
+    extern { static mut getdate_err: ::int_t; }
+    unsafe { &mut getdate_err }
 }
