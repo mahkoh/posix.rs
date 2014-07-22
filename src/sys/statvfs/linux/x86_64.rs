@@ -14,11 +14,7 @@ pub struct statvfs {
     __f_spare: [::int_t, ..6u],
 }
 
-impl statvfs {
-    pub fn new() -> statvfs {
-        unsafe { ::std::mem::zeroed() }
-    }
-}
+new!(statvfs)
 
 pub static ST_RDONLY: ::int_t = 1;
 pub static ST_NOSUID: ::int_t = 2;
