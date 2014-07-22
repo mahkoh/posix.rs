@@ -10,12 +10,16 @@ pub struct semid_ds {
     __glibc_reserved4: ::ulong_t,
 }
 
+new!(semid_ds)
+
 #[repr(C)]
 pub struct sembuf {
     pub sem_num: ::ushort_t,
     pub sem_op: ::short_t,
     pub sem_flg: ::short_t,
 }
+
+new!(sembuf)
 
 pub static SEM_UNDO: ::int_t = 4096;
 pub static GETNCNT:  ::int_t = 14;
