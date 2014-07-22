@@ -11,14 +11,16 @@ pub use self::os::{WRDE_CMDSUB};
 pub use self::os::{WRDE_NOSPACE};
 pub use self::os::{WRDE_SYNTAX};
 
+use {NTStr, int_t, char_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn wordexp<T: ::NTStr>(words: &T, pwordexp: &mut wordexp_t,
-                           flags: ::int_t) -> ::int_t {
-    extern { fn wordexp(words: *const ::char_t, pwordexp: *mut wordexp_t,
-                        flags: ::int_t) -> ::int_t; }
+pub fn wordexp<T: NTStr>(words: &T, pwordexp: &mut wordexp_t,
+                           flags: int_t) -> int_t {
+    extern { fn wordexp(words: *const char_t, pwordexp: *mut wordexp_t,
+                        flags: int_t) -> int_t; }
     unsafe { wordexp(words.as_ptr(), pwordexp as *mut _, flags) }
 }
 
