@@ -21,30 +21,32 @@ pub use self::os::{REG_ERANGE};
 pub use self::os::{REG_ESPACE};
 pub use self::os::{REG_BADRPT};
 
+use {NTStr, int_t, char_t, size_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn regcomp<T: ::NTStr>(preg: &mut regex_t, regex: &T, cflags: ::int_t) -> ::int_t {
-    extern { fn regcomp(preg: *mut regex_t, pattern: *const ::char_t,
-                        cflags: ::int_t) -> ::int_t; }
+pub fn regcomp<T: NTStr>(preg: &mut regex_t, regex: &T, cflags: int_t) -> int_t {
+    extern { fn regcomp(preg: *mut regex_t, pattern: *const char_t,
+                        cflags: int_t) -> int_t; }
     unsafe { regcomp(preg as *mut _, regex.as_ptr(), cflags) }
 }
 
-pub fn regexec<T: ::NTStr>(preg: &regex_t, string: &T, pmatch: &mut [regmatch_t],
-                           eflags: ::int_t) -> ::int_t {
-    extern { fn regexec(preg: *const regex_t, string: *const ::char_t,
-                        nmatch: ::size_t, pmatch: *mut regmatch_t,
-                        eflags: ::int_t) -> ::int_t; }
-    unsafe { regexec(preg as *const _, string.as_ptr(), pmatch.len() as ::size_t,
+pub fn regexec<T: NTStr>(preg: &regex_t, string: &T, pmatch: &mut [regmatch_t],
+                         eflags: int_t) -> int_t {
+    extern { fn regexec(preg: *const regex_t, string: *const char_t,
+                        nmatch: size_t, pmatch: *mut regmatch_t,
+                        eflags: int_t) -> int_t; }
+    unsafe { regexec(preg as *const _, string.as_ptr(), pmatch.len() as size_t,
                      pmatch.as_mut_ptr(), eflags) }
 }
 
-pub fn regerror(errcode: ::int_t, preg: &regex_t, errbuf: &mut [u8]) -> ::size_t {
-    extern { fn regerror(errcode: ::int_t, preg: *const regex_t,
-                         errbuf: *mut ::char_t, errbuf_size: ::size_t) -> ::size_t; }
+pub fn regerror(errcode: int_t, preg: &regex_t, errbuf: &mut [u8]) -> size_t {
+    extern { fn regerror(errcode: int_t, preg: *const regex_t,
+                         errbuf: *mut char_t, errbuf_size: size_t) -> size_t; }
     unsafe { regerror(errcode, preg as *const _, errbuf.as_mut_ptr() as *mut _,
-                      errbuf.len() as ::size_t) }
+                      errbuf.len() as size_t) }
 }
 
 pub fn regfree(preg: &mut regex_t) {
