@@ -6,8 +6,9 @@ pub use self::os::{WEOF};
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
+
 /*
-extern "C" {
+extern {
     pub fn wcscpy(dest: *mut wchar_t, src: *const wchar_t) -> *mut wchar_t;
     pub fn wcsncpy(dest: *mut wchar_t, src: *const wchar_t, n: size_t) -> *mut wchar_t;
     pub fn wcscat(dest: *mut wchar_t, src: *const wchar_t) -> *mut wchar_t;
