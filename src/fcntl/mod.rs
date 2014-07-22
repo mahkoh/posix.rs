@@ -42,33 +42,32 @@ pub use self::os::{POSIX_FADV_RANDOM};
 pub use self::os::{POSIX_FADV_SEQUENTIAL};
 pub use self::os::{POSIX_FADV_WILLNEED};
 
+use {NTStr, int_t, char_t};
+use sys::types::{mode_t, off_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn creat<T: ::NTStr>(file: &T, mode: ::sys::types::mode_t) -> ::int_t {
-    extern { fn creat(file: *const ::char_t, mode: ::sys::types::mode_t) -> ::int_t; }
+pub fn creat<T: NTStr>(file: &T, mode: mode_t) -> int_t {
+    extern { fn creat(file: *const char_t, mode: mode_t) -> int_t; }
     unsafe { creat(file.as_ptr(), mode) }
 }
 
-pub fn posix_fadvise(fd: ::int_t, off: ::sys::types::off_t, len: ::sys::types::off_t,
-                     advise: ::int_t) -> ::int_t {
+pub fn posix_fadvise(fd: int_t, off: off_t, len: off_t, advise: int_t) -> int_t {
     extern {
-        fn posix_fadvise(fd: ::int_t, off: ::sys::types::off_t, len: ::sys::types::off_t,
-                         advise: ::int_t) -> ::int_t;
+        fn posix_fadvise(fd: int_t, off: off_t, len: off_t, advise: int_t) -> int_t;
     }
     unsafe { posix_fadvise(fd, off, len, advise) }
 }
 
-pub fn posix_fallocate(fd: ::int_t, off: ::sys::types::off_t,
-                       len: ::sys::types::off_t) -> ::int_t {
-    extern {  fn posix_fallocate(fd: ::int_t, off: ::sys::types::off_t,
-                                 len: ::sys::types::off_t) -> ::int_t; }
+pub fn posix_fallocate(fd: int_t, off: off_t, len: off_t) -> int_t {
+    extern { fn posix_fallocate(fd: int_t, off: off_t, len: off_t) -> int_t; }
     unsafe { posix_fallocate(fd, off, len) }
 }
 
 extern "C" {
-    pub fn fcntl(fd: ::int_t, cmd: ::int_t, ...) -> ::int_t;
-    pub fn open(file: *const ::char_t, oflag: ::int_t, ...) -> ::int_t;
-    pub fn openat(fd: ::int_t, file: *const ::char_t, oflag: ::int_t, ...) -> ::int_t;
+    pub fn fcntl(fd: int_t, cmd: int_t, ...) -> int_t;
+    pub fn open(file: *const char_t, oflag: int_t, ...) -> int_t;
+    pub fn openat(fd: int_t, file: *const char_t, oflag: int_t, ...) -> int_t;
 }
