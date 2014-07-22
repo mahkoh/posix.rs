@@ -6,8 +6,4 @@ pub struct tms {
     pub tms_cstime: ::sys::types::clock_t,
 }
 
-impl tms {
-    pub fn new() -> tms {
-        unsafe { ::std::mem::zeroed() }
-    }
-}
+new!(tms)
