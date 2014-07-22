@@ -7,6 +7,8 @@ pub struct pollfd {
     pub revents: ::short_t,
 }
 
+new!(pollfd)
+
 pub static POLLIN:     ::short_t = 1;
 pub static POLLRDNORM: ::short_t = 64;
 pub static POLLRDBAND: ::short_t = 128;

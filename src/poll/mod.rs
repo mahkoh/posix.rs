@@ -11,11 +11,13 @@ pub use self::os::{POLLERR};
 pub use self::os::{POLLHUP};
 pub use self::os::{POLLNVAL};
 
+use {int_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn poll(fds: &mut [pollfd], timeout: ::int_t) -> ::int_t {
-    extern { fn poll(fds: *mut pollfd, nfds: nfds_t, timeout: ::int_t) -> ::int_t; }
+pub fn poll(fds: &mut [pollfd], timeout: int_t) -> int_t {
+    extern { fn poll(fds: *mut pollfd, nfds: nfds_t, timeout: int_t) -> int_t; }
     unsafe { poll(fds.as_mut_ptr(), fds.len() as nfds_t, timeout) }
 }
