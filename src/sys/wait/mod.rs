@@ -16,25 +16,28 @@ pub use self::os::{WIFSTOPPED};
 pub use self::os::{WSTOPSIG};
 pub use self::os::{WTERMSIG};
 
+use {int_t}; 
+use sys::types::{pid_t, id_t};
+use signal::{siginfo_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn wait(status: &mut ::int_t) -> ::sys::types::pid_t {
-    extern { fn wait(status: *mut ::int_t) -> ::sys::types::pid_t; }
+pub fn wait(status: &mut int_t) -> pid_t {
+    extern { fn wait(status: *mut int_t) -> pid_t; }
     unsafe { wait(status as *mut _) }
 }
 
-pub fn waitpid(pid: ::sys::types::pid_t, stat_loc: &mut ::int_t,
-               options: ::int_t) -> ::sys::types::pid_t {
-    extern { fn waitpid(pid: ::sys::types::pid_t, stat_loc: *mut ::int_t,
-                        options: ::int_t) -> ::sys::types::pid_t; }
+pub fn waitpid(pid: pid_t, stat_loc: &mut int_t, options: int_t) -> pid_t {
+    extern { fn waitpid(pid: pid_t, stat_loc: *mut int_t,
+                        options: int_t) -> pid_t; }
     unsafe { waitpid(pid, stat_loc as *mut _, options) }
 }
 
-pub fn waitid(idtype: idtype_t, id: ::sys::types::id_t, infop: &mut ::signal::siginfo_t,
-              options: ::int_t) -> ::int_t {
-    extern { fn waitid(idtype: idtype_t, id: ::sys::types::id_t,
-                       infop: *mut ::signal::siginfo_t, options: ::int_t) -> ::int_t; }
+pub fn waitid(idtype: idtype_t, id: id_t, infop: &mut siginfo_t,
+              options: int_t) -> int_t {
+    extern { fn waitid(idtype: idtype_t, id: id_t,
+                       infop: *mut siginfo_t, options: int_t) -> int_t; }
     unsafe { waitid(idtype, id, infop as *mut _, options) }
 }
