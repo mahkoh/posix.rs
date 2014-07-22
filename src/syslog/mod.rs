@@ -30,6 +30,8 @@ pub use self::os::{LOG_INFO};
 pub use self::os::{LOG_DEBUG};
 pub use self::os::{LOG_MASK};
 
+use {NTStr, char_t, int_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
@@ -39,16 +41,16 @@ pub fn closelog() {
     unsafe { closelog(); }
 }
 
-pub fn openlog<T: ::NTStr>(ident: &T, option: ::int_t, facility: ::int_t) {
-    extern { fn openlog(ident: *const ::char_t, option: ::int_t, facility: ::int_t); }
+pub fn openlog<T: NTStr>(ident: &T, option: int_t, facility: int_t) {
+    extern { fn openlog(ident: *const char_t, option: int_t, facility: int_t); }
     unsafe { openlog(ident.as_ptr(), option, facility) }
 }
 
-pub fn setlogmask(mask: ::int_t) -> ::int_t {
-    extern { fn setlogmask(mask: ::int_t) -> ::int_t; }
+pub fn setlogmask(mask: int_t) -> int_t {
+    extern { fn setlogmask(mask: int_t) -> int_t; }
     unsafe { setlogmask(mask) }
 }
 
-extern "C" {
-    pub fn syslog(pri: ::int_t, fmt: *const ::char_t, ...);
+extern {
+    pub fn syslog(pri: int_t, fmt: *const char_t, ...);
 }
