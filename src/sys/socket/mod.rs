@@ -47,134 +47,136 @@ pub use self::os::{CMSG_NXTHDR};
 pub use self::os::{CMSG_FIRSTHDR};
 pub use self::os::{CMSG_DATA};
 
+use {int_t, size_t, void_t, ssize_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn accept(fd: ::int_t, addr: &mut [u8]) -> ::int_t {
+pub fn accept(fd: int_t, addr: &mut [u8]) -> int_t {
     extern { 
-        fn accept(fd: ::int_t, addr: *mut sockaddr, addrlen: *mut socklen_t) -> ::int_t;
+        fn accept(fd: int_t, addr: *mut sockaddr, addrlen: *mut socklen_t) -> int_t;
     }
     let mut len = addr.len() as socklen_t;
     unsafe { accept(fd, addr.as_mut_ptr() as *mut _, &mut len as *mut _) }
 }
 
-pub fn bind(fd: ::int_t, addr: &[u8]) -> ::int_t {
-    extern { fn bind(fd: ::int_t, addr: *const sockaddr, len: socklen_t) -> ::int_t; }
+pub fn bind(fd: int_t, addr: &[u8]) -> int_t {
+    extern { fn bind(fd: int_t, addr: *const sockaddr, len: socklen_t) -> int_t; }
     unsafe { bind(fd, addr.as_ptr() as *const _, addr.len() as socklen_t) }
 }
 
-pub fn connect(fd: ::int_t, addr: &[u8]) -> ::int_t {
-    extern { fn connect(fd: ::int_t, addr: *const sockaddr, len: socklen_t) -> ::int_t; }
+pub fn connect(fd: int_t, addr: &[u8]) -> int_t {
+    extern { fn connect(fd: int_t, addr: *const sockaddr, len: socklen_t) -> int_t; }
     unsafe { connect(fd, addr.as_ptr() as *const _, addr.len() as socklen_t) }
 }
 
-pub fn getpeername(fd: ::int_t, addr: &mut [u8]) -> ::int_t {
+pub fn getpeername(fd: int_t, addr: &mut [u8]) -> int_t {
     extern {
-        fn getpeername(fd: ::int_t, addr: *mut sockaddr, len: *mut socklen_t) -> ::int_t;
+        fn getpeername(fd: int_t, addr: *mut sockaddr, len: *mut socklen_t) -> int_t;
     }
     let mut len = addr.len() as socklen_t;
     unsafe { getpeername(fd, addr.as_mut_ptr() as *mut _, &mut len as *mut _) }
 }
 
-pub fn getsockname(fd: ::int_t, addr: &mut [u8]) -> ::int_t {
+pub fn getsockname(fd: int_t, addr: &mut [u8]) -> int_t {
     extern {
-        fn getsockname(fd: ::int_t, addr: *mut sockaddr, len: *mut socklen_t) -> ::int_t;
+        fn getsockname(fd: int_t, addr: *mut sockaddr, len: *mut socklen_t) -> int_t;
     }
     let mut len = addr.len() as socklen_t;
     unsafe { getsockname(fd, addr.as_mut_ptr() as *mut _, &mut len as *mut _) }
 }
 
-pub fn getsockopt(fd: ::int_t, level: ::int_t, optname: ::int_t,
-                  optval: &mut [u8]) -> ::int_t {
+pub fn getsockopt(fd: int_t, level: int_t, optname: int_t,
+                  optval: &mut [u8]) -> int_t {
     extern {
-        fn getsockopt(fd: ::int_t, level: ::int_t, optname: ::int_t,
-                      optval: *mut ::void_t, optlen: *mut socklen_t) -> ::int_t;
+        fn getsockopt(fd: int_t, level: int_t, optname: int_t,
+                      optval: *mut void_t, optlen: *mut socklen_t) -> int_t;
     }
     let mut len = optval.len() as socklen_t;
     unsafe { getsockopt(fd, level, optname, optval.as_mut_ptr() as *mut _,
                         &mut len as *mut _) }
 }
 
-pub fn listen(fd: ::int_t, backlog: ::int_t) -> ::int_t {
-    extern { fn listen(fd: ::int_t, n: ::int_t) -> ::int_t; }
+pub fn listen(fd: int_t, backlog: int_t) -> int_t {
+    extern { fn listen(fd: int_t, n: int_t) -> int_t; }
     unsafe { listen(fd, backlog) }
 }
 
-pub fn recv(fd: ::int_t, buf: &mut [u8], flags: ::int_t) -> ::ssize_t {
+pub fn recv(fd: int_t, buf: &mut [u8], flags: int_t) -> ssize_t {
     extern {
-        fn recv(fd: ::int_t, buf: *mut ::void_t, n: ::size_t,
-                flags: ::int_t) -> ::ssize_t;
+        fn recv(fd: int_t, buf: *mut void_t, n: size_t,
+                flags: int_t) -> ssize_t;
     }
-    unsafe { recv(fd, buf.as_mut_ptr() as *mut _, buf.len() as ::size_t, flags) }
+    unsafe { recv(fd, buf.as_mut_ptr() as *mut _, buf.len() as size_t, flags) }
 }
 
-pub fn recvfrom(fd: ::int_t, buf: &mut [u8], flags: ::int_t,
-                addr: &mut [u8]) -> ::ssize_t {
+pub fn recvfrom(fd: int_t, buf: &mut [u8], flags: int_t,
+                addr: &mut [u8]) -> ssize_t {
     extern {
-        fn recvfrom(fd: ::int_t, buf: *mut ::void_t, n: ::size_t,
-                    flags: ::int_t, addr: *mut sockaddr,
-                    addr_len: *mut socklen_t) -> ::ssize_t;
+        fn recvfrom(fd: int_t, buf: *mut void_t, n: size_t,
+                    flags: int_t, addr: *mut sockaddr,
+                    addr_len: *mut socklen_t) -> ssize_t;
     }
     let mut len = addr.len() as socklen_t;
-    unsafe { recvfrom(fd, buf.as_mut_ptr() as *mut _, buf.len() as ::size_t, flags,
+    unsafe { recvfrom(fd, buf.as_mut_ptr() as *mut _, buf.len() as size_t, flags,
                       addr.as_mut_ptr() as *mut _, &mut len as *mut _) }
 }
 
-pub fn send(fd: ::int_t, buf: &[u8], flags: ::int_t) -> ::ssize_t {
+pub fn send(fd: int_t, buf: &[u8], flags: int_t) -> ssize_t {
     extern {
-        fn send(fd: ::int_t, buf: *const ::void_t, n: ::size_t,
-                flags: ::int_t) -> ::ssize_t;
+        fn send(fd: int_t, buf: *const void_t, n: size_t,
+                flags: int_t) -> ssize_t;
     }
-    unsafe { send(fd, buf.as_ptr() as *const _, buf.len() as ::size_t, flags) }
+    unsafe { send(fd, buf.as_ptr() as *const _, buf.len() as size_t, flags) }
 }
 
-pub fn sendto(fd: ::int_t, buf: &[u8], flags: ::int_t, addr: &[u8]) -> ::ssize_t {
+pub fn sendto(fd: int_t, buf: &[u8], flags: int_t, addr: &[u8]) -> ssize_t {
     extern {
-        fn sendto(fd: ::int_t, buf: *const ::void_t, n: ::size_t, flags: ::int_t,
-                  addr: *const sockaddr, addr_len: socklen_t) -> ::ssize_t;
+        fn sendto(fd: int_t, buf: *const void_t, n: size_t, flags: int_t,
+                  addr: *const sockaddr, addr_len: socklen_t) -> ssize_t;
     }
-    unsafe { sendto(fd, buf.as_ptr() as *const _, buf.len() as ::size_t, flags,
+    unsafe { sendto(fd, buf.as_ptr() as *const _, buf.len() as size_t, flags,
                     addr.as_ptr() as *const _, addr.len() as socklen_t) }
 }
 
-pub fn setsockopt(fd: ::int_t, level: ::int_t, optname: ::int_t,
-                  optval: &[u8]) -> ::int_t {
+pub fn setsockopt(fd: int_t, level: int_t, optname: int_t,
+                  optval: &[u8]) -> int_t {
     extern {
-        fn setsockopt(fd: ::int_t, level: ::int_t, optname: ::int_t,
-                      optval: *const ::void_t, optlen: socklen_t) -> ::int_t;
+        fn setsockopt(fd: int_t, level: int_t, optname: int_t,
+                      optval: *const void_t, optlen: socklen_t) -> int_t;
     }
     unsafe { setsockopt(fd, level, optname, optval.as_ptr() as *const _,
                         optval.len() as socklen_t) }
 }
 
-pub fn shutdown(fd: ::int_t, how: ::int_t) -> ::int_t {
-    extern { fn shutdown(fd: ::int_t, how: ::int_t) -> ::int_t; }
+pub fn shutdown(fd: int_t, how: int_t) -> int_t {
+    extern { fn shutdown(fd: int_t, how: int_t) -> int_t; }
     unsafe { shutdown(fd, how) }
 }
 
-pub fn sockatmark(fd: ::int_t) -> ::int_t {
-    extern { fn sockatmark(fd: ::int_t) -> ::int_t; }
+pub fn sockatmark(fd: int_t) -> int_t {
+    extern { fn sockatmark(fd: int_t) -> int_t; }
     unsafe { sockatmark(fd) }
 }
 
-pub fn socket(domain: ::int_t, ty: ::int_t, protocol: ::int_t) -> ::int_t {
-    extern { fn socket(domain: ::int_t, ty: ::int_t, protocol: ::int_t) -> ::int_t; }
+pub fn socket(domain: int_t, ty: int_t, protocol: int_t) -> int_t {
+    extern { fn socket(domain: int_t, ty: int_t, protocol: int_t) -> int_t; }
     unsafe { socket(domain, ty, protocol) }
 }
 
-pub fn socketpair(domain: ::int_t, ty: ::int_t, protocol: ::int_t,
-                  fds: &mut [::int_t, ..2]) -> ::int_t {
+pub fn socketpair(domain: int_t, ty: int_t, protocol: int_t,
+                  fds: &mut [int_t, ..2]) -> int_t {
     extern {
-        fn socketpair(domain: ::int_t, ty: ::int_t, protocol: ::int_t,
-                      fds: *mut ::int_t) -> ::int_t;
+        fn socketpair(domain: int_t, ty: int_t, protocol: int_t,
+                      fds: *mut int_t) -> int_t;
     }
     unsafe { socketpair(domain, ty, protocol, fds.as_mut_ptr()) }
 }
 
 extern "C" {
-    pub fn recvmsg(fd: ::int_t, message: *mut msghdr,
-                   flags: ::int_t) -> ::ssize_t;
-    pub fn sendmsg(fd: ::int_t, message: *const msghdr,
-                   flags: ::int_t) -> ::ssize_t;
+    pub fn recvmsg(fd: int_t, message: *mut msghdr,
+                   flags: int_t) -> ssize_t;
+    pub fn sendmsg(fd: int_t, message: *const msghdr,
+                   flags: int_t) -> ssize_t;
 }
