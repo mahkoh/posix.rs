@@ -5,3 +5,5 @@ pub struct group {
     pub gr_gid: ::sys::types::gid_t,
     pub gr_mem: *mut *mut ::char_t,
 }
+
+new!(group)
