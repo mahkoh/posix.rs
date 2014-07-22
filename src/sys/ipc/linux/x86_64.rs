@@ -13,6 +13,8 @@ pub struct ipc_perm {
     __glibc_reserved2: ::ulong_t,
 }
 
+new!(ipc_perm)
+
 pub static IPC_CREAT:   ::int_t = 512;
 pub static IPC_EXCL:    ::int_t = 1024;
 pub static IPC_NOWAIT:  ::int_t = 2048;
