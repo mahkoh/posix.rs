@@ -14,11 +14,7 @@ pub struct shmid_ds {
     __glibc_reserved5: ::ulong_t,
 }
 
-impl shmid_ds {
-    pub fn new() -> shmid_ds {
-        unsafe { ::std::mem::zeroed() }
-    }
-}
+new!(shmid_ds)
 
 pub static SHM_RDONLY: ::int_t = 4096;
 pub static SHM_RND:    ::int_t = 8192;
