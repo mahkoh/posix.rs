@@ -152,6 +152,12 @@ impl ToNTStr for Path {
     }
 }
 
+impl<'a> ToNTStr for &'a str {
+    fn to_nt_str(&self) -> NTStrOwned {
+        self.as_bytes().to_nt_str()
+    }
+}
+
 pub trait AsNTStr<'a> {
     fn as_nt_str(&'a self) -> NTStrBorrowed<'a>;
 }
