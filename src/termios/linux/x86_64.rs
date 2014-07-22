@@ -14,6 +14,8 @@ pub struct termios {
     pub c_ospeed: speed_t,
 }
 
+new!(termios)
+
 pub static NCCS:      ::int_t = 32;
 pub static VEOF:      ::int_t = 4;
 pub static VEOL:      ::int_t = 11;

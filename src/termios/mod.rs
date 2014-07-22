@@ -102,6 +102,9 @@ pub use self::os::{TCION};
 pub use self::os::{TCOOFF};
 pub use self::os::{TCOON};
 
+use {int_t};
+use sys::types::{pid_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
@@ -116,48 +119,48 @@ pub fn cfgetospeed(termios_p: &termios) -> speed_t {
     unsafe { cfgetospeed(termios_p as *const _) }
 }
 
-pub fn cfsetispeed(termios_p: &mut termios, speed: speed_t) -> ::int_t {
-    extern { fn cfsetispeed(termios_p: *mut termios, speed: speed_t) -> ::int_t; }
+pub fn cfsetispeed(termios_p: &mut termios, speed: speed_t) -> int_t {
+    extern { fn cfsetispeed(termios_p: *mut termios, speed: speed_t) -> int_t; }
     unsafe { cfsetispeed(termios_p as *mut _, speed) }
 }
 
-pub fn cfsetospeed(termios_p: &mut termios, speed: speed_t) -> ::int_t {
-    extern { fn cfsetospeed(termios_p: *mut termios, speed: speed_t) -> ::int_t; }
+pub fn cfsetospeed(termios_p: &mut termios, speed: speed_t) -> int_t {
+    extern { fn cfsetospeed(termios_p: *mut termios, speed: speed_t) -> int_t; }
     unsafe { cfsetospeed(termios_p as *mut _, speed) }
 }
 
-pub fn tcdrain(fd: ::int_t) -> ::int_t {
-    extern { fn tcdrain(fd: ::int_t) -> ::int_t; }
+pub fn tcdrain(fd: int_t) -> int_t {
+    extern { fn tcdrain(fd: int_t) -> int_t; }
     unsafe { tcdrain(fd) }
 }
 
-pub fn tcflow(fd: ::int_t, action: ::int_t) -> ::int_t {
-    extern { fn tcflow(fd: ::int_t, action: ::int_t) -> ::int_t; }
+pub fn tcflow(fd: int_t, action: int_t) -> int_t {
+    extern { fn tcflow(fd: int_t, action: int_t) -> int_t; }
     unsafe { tcflow(fd, action) }
 }
 
-pub fn tcflush(fd: ::int_t, queue_selector: ::int_t) -> ::int_t {
-    extern { fn tcflush(fd: ::int_t, queue_selector: ::int_t) -> ::int_t; }
+pub fn tcflush(fd: int_t, queue_selector: int_t) -> int_t {
+    extern { fn tcflush(fd: int_t, queue_selector: int_t) -> int_t; }
     unsafe { tcflush(fd, queue_selector) }
 }
 
-pub fn tcgetattr(fd: ::int_t, termios_p: &mut termios) -> ::int_t {
-    extern { fn tcgetattr(fd: ::int_t, termios_p: *mut termios) -> ::int_t; }
+pub fn tcgetattr(fd: int_t, termios_p: &mut termios) -> int_t {
+    extern { fn tcgetattr(fd: int_t, termios_p: *mut termios) -> int_t; }
     unsafe { tcgetattr(fd, termios_p as *mut _) }
 }
 
-pub fn tcgetsid(fd: ::int_t) -> ::sys::types::pid_t {
-    extern { fn tcgetsid(fd: ::int_t) -> ::sys::types::pid_t; }
+pub fn tcgetsid(fd: int_t) -> pid_t {
+    extern { fn tcgetsid(fd: int_t) -> pid_t; }
     unsafe { tcgetsid(fd) }
 }
 
-pub fn tcsendbreak(fd: ::int_t, duration: ::int_t) -> ::int_t {
-    extern { fn tcsendbreak(fd: ::int_t, duration: ::int_t) -> ::int_t; }
+pub fn tcsendbreak(fd: int_t, duration: int_t) -> int_t {
+    extern { fn tcsendbreak(fd: int_t, duration: int_t) -> int_t; }
     unsafe { tcsendbreak(fd, duration) }
 }
 
-pub fn tcsetattr(fd: ::int_t, optional_actions: ::int_t, termios_p: &termios) -> ::int_t {
-    extern { fn tcsetattr(fd: ::int_t, optional_actions: ::int_t,
-                          termios_p: *const termios) -> ::int_t; }
+pub fn tcsetattr(fd: int_t, optional_actions: int_t, termios_p: &termios) -> int_t {
+    extern { fn tcsetattr(fd: int_t, optional_actions: int_t,
+                          termios_p: *const termios) -> int_t; }
     unsafe { tcsetattr(fd, optional_actions, termios_p as *const _) }
 }
