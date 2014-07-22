@@ -54,12 +54,15 @@ pub use self::os::{YESEXPR};
 pub use self::os::{NOEXPR};
 pub use self::os::{CRNCYSTR};
 
+use {char_t};
+use nl_types::{nl_item};
+use locale::{locale_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
 extern "C" {
-    pub fn nl_langinfo(item: ::nl_types::nl_item) -> *mut ::char_t;
-    pub fn nl_langinfo_l(item: ::nl_types::nl_item,
-                         l: ::locale::locale_t) -> *mut ::char_t;
+    pub fn nl_langinfo(item: nl_item) -> *mut char_t;
+    pub fn nl_langinfo_l(item: nl_item, l: locale_t) -> *mut char_t;
 }
