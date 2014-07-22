@@ -1,12 +1,16 @@
 #[repr(C)]
 pub struct posix_spawnattr_t {
-    data: [u64, ..42],
+    _data: [u64, ..42],
 }
+
+new!(posix_spawnattr_t)
 
 #[repr(C)]
 pub struct posix_spawn_file_actions_t {
-    data: [u64, ..10],
+    _data: [u64, ..10],
 }
+
+new!(posix_spawn_file_actions_t)
 
 pub static POSIX_SPAWN_RESETIDS:      ::short_t = 1;
 pub static POSIX_SPAWN_SETPGROUP:     ::short_t = 2;
