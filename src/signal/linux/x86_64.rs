@@ -5,6 +5,8 @@ pub struct sigset_t {
     _data: [::ulong_t, ..16u],
 }
 
+new!(sigset_t)
+
 #[repr(C)]
 pub struct sigevent {
     pub sigev_value: sigval,
@@ -15,10 +17,14 @@ pub struct sigevent {
     _pad: [u64, ..4u],
 }
 
+new!(sigevent)
+
 #[repr(C)]
 pub struct sigval {
-    data: [u64, ..1u],
+    _data: [u64, ..1u],
 }
+
+new!(sigval)
 
 impl sigval {
     pub fn sival_int(&self) -> &::int_t {
@@ -46,6 +52,8 @@ pub struct sigaction {
     pub sa_restorer: ::std::option::Option<extern fn()>,
 }
 
+new!(sigaction)
+
 impl sigaction {
     pub fn sa_handler(&self) -> &::std::option::Option<extern fn(arg1: ::int_t)> {
         unsafe { ::std::mem::transmute(&self.hlr) }
@@ -72,6 +80,8 @@ pub struct mcontext_t {
     _data: [u64, ..32],
 }
 
+new!(mcontext_t)
+
 #[repr(C)]
 pub struct ucontext {
     pub uc_flags: ::ulong_t,
@@ -82,12 +92,16 @@ pub struct ucontext {
     _data: [u64, ..64],
 }
 
+new!(ucontext)
+
 #[repr(C)]
 pub struct stack_t {
     pub ss_sp: *mut ::void_t,
     pub ss_flags: ::int_t,
     pub ss_size: ::size_t,
 }
+
+new!(stack_t)
 
 #[repr(C)]
 pub struct siginfo_t {
@@ -96,6 +110,8 @@ pub struct siginfo_t {
     pub si_code: ::int_t,
     _data: [u64, ..14u],
 }
+
+new!(siginfo_t)
 
 impl siginfo_t {
     pub fn si_pid(&self) -> &::sys::types::pid_t {
