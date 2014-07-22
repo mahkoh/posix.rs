@@ -16,6 +16,8 @@ pub use self::os::{LC_TIME_MASK};
 pub use self::os::{LC_ALL_MASK};
 pub use self::os::{LC_GLOBAL_LOCALE};
 
+use {NTStr, int_t, char_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
@@ -30,8 +32,8 @@ pub fn freelocale(l: locale_t) -> locale_t {
     unsafe { freelocale(l) }
 }
 
-pub fn newlocale<T: ::NTStr>(mask: ::int_t, l: &T, base: Option<locale_t>) -> locale_t {
-    extern { fn newlocale(mask: ::int_t, locale: *const ::char_t,
+pub fn newlocale<T: NTStr>(mask: int_t, l: &T, base: Option<locale_t>) -> locale_t {
+    extern { fn newlocale(mask: int_t, locale: *const char_t,
                           base: locale_t) -> locale_t; }
     match base {
         Some(p) => unsafe { newlocale(mask, l.as_ptr(), p) },
@@ -46,5 +48,5 @@ pub fn uselocale(l: locale_t) -> locale_t {
 
 extern "C" {
     pub fn localeconv() -> *mut lconv;
-    pub fn setlocale(category: ::int_t, locale: *const ::char_t) -> *mut ::char_t;
+    pub fn setlocale(category: int_t, locale: *const char_t) -> *mut char_t;
 }
