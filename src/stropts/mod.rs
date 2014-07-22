@@ -68,56 +68,58 @@ pub use self::os::{MSG_ANY};
 pub use self::os::{MSG_BAND};
 pub use self::os::{MSG_HIPRI};
 
+use {int_t, NTStr, char_t, ulong_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn fattach<T: ::NTStr>(filedes: ::int_t, path: &T) -> ::int_t {
-    extern { fn fattach(fildes: ::int_t, path: *const ::char_t) -> ::int_t; }
+pub fn fattach<T: NTStr>(filedes: int_t, path: &T) -> int_t {
+    extern { fn fattach(fildes: int_t, path: *const char_t) -> int_t; }
     unsafe { fattach(filedes, path.as_ptr()) }
 }
 
-pub fn fdetach<T: ::NTStr>(path: &T) -> ::int_t {
-    extern { fn fdetach(path: *const ::char_t) -> ::int_t; }
+pub fn fdetach<T: NTStr>(path: &T) -> int_t {
+    extern { fn fdetach(path: *const char_t) -> int_t; }
     unsafe { fdetach(path.as_ptr()) }
 }
 
-pub fn getmsg(fildes: ::int_t, ctlptr: &mut strbuf, dataptr: &mut strbuf,
-              flagsp: &mut ::int_t) -> ::int_t {
-    extern { fn getmsg(fildes: ::int_t, ctlptr: *mut strbuf,
-                       dataptr: *mut strbuf, flagsp: *mut ::int_t) -> ::int_t; }
+pub fn getmsg(fildes: int_t, ctlptr: &mut strbuf, dataptr: &mut strbuf,
+              flagsp: &mut int_t) -> int_t {
+    extern { fn getmsg(fildes: int_t, ctlptr: *mut strbuf,
+                       dataptr: *mut strbuf, flagsp: *mut int_t) -> int_t; }
     unsafe { getmsg(fildes, ctlptr as *mut _, dataptr as *mut _, flagsp as *mut _) }
 }
 
-pub fn getpmsg(fildes: ::int_t, ctlptr: &mut strbuf, dataptr: &mut strbuf,
-               bandp: &mut ::int_t, flagsp: &mut ::int_t) -> ::int_t {
-    extern { fn getpmsg(fildes: ::int_t, ctlptr: *mut strbuf,
-                        dataptr: *mut strbuf, bandp: *mut ::int_t,
-                        flagsp: *mut ::int_t) -> ::int_t; }
+pub fn getpmsg(fildes: int_t, ctlptr: &mut strbuf, dataptr: &mut strbuf,
+               bandp: &mut int_t, flagsp: &mut int_t) -> int_t {
+    extern { fn getpmsg(fildes: int_t, ctlptr: *mut strbuf,
+                        dataptr: *mut strbuf, bandp: *mut int_t,
+                        flagsp: *mut int_t) -> int_t; }
     unsafe { getpmsg(fildes, ctlptr as *mut _, dataptr as *mut _, bandp as *mut _,
                      flagsp as *mut _) }
 }
 
-pub fn isastream(fildes: ::int_t) -> ::int_t {
-    extern { fn isastream(fildes: ::int_t) -> ::int_t; }
+pub fn isastream(fildes: int_t) -> int_t {
+    extern { fn isastream(fildes: int_t) -> int_t; }
     unsafe { isastream(fildes) }
 }
 
-pub fn putmsg(fildes: ::int_t, ctlptr: &strbuf, dataptr: &strbuf,
-              flags: ::int_t) -> ::int_t {
-    extern { fn putmsg(fildes: ::int_t, ctlptr: *const strbuf,
-                       dataptr: *const strbuf, flags: ::int_t) -> ::int_t; }
+pub fn putmsg(fildes: int_t, ctlptr: &strbuf, dataptr: &strbuf,
+              flags: int_t) -> int_t {
+    extern { fn putmsg(fildes: int_t, ctlptr: *const strbuf,
+                       dataptr: *const strbuf, flags: int_t) -> int_t; }
     unsafe { putmsg(fildes, ctlptr as *const _, dataptr as *const _, flags) }
 }
 
-pub fn putpmsg(fildes: ::int_t, ctlptr: &strbuf, dataptr: &strbuf, band: ::int_t,
-               flags: ::int_t) -> ::int_t {
-    extern { fn putpmsg(fildes: ::int_t, ctlptr: *const strbuf,
-                        dataptr: *const strbuf, band: ::int_t,
-                        flags: ::int_t) -> ::int_t; }
+pub fn putpmsg(fildes: int_t, ctlptr: &strbuf, dataptr: &strbuf, band: int_t,
+               flags: int_t) -> int_t {
+    extern { fn putpmsg(fildes: int_t, ctlptr: *const strbuf,
+                        dataptr: *const strbuf, band: int_t,
+                        flags: int_t) -> int_t; }
     unsafe { putpmsg(fildes, ctlptr as *const _, dataptr as *const _, band, flags) }
 }
 
 extern "C" {
-    pub fn ioctl(fd: ::int_t, request: ::ulong_t, ...) -> ::int_t;
+    pub fn ioctl(fd: int_t, request: ulong_t, ...) -> int_t;
 }
