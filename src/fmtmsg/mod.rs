@@ -18,24 +18,26 @@ pub use self::os::{MM_NOTOK};
 pub use self::os::{MM_NOMSG};
 pub use self::os::{MM_NOCON};
 
+use {NTStr, int_t, long_t, char_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub static MM_NULLSEV: ::int_t = 0;
-pub static MM_NULLMC: ::long_t = 0;
+pub static MM_NULLSEV: int_t = 0;
+pub static MM_NULLMC: long_t = 0;
 
-pub fn fmtmsg<T: ::NTStr, U: ::NTStr, V: ::NTStr, W: ::NTStr>
-             (class: ::long_t, label: Option<&T>, severity: ::int_t, text: Option<&U>,
-              action: Option<&V>, tag: Option<&W>) -> ::int_t {
+pub fn fmtmsg<T: NTStr, U: NTStr, V: NTStr, W: NTStr>
+             (class: long_t, label: Option<&T>, severity: int_t, text: Option<&U>,
+              action: Option<&V>, tag: Option<&W>) -> int_t {
     extern {
-        fn fmtmsg(classification: ::long_t, label: *const ::char_t,
-                  severity: ::int_t, text: *const ::char_t,
-                  action: *const ::char_t, tag: *const ::char_t) -> ::int_t;
+        fn fmtmsg(classification: long_t, label: *const char_t,
+                  severity: int_t, text: *const char_t,
+                  action: *const char_t, tag: *const char_t) -> int_t;
     }
-    let label  = label.map(|v|  v.as_ptr()).unwrap_or(0 as *const ::char_t);
-    let text   = text.map(|v|   v.as_ptr()).unwrap_or(0 as *const ::char_t);
-    let action = action.map(|v| v.as_ptr()).unwrap_or(0 as *const ::char_t);
-    let tag    = tag.map(|v|    v.as_ptr()).unwrap_or(0 as *const ::char_t);
+    let label  = label.map(|v|  v.as_ptr()).unwrap_or(0 as *const char_t);
+    let text   = text.map(|v|   v.as_ptr()).unwrap_or(0 as *const char_t);
+    let action = action.map(|v| v.as_ptr()).unwrap_or(0 as *const char_t);
+    let tag    = tag.map(|v|    v.as_ptr()).unwrap_or(0 as *const char_t);
     unsafe { fmtmsg(class, label, severity, text, action, tag) }
 }
