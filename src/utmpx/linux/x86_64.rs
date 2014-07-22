@@ -19,6 +19,8 @@ pub struct utmpx {
     __glibc_reserved: [::char_t, ..20u],
 }
 
+new!(utmpx)
+
 pub static EMPTY:         ::short_t = 0;
 pub static BOOT_TIME:     ::short_t = 2;
 pub static OLD_TIME:      ::short_t = 4;
