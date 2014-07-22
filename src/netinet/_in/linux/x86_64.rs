@@ -9,6 +9,11 @@ pub struct in_addr {
     pub s_addr: in_addr_t,
 }
 
+new!(in_addr)
+
+impl ::AsSlice for in_addr { }
+impl ::AsMutSlice for in_addr { }
+
 pub static IPPROTO_IP:   ::int_t = 0;
 pub static IPPROTO_ICMP: ::int_t = 1;
 pub static IPPROTO_TCP:  ::int_t = 6;
@@ -28,6 +33,11 @@ pub static IPV6_V6ONLY:         ::int_t = 26;
 pub struct in6_addr {
     pub data: [u32, ..4u],
 }
+
+new!(in6_addr)
+
+impl ::AsSlice for in6_addr { }
+impl ::AsMutSlice for in6_addr { }
 
 pub fn IN6_IS_ADDR_UNSPECIFIED(a: &in6_addr) -> bool {
     a.data.as_slice() == [0, ..4].as_slice()
@@ -113,6 +123,11 @@ pub struct sockaddr_in {
     pub sin_zero: [::uchar_t, ..8u],
 }
 
+new!(sockaddr_in)
+
+impl ::AsSlice for sockaddr_in { }
+impl ::AsMutSlice for sockaddr_in { }
+
 #[repr(C)]
 pub struct sockaddr_in6 {
     pub sin6_family: ::sys::socket::sa_family_t,
@@ -122,8 +137,15 @@ pub struct sockaddr_in6 {
     pub sin6_scope_id: u32,
 }
 
+new!(sockaddr_in6)
+
+impl ::AsSlice for sockaddr_in6 { }
+impl ::AsMutSlice for sockaddr_in6 { }
+
 #[repr(C)]
 pub struct ipv6_mreq {
     pub ipv6mr_multiaddr: in6_addr,
     pub ipv6mr_interface: ::uint_t,
 }
+
+new!(ipv6_mreq)

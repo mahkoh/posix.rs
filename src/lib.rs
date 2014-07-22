@@ -167,3 +167,25 @@ impl<'a> AsNTStr<'a> for &'a [u8] {
         NTStrBorrowed { data: *self }
     }
 }
+
+pub trait AsSlice {
+    fn as_slice(&self) -> &[u8] {
+        unsafe {
+            ::std::mem::transmute(::std::raw::Slice {
+                data: self as *const _ as *const u8,
+                len: ::std::mem::size_of_val(self),
+            })
+        }
+    }
+}
+
+pub trait AsMutSlice {
+    fn as_mut_slice(&mut self) -> &mut [u8] {
+        unsafe {
+            ::std::mem::transmute(::std::raw::Slice {
+                data: self as *mut _ as *const u8,
+                len: ::std::mem::size_of_val(self),
+            })
+        }
+    }
+}

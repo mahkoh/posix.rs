@@ -34,14 +34,14 @@ pub use self::os::{sockaddr_in};
 pub use self::os::{sockaddr_in6};
 pub use self::os::{ipv6_mreq};
 
-pub static INET_ADDRSTRLEN: uint = 16;
-pub static INET6_ADDRSTRLEN: uint = 46;
-
-extern "C" {
-    pub static in6addr_any: in6_addr;
-    pub static in6addr_loopback: in6_addr;
-}
-
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
+
+pub static INET_ADDRSTRLEN: uint = 16;
+pub static INET6_ADDRSTRLEN: uint = 46;
+
+extern {
+    pub static in6addr_any: in6_addr;
+    pub static in6addr_loopback: in6_addr;
+}
