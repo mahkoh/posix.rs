@@ -6,11 +6,15 @@ pub struct rlimit {
     pub rlim_max: rlim_t,
 }
 
+new!(rlimit)
+
 #[repr(C)]
 pub struct rusage {
     pub ru_utime: ::sys::time::timeval,
     pub ru_stime: ::sys::time::timeval,
 }
+
+new!(rusage)
 
 pub static PRIO_PROCESS:    ::int_t = 0;
 pub static PRIO_PGRP:       ::int_t = 1;

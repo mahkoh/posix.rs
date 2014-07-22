@@ -17,32 +17,34 @@ pub use self::os::{RLIMIT_NOFILE};
 pub use self::os::{RLIMIT_STACK};
 pub use self::os::{RLIMIT_AS};
 
+use {int_t};
+use sys::types::{id_t};
+
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod os;
 
-pub fn getpriority(which: ::int_t, who: ::sys::types::id_t) -> ::int_t {
-    extern { fn getpriority(which: ::int_t, who: ::sys::types::id_t) -> ::int_t; }
+pub fn getpriority(which: int_t, who: id_t) -> int_t {
+    extern { fn getpriority(which: int_t, who: id_t) -> int_t; }
     unsafe { getpriority(which, who) }
 }
 
-pub fn getrlimit(resource: ::int_t, rlimits: &mut rlimit) -> ::int_t {
-    extern { fn getrlimit(resource: ::int_t, rlimits: *mut rlimit) -> ::int_t; }
+pub fn getrlimit(resource: int_t, rlimits: &mut rlimit) -> int_t {
+    extern { fn getrlimit(resource: int_t, rlimits: *mut rlimit) -> int_t; }
     unsafe { getrlimit(resource, rlimits as *mut _) }
 }
 
-pub fn getrusage(who: ::int_t, usage: &mut rusage) -> ::int_t {
-    extern { fn getrusage(who: ::int_t, usage: *mut rusage) -> ::int_t; }
+pub fn getrusage(who: int_t, usage: &mut rusage) -> int_t {
+    extern { fn getrusage(who: int_t, usage: *mut rusage) -> int_t; }
     unsafe { getrusage(who, usage as *mut _) }
 }
 
-pub fn setrlimit(resource: ::int_t, rlimits: &rlimit) -> ::int_t {
-    extern { fn setrlimit(resource: ::int_t, rlimits: *const rlimit) -> ::int_t; }
+pub fn setrlimit(resource: int_t, rlimits: &rlimit) -> int_t {
+    extern { fn setrlimit(resource: int_t, rlimits: *const rlimit) -> int_t; }
     unsafe { setrlimit(resource, rlimits as *const _) }
 }
 
-pub fn setpriority(which: ::int_t, who: ::sys::types::id_t, prio: ::int_t) -> ::int_t {
-    extern { fn setpriority(which: ::int_t, who: ::sys::types::id_t,
-                            prio: ::int_t) -> ::int_t; }
+pub fn setpriority(which: int_t, who: id_t, prio: int_t) -> int_t {
+    extern { fn setpriority(which: int_t, who: id_t, prio: int_t) -> int_t; }
     unsafe { setpriority(which, who, prio) }
 }
