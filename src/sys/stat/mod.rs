@@ -20,9 +20,9 @@ pub use self::os::{S_TYPEISSHM};
 pub use self::os::{UTIME_NOW};
 pub use self::os::{UTIME_OMIT};
 
+use {NTStr, int_t, char_t};
 use sys::types::{mode_t, dev_t};
 use time::{timespec};
-use {NTStr};
 
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
@@ -44,73 +44,73 @@ pub static S_ISUID: mode_t = 0o4000;
 pub static S_ISGID: mode_t = 0o2000;
 pub static S_ISVTX: mode_t = 0o1000;
 
-pub fn chmod<T: NTStr>(file: &T, mode: mode_t) -> ::int_t {
-    extern { fn chmod(file: *const ::char_t, mode: mode_t) -> ::int_t; }
+pub fn chmod<T: NTStr>(file: &T, mode: mode_t) -> int_t {
+    extern { fn chmod(file: *const char_t, mode: mode_t) -> int_t; }
     unsafe { chmod(file.as_ptr(), mode) }
 }
 
-pub fn fchmod(fd: ::int_t, mode: mode_t) -> ::int_t {
-    extern { fn fchmod(fd: ::int_t, mode: mode_t) -> ::int_t; }
+pub fn fchmod(fd: int_t, mode: mode_t) -> int_t {
+    extern { fn fchmod(fd: int_t, mode: mode_t) -> int_t; }
     unsafe { fchmod(fd, mode) }
 }
 
-pub fn fchmodat<T: NTStr>(fd: ::int_t, file: &T, mode: mode_t, flag: ::int_t) -> ::int_t {
-    extern { fn fchmodat(fd: ::int_t, file: *const ::char_t, mode: mode_t, flag: ::int_t) -> ::int_t; }
+pub fn fchmodat<T: NTStr>(fd: int_t, file: &T, mode: mode_t, flag: int_t) -> int_t {
+    extern { fn fchmodat(fd: int_t, file: *const char_t, mode: mode_t, flag: int_t) -> int_t; }
     unsafe { fchmodat(fd, file.as_ptr(), mode, flag) }
 }
 
-pub fn fstat(fd: ::int_t, buf: &mut stat) -> ::int_t {
-    extern { fn fstat(fd: ::int_t, buf: *mut stat) -> ::int_t; }
+pub fn fstat(fd: int_t, buf: &mut stat) -> int_t {
+    extern { fn fstat(fd: int_t, buf: *mut stat) -> int_t; }
     unsafe { fstat(fd, buf as *mut _) }
 }
 
-pub fn fstatat<T: NTStr>(fd: ::int_t, file: &T, buf: &mut stat, flag: ::int_t) -> ::int_t {
-    extern { fn fstatat(fd: ::int_t, file: *const ::char_t, buf: *mut stat, flag: ::int_t) -> ::int_t; }
+pub fn fstatat<T: NTStr>(fd: int_t, file: &T, buf: &mut stat, flag: int_t) -> int_t {
+    extern { fn fstatat(fd: int_t, file: *const char_t, buf: *mut stat, flag: int_t) -> int_t; }
     unsafe { fstatat(fd, file.as_ptr(), buf as *mut _, flag) }
 }
 
-pub fn futimens(fd: ::int_t, times: &mut timespec) -> ::int_t {
-    extern { fn futimens(fd: ::int_t, times: *mut timespec) -> ::int_t; }
+pub fn futimens(fd: int_t, times: &mut timespec) -> int_t {
+    extern { fn futimens(fd: int_t, times: *mut timespec) -> int_t; }
     unsafe { futimens(fd, times as *mut _) }
 }
 
-pub fn lstat<T: NTStr>(file: &T, buf: &mut stat) -> ::int_t {
-    extern { fn lstat(file: *const ::char_t, buf: *mut stat) -> ::int_t; }
+pub fn lstat<T: NTStr>(file: &T, buf: &mut stat) -> int_t {
+    extern { fn lstat(file: *const char_t, buf: *mut stat) -> int_t; }
     unsafe { lstat(file.as_ptr(), buf as *mut _) }
 }
 
-pub fn mkdir<T: NTStr>(path: &T, mode: mode_t) -> ::int_t {
-    extern { fn mkdir(path: *const ::char_t, mode: mode_t) -> ::int_t; }
+pub fn mkdir<T: NTStr>(path: &T, mode: mode_t) -> int_t {
+    extern { fn mkdir(path: *const char_t, mode: mode_t) -> int_t; }
     unsafe { mkdir(path.as_ptr(), mode) }
 }
 
-pub fn mkdirat<T: NTStr>(fd: ::int_t, path: &T, mode: mode_t) -> ::int_t {
-    extern { fn mkdirat(fd: ::int_t, path: *const ::char_t, mode: mode_t) -> ::int_t; }
+pub fn mkdirat<T: NTStr>(fd: int_t, path: &T, mode: mode_t) -> int_t {
+    extern { fn mkdirat(fd: int_t, path: *const char_t, mode: mode_t) -> int_t; }
     unsafe { mkdirat(fd, path.as_ptr(), mode) }
 }
 
-pub fn mkfifo<T: NTStr>(path: &T, mode: mode_t) -> ::int_t {
-    extern { fn mkfifo(path: *const ::char_t, mode: mode_t) -> ::int_t; }
+pub fn mkfifo<T: NTStr>(path: &T, mode: mode_t) -> int_t {
+    extern { fn mkfifo(path: *const char_t, mode: mode_t) -> int_t; }
     unsafe { mkfifo(path.as_ptr(), mode) }
 }
 
-pub fn mkfifoat<T: NTStr>(fd: ::int_t, path: &T, mode: mode_t) -> ::int_t {
-    extern { fn mkfifoat(fd: ::int_t, path: *const ::char_t, mode: mode_t) -> ::int_t; }
+pub fn mkfifoat<T: NTStr>(fd: int_t, path: &T, mode: mode_t) -> int_t {
+    extern { fn mkfifoat(fd: int_t, path: *const char_t, mode: mode_t) -> int_t; }
     unsafe { mkfifoat(fd, path.as_ptr(), mode) }
 }
 
-pub fn mknod<T: NTStr>(path: &T, mode: mode_t, dev: dev_t) -> ::int_t {
-    extern { fn mknod(path: *const ::char_t, mode: mode_t, dev: dev_t) -> ::int_t; }
+pub fn mknod<T: NTStr>(path: &T, mode: mode_t, dev: dev_t) -> int_t {
+    extern { fn mknod(path: *const char_t, mode: mode_t, dev: dev_t) -> int_t; }
     unsafe { mknod(path.as_ptr(), mode, dev) }
 }
 
-pub fn mknodat<T: NTStr>(fd: ::int_t, path: &T, mode: mode_t, dev: dev_t) -> ::int_t {
-    extern { fn mknodat(fd: ::int_t, path: *const ::char_t, mode: mode_t, dev: dev_t) -> ::int_t; }
+pub fn mknodat<T: NTStr>(fd: int_t, path: &T, mode: mode_t, dev: dev_t) -> int_t {
+    extern { fn mknodat(fd: int_t, path: *const char_t, mode: mode_t, dev: dev_t) -> int_t; }
     unsafe { mknodat(fd, path.as_ptr(), mode, dev) }
 }
 
-pub fn stat<T: NTStr>(file: &T, buf: &mut stat) -> ::int_t {
-    extern { fn stat(file: *const ::char_t, buf: *mut stat) -> ::int_t; }
+pub fn stat<T: NTStr>(file: &T, buf: &mut stat) -> int_t {
+    extern { fn stat(file: *const char_t, buf: *mut stat) -> int_t; }
     unsafe { stat(file.as_ptr(), buf as *mut _) }
 }
 
@@ -119,7 +119,7 @@ pub fn umask(mask: mode_t) -> mode_t {
     unsafe { umask(mask) }
 }
 
-pub fn utimensat<T: NTStr>(fd: ::int_t, path: &T, times: &mut timespec, flags: ::int_t) -> ::int_t {
-    extern { fn utimensat(fd: ::int_t, path: *const ::char_t, times: *mut timespec, flags: ::int_t) -> ::int_t; }
+pub fn utimensat<T: NTStr>(fd: int_t, path: &T, times: &mut timespec, flags: int_t) -> int_t {
+    extern { fn utimensat(fd: int_t, path: *const char_t, times: *mut timespec, flags: int_t) -> int_t; }
     unsafe { utimensat(fd, path.as_ptr(), times as *mut _, flags) }
 }
