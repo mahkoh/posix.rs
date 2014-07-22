@@ -16,6 +16,8 @@ pub struct msqid_ds {
     __glibc_reserved5: ::ulong_t,
 }
 
+new!(msqid_ds)
+
 #[repr(C)]
 pub struct msginfo {
     pub msgpool: ::int_t,
@@ -27,5 +29,7 @@ pub struct msginfo {
     pub msgtql: ::int_t,
     pub msgseg: ::ushort_t,
 }
+
+new!(msginfo)
 
 pub static MSG_NOERROR: ::int_t = 4096;
