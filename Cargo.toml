@@ -1,0 +1,8 @@
+[package]
+name = "posix"
+version = "0.1.0"
+authors = [ "mahkoh" ]
+
+[[lib]]
+name = "posix"
+path = "src/lib.rs"
