@@ -7,3 +7,5 @@ pub struct utsname {
     pub machine: [::char_t, ..65u],
     __domainname: [::char_t, ..65u],
 }
+
+new!(utsname)
