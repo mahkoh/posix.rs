@@ -1,0 +1,21 @@
+header = "sys/mman.h"
+
+ints = ["PROT_EXEC",
+        "PROT_NONE",
+        "PROT_READ",
+        "PROT_WRITE",
+        "MAP_FIXED",
+        "MAP_PRIVATE",
+        "MAP_SHARED",
+        "MS_ASYNC",
+        "MS_INVALIDATE",
+        "MS_SYNC",
+        "MCL_CURRENT",
+        "MCL_FUTURE",
+        "MAP_FAILED",
+        "POSIX_MADV_DONTNEED",
+        "POSIX_MADV_NORMAL",
+        "POSIX_MADV_RANDOM",
+        "POSIX_MADV_SEQUENTIAL",
+        "POSIX_MADV_WILLNEED",
+        ]

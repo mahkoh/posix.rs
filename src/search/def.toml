@@ -1,0 +1,4 @@
+header = "search.h"
+
+types = ["entry",
+         ]

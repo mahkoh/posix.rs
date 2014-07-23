@@ -1,0 +1,17 @@
+header = "fenv.h"
+
+types = ["fexcept_t",
+         "fenv_t"
+         ]
+
+ints = ["FE_DIVBYZERO",
+        "FE_INEXACT",
+        "FE_INVALID",
+        "FE_OVERFLOW",
+        "FE_UNDERFLOW",
+        "FE_ALL_EXCEPT",
+        "FE_DOWNWARD",
+        "FE_TONEAREST",
+        "FE_TOWARDZERO",
+        "FE_UPWARD",
+        ]

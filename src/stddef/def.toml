@@ -1,0 +1,5 @@
+header = "stddef.h"
+
+types = ["ptrdiff_t",
+         "wchar_t",
+         ]

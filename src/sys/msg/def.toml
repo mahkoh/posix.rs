@@ -1,0 +1,10 @@
+header = "sys/msg.h"
+
+types = ["msgqnum_t",
+         "msglen_t",
+         "msqid_ds",
+         "msginfo",
+         ]
+
+ints = ["MSG_NOERROR",
+        ]

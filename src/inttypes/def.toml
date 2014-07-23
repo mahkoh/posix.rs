@@ -1,0 +1,4 @@
+header = "inttypes.h"
+
+types = ["imaxdiv_t",
+         ]

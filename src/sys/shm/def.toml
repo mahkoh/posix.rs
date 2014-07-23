@@ -1,0 +1,9 @@
+header = "sys/shm.h"
+
+types = ["shmatt_t",
+         "shmid_ds",
+         ]
+
+ints = ["SHM_RDONLY",
+        "SHM_RND",   
+        ]

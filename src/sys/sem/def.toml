@@ -1,0 +1,15 @@
+header = "sys/sem.h"
+
+types = ["semid_ds",
+         "sembuf",
+         ]
+
+ints = ["SEM_UNDO",
+        "GETNCNT", 
+        "GETPID",  
+        "GETVAL",  
+        "GETALL",  
+        "GETZCNT", 
+        "SETVAL",  
+        "SETALL",  
+        ]

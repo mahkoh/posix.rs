@@ -1,0 +1,5 @@
+header = "mqueue.h"
+
+types = ["mqd_t",
+         "mq_attr",
+         ]

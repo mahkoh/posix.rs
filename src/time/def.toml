@@ -1,0 +1,24 @@
+header = "time.h"
+
+types = ["timespec",
+         "tm",
+         "itimerspec",
+         ]
+
+uints = ["TIMER_ABSTIME",
+         ]
+
+[[custom]]
+c_type = "clock_t"
+rs_type = "::sys::types::clock_t"
+vars = ["CLOCKS_PER_SEC",
+        ]
+
+[[custom]]
+c_type = "clockid_t"
+rs_type = "::sys::types::clockid_t"
+vars = ["CLOCK_MONOTONIC",
+        "CLOCK_PROCESS_CPUTIME_ID",
+        "CLOCK_REALTIME",
+        "CLOCK_THREAD_CPUTIME_ID",
+        ]

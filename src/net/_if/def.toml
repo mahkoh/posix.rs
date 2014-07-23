@@ -1,0 +1,5 @@
+[[types]]
+name = "if_nameindex"
+
+[[uints]]
+name = "IF_NAMESIZE"

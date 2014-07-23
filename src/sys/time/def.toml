@@ -1,0 +1,10 @@
+header = "sys/time.h"
+
+types = ["timeval",
+         "itimerval",
+         ]
+
+ints = ["ITIMER_REAL",
+        "ITIMER_VIRTUAL",
+        "ITIMER_PROF",
+        ]

@@ -1,0 +1,8 @@
+header = "sys/select.h"
+
+types = ["timeval",
+         "fd_set",
+         ]
+
+ints = ["FD_SETSIZE",
+        ]

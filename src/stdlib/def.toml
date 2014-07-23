@@ -1,0 +1,11 @@
+header = "stdlib.h"
+
+types = ["div_t",
+         "ldiv_t",
+         "lldiv_t",
+         ]
+
+ints = ["EXIT_FAILURE",
+        "EXIT_SUCCESS",
+        "RAND_MAX",
+        ]

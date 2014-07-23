@@ -1,0 +1,17 @@
+header = "poll.h"
+
+types = ["nfds_t",
+         "pollfd",
+         ]
+
+shorts = ["POLLIN",
+          "POLLRDNORM",
+          "POLLRDBAND",
+          "POLLPRI",
+          "POLLOUT",
+          "POLLWRNORM",
+          "POLLWRBAND",
+          "POLLERR",
+          "POLLHUP",
+          "POLLNVAL",
+          ]

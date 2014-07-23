@@ -1,0 +1,5 @@
+header = "dirent.h"
+
+types = ["dirent",
+         "DIR",
+         ]

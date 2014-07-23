@@ -1,0 +1,9 @@
+header = "sched.h"
+
+types = ["sched_param",
+         ]
+
+ints = ["SCHED_FIFO",
+        "SCHED_RR",
+        "SCHED_OTHER",
+        ]

@@ -1,0 +1,20 @@
+header = "stdio.h"
+
+types = ["FILE",
+         "fpos_t",
+         ]
+
+ints = ["BUFSIZ",
+        "L_ctermid",
+        "L_tmpnam",
+        "_IOFBF",
+        "_IOLBF",
+        "_IONBF",
+        "SEEK_CUR",
+        "SEEK_END",
+        "SEEK_SET",
+        "FILENAME_MAX",
+        "FOPEN_MAX",
+        "TMP_MAX",
+        "EOF",
+        ]

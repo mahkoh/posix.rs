@@ -1,0 +1,21 @@
+header = "sys/stat.h"
+
+types = ["stat",
+         ]
+
+ints = ["UTIME_NOW",
+        "UTIME_OMIT",
+        ]
+
+[[custom]]
+c_type = "mode_t"
+rs_type = "::sys::types::mode_t"
+vars = ["S_IFMT",
+        "S_IFBLK",
+        "S_IFCHR",
+        "S_IFIFO",
+        "S_IFREG",
+        "S_IFDIR",
+        "S_IFLNK",
+        "S_IFSOCK",
+        ]

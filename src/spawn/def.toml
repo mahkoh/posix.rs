@@ -1,0 +1,13 @@
+header = "spawn.h"
+
+types = ["posix_spawnattr_t",
+         "posix_spawn_file_actions_t",
+         ]
+
+shorts = ["POSIX_SPAWN_RESETIDS",
+          "POSIX_SPAWN_SETPGROUP",
+          "POSIX_SPAWN_SETSCHEDPARAM",
+          "POSIX_SPAWN_SETSCHEDULER",
+          "POSIX_SPAWN_SETSIGDEF",
+          "POSIX_SPAWN_SETSIGMASK",
+          ]

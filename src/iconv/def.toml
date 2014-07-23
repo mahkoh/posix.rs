@@ -1,0 +1,4 @@
+header = "iconv.h"
+
+types = ["iconv_t",
+         ]

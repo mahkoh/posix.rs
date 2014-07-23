@@ -1,0 +1,16 @@
+header = "glob.h"
+
+types = ["glob_t",
+         ]
+
+ints = ["GLOB_APPEND",
+        "GLOB_DOOFFS",
+        "GLOB_ERR",
+        "GLOB_MARK",
+        "GLOB_NOCHECK",
+        "GLOB_NOESCAPE",
+        "GLOB_NOSORT",
+        "GLOB_ABORTED",
+        "GLOB_NOMATCH",
+        "GLOB_NOSPACE",
+        ]

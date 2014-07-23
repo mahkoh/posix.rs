@@ -1,0 +1,4 @@
+header = "semaphore.h"
+
+types = ["sem_t",
+         ]

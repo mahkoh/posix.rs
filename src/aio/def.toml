@@ -1,0 +1,14 @@
+header = "aio.h"
+
+types = ["aiocb",
+         ]
+
+uints = ["AIO_CANCELED",
+         "AIO_NOTCANCELED",
+         "AIO_ALLDONE",
+         "LIO_READ",
+         "LIO_WRITE",
+         "LIO_NOP",
+         "LIO_WAIT",
+         "LIO_NOWAIT",
+         ]

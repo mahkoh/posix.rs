@@ -1,0 +1,12 @@
+header = "wchar.h"
+
+types = ["mbstate_t",
+         "wint_t",
+         "wctype_t",
+         ]
+
+[[custom]]
+c_type = "wint_t"
+rs_type = "wint_t"
+vars = ["WEOF",
+        ]

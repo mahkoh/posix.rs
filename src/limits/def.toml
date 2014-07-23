@@ -1,0 +1,77 @@
+header = "limits.h"
+
+uints = ["AIO_PRIO_DELTA_MAX",
+         "DELAYTIMER_MAX",
+         "HOST_NAME_MAX",
+         "LOGIN_NAME_MAX",
+         "MQ_PRIO_MAX",
+         "PTHREAD_DESTRUCTOR_ITERATIONS",
+         "PTHREAD_KEYS_MAX",
+         "PTHREAD_STACK_MIN",
+         "RE_DUP_MAX",
+         "RTSIG_MAX",
+         "SEM_VALUE_MAX",
+         "TTY_NAME_MAX",
+         "MAX_CANON",
+         "MAX_INPUT",
+         "NAME_MAX",
+         "PATH_MAX",
+         "PIPE_BUF",
+         "BC_BASE_MAX",
+         "BC_DIM_MAX",
+         "BC_SCALE_MAX",
+         "BC_STRING_MAX",
+         "CHARCLASS_NAME_MAX",
+         "COLL_WEIGHTS_MAX",
+         "EXPR_NEST_MAX",
+         "LINE_MAX",
+         "NGROUPS_MAX",
+         "_POSIX_CLOCKRES_MIN",
+         "CHAR_BIT",
+         "UINT_MAX",
+         ]
+
+chars = ["CHAR_MAX",
+         "CHAR_MIN",
+         ]
+
+ints = ["INT_MAX",
+        "INT_MIN",
+        ]
+
+longlongs = ["LLONG_MAX",
+             "LLONG_MIN",
+             ]
+
+longs = ["LONG_MAX",
+         "LONG_MIN",
+         ]
+
+schars = ["SCHAR_MAX",
+          "SCHAR_MIN",
+          ]
+
+shorts = ["SHRT_MAX",
+          "SHRT_MIN",
+          ]
+
+ssizes = ["SSIZE_MAX",
+          ]
+
+uchars = ["UCHAR_MAX",
+          ]
+
+ulonglongs = ["ULLONG_MAX",
+              ]
+
+ulongs = ["ULONG_MAX",
+          ]
+
+ushorts = ["USHRT_MAX",
+           ]
+
+[[custom]]
+c_type = "int"
+rs_type = "uint"
+vars = ["MB_LEN_MAX",
+        ]

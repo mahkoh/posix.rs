@@ -1,0 +1,32 @@
+header = "netinet/in.h"
+
+types = ["in_port_t",
+         "in_addr_t",
+         "in_addr",
+         "in6_addr",
+         "sockaddr_in",
+         "sockaddr_in6",
+         "ipv6_mreq",
+         ]
+
+ints = ["IPPROTO_IP",
+        "IPPROTO_ICMP",
+        "IPPROTO_TCP",
+        "IPPROTO_UDP",
+        "IPPROTO_IPV6",
+        "IPPROTO_RAW",
+        "IPV6_JOIN_GROUP",
+        "IPV6_LEAVE_GROUP",
+        "IPV6_MULTICAST_HOPS",
+        "IPV6_MULTICAST_IF",
+        "IPV6_MULTICAST_LOOP",
+        "IPV6_UNICAST_HOPS",
+        "IPV6_V6ONLY",
+        ]
+
+[[custom]]
+c_type = "in_addr_t"
+rs_type = "in_addr_t"
+vars = ["INADDR_ANY",
+        "INADDR_BROADCAST",
+        ]

@@ -1,0 +1,9 @@
+header = "nl_types.h"
+
+types = ["nl_catd",
+         "nl_item",
+         ]
+
+ints = ["NL_SETD",
+        "NL_CAT_LOCALE",
+        ]

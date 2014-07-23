@@ -1,0 +1,4 @@
+header = "pwd.h"
+
+types = ["passwd",
+         ]

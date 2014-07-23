@@ -1,0 +1,20 @@
+header = "sys/wait.h"
+
+types = ["idtype_t",
+         ]
+
+ints = ["WCONTINUED",
+        "WNOHANG",   
+        "WUNTRACED", 
+        "WEXITED",   
+        "WNOWAIT",   
+        "WSTOPPED",  
+        ]
+
+[[custom]]
+c_type = "idtype_t"
+rs_type = "idtype_t"
+vars = ["P_ALL",
+        "P_PID",
+        "P_PGID",
+        ]

@@ -1,0 +1,7 @@
+header = "fnmatch.h"
+
+ints = ["FNM_NOMATCH",
+        "FNM_PATHNAME",
+        "FNM_PERIOD",
+        "FNM_NOESCAPE",
+        ]

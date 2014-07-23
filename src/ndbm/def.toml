@@ -1,0 +1,9 @@
+header = "ndbm.h"
+
+types = ["datum",
+         "DBM",
+         ]
+
+ints = ["DBM_INSERT",
+        "DBM_REPLACE",
+        ]

@@ -1,0 +1,5 @@
+header = "ulimit.h"
+
+ints = ["UL_GETFSIZE",
+        "UL_SETFSIZE",
+        ]

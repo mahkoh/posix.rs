@@ -1,0 +1,17 @@
+header = "wordexp.h"
+
+types = ["wordexp_t",
+         ]
+
+ints = ["WRDE_APPEND",
+        "WRDE_DOOFFS",
+        "WRDE_NOCMD",
+        "WRDE_REUSE",
+        "WRDE_SHOWERR",
+        "WRDE_UNDEF",
+        "WRDE_BADCHAR",
+        "WRDE_BADVAL",
+        "WRDE_CMDSUB",
+        "WRDE_NOSPACE",
+        "WRDE_SYNTAX",
+        ]

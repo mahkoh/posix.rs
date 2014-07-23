@@ -1,0 +1,5 @@
+header = "setjmp.h"
+
+types = ["jmp_buf",
+         "sigjmp_buf",
+         ]

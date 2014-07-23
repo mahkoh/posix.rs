@@ -1,0 +1,7 @@
+header = "dlfcn.h"
+
+ints = ["RTLD_LAZY",
+        "RTLD_NOW",
+        "RTLD_GLOBAL",
+        "RTLD_LOCAL",
+        ]
