@@ -31,6 +31,6 @@ pub static FE_TONEAREST:  ::int_t = 0;
 pub static FE_TOWARDZERO: ::int_t = 3072;
 pub static FE_UPWARD:     ::int_t = 2048;
 
-pub fn FE_DFL_ENV() -> &'static fenv_t {
+pub fn FE_DFL_ENV() -> *const fenv_t {
     unsafe { ::std::mem::transmute(-1i64) }
 }

@@ -75,13 +75,13 @@ pub struct cmsghdr {
     pub cmsg_len: ::size_t,
     pub cmsg_level: ::int_t,
     pub cmsg_type: ::int_t,
-    __cmsg_data: *mut ::uchar_t,
+    __cmsg_data: [u8, ..0],
 }
 
 new!(cmsghdr)
 
-pub fn CMSG_DATA(hdr: &cmsghdr) -> *mut ::uchar_t {
-    hdr.__cmsg_data
+pub fn CMSG_DATA(hdr: &mut cmsghdr) -> *mut ::uchar_t {
+    hdr.__cmsg_data.as_mut_ptr()
 }
 
 pub static SCM_RIGHTS: ::uint_t = 1;

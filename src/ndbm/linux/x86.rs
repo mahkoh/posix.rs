@@ -1,0 +1,17 @@
+#[repr(C)]
+pub struct datum {
+    pub dptr: *mut ::schar_t,
+    pub dsize: ::int_t,
+}
+new!(datum)
+#[repr(C)]
+pub struct DBM {
+    pub file: [u8, ..0],
+    pub dirfd: ::int_t,
+    _dbm_memory: [u32, ..2],
+    _dbm_fetch_val: [u32, ..1],
+    _dbm_errno: [u32, ..1],
+}
+new!(DBM)
+pub static DBM_INSERT: ::int_t = 0;
+pub static DBM_REPLACE: ::int_t = 1;

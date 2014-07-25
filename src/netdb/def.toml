@@ -1,83 +1,33 @@
-[[types]]
-name = "netent"
+header = "netdb.h"
 
-[[types]]
-name = "hostent"
+types = ["netent",
+         "hostent",
+         "servent",
+         "protoent",
+         "addrinfo",
+         ]
 
-[[types]]
-name = "servent"
-
-[[types]]
-name = "protoent"
-
-[[types]]
-name = "addrinfo"
-
-[[ints]]
-name = "IPPORT_RESERVED"
-
-[[ints]]
-name = "AI_PASSIVE"
-
-[[ints]]
-name = "AI_CANONNAME"
-
-[[ints]]
-name = "AI_NUMERICHOST"
-
-[[ints]]
-name = "AI_NUMERICSERV"
-
-[[ints]]
-name = "AI_V4MAPPED"
-
-[[ints]]
-name = "AI_ALL"
-
-[[ints]]
-name = "AI_ADDRCONFIG"
-
-[[ints]]
-name = "NI_NOFQDN"
-
-[[ints]]
-name = "NI_NUMERICHOST"
-
-[[ints]]
-name = "NI_NAMEREQD"
-
-[[ints]]
-name = "NI_NUMERICSERV"
-
-[[ints]]
-name = "NI_DGRAM"
-
-[[ints]]
-name = "EAI_AGAIN"
-
-[[ints]]
-name = "EAI_BADFLAGS"
-
-[[ints]]
-name = "EAI_FAIL"
-
-[[ints]]
-name = "EAI_FAMILY"
-
-[[ints]]
-name = "EAI_MEMORY"
-
-[[ints]]
-name = "EAI_NONAME"
-
-[[ints]]
-name = "EAI_SERVICE"
-
-[[ints]]
-name = "EAI_SOCKTYPE"
-
-[[ints]]
-name = "EAI_SYSTEM"
-
-[[ints]]
-name = "EAI_OVERFLOW"
+ints = ["IPPORT_RESERVED",
+        "AI_PASSIVE",
+        "AI_CANONNAME",
+        "AI_NUMERICHOST",
+        "AI_NUMERICSERV",
+        "AI_V4MAPPED",
+        "AI_ALL",
+        "AI_ADDRCONFIG",
+        "NI_NOFQDN",
+        "NI_NUMERICHOST",
+        "NI_NAMEREQD",
+        "NI_NUMERICSERV",
+        "NI_DGRAM",
+        "EAI_AGAIN",
+        "EAI_BADFLAGS",
+        "EAI_FAIL",
+        "EAI_FAMILY",
+        "EAI_MEMORY",
+        "EAI_NONAME",
+        "EAI_SERVICE",
+        "EAI_SOCKTYPE",
+        "EAI_SYSTEM",
+        "EAI_OVERFLOW",
+        ]

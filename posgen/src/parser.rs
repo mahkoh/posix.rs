@@ -35,7 +35,7 @@ impl<'a> Context<'a> {
                     }
                     ret
                 } else if decl.kind() != cx::ll::CXCursor_NoDeclFound {
-                    self.type_to_str(&decl.cur_type())
+                    format!("*{} {}", mutable, self.type_to_str(&decl.cur_type()))
                 } else {
                     format!("*{} ::void_t", mutable)
                 }
