@@ -3,4 +3,6 @@
 *.o
 *.bc
 src/posix
+target
+posgen/target
 !.gitignore

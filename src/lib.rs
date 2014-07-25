@@ -90,6 +90,7 @@ pub enum void_t {
 mod os {
     #[cfg(target_arch = "x86_64")]
     pub mod arch {
+        pub type bool_t       = i8;
         pub type char_t       = i8;
         pub type schar_t      = i8;
         pub type uchar_t      = u8;

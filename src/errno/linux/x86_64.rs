@@ -80,7 +80,7 @@ pub static ETXTBSY:         ::int_t = 26;
 pub static EWOULDBLOCK:     ::int_t = 11;
 pub static EXDEV:           ::int_t = 18;
 
-pub fn errno() -> &mut ::int_t {
+pub fn errno() -> &'static mut ::int_t {
     extern { fn __errno_location() -> *mut ::int_t; }
     unsafe { ::std::mem::transmute(__errno_location()) }
 }

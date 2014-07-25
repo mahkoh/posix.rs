@@ -1,0 +1,17 @@
+[package]
+name = "posgen"
+version = "0.1.0"
+authors = [ "mahkoh" ]
+
+[[bin]]
+name = "posgen"
+path = "src/posgen.rs"
+
+[dependencies.toml]
+git = "https://github.com/alexcrichton/toml-rs.git"
+
+[dependencies.phf]
+git = "https://github.com/sfackler/rust-phf"
+
+[dependencies.phf_mac]
+git = "https://github.com/sfackler/rust-phf"
