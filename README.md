@@ -8,4 +8,5 @@ Posix wrapper for Rust
 
 #### Supported platforms
 
+- Linux x86 (glibc only)
 - Linux x86_64 (glibc only)
