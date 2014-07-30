@@ -6,6 +6,18 @@ types = ["cc_t",
          "termios",
          ]
 
+ints = ["TCSANOW",
+        "TCSADRAIN",
+        "TCSAFLUSH",
+        "TCIFLUSH",
+        "TCIOFLUSH",
+        "TCOFLUSH",
+        "TCIOFF",
+        "TCION",
+        "TCOOFF",
+        "TCOON",
+        ]
+
 [[custom]]
 c_type = "int"
 rs_type = "uint"
@@ -103,14 +115,4 @@ vars = ["BRKINT",
         "ISIG",
         "NOFLSH",
         "TOSTOP",
-        "TCSANOW",
-        "TCSADRAIN",
-        "TCSAFLUSH",
-        "TCIFLUSH",
-        "TCIOFLUSH",
-        "TCOFLUSH",
-        "TCIOFF",
-        "TCION",
-        "TCOOFF",
-        "TCOON",
         ]
