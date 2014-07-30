@@ -6,7 +6,10 @@ types = ["cc_t",
          "termios",
          ]
 
-ints = ["NCCS",
+[[custom]]
+c_type = "int"
+rs_type = "uint"
+vars = ["NCCS",
         "VEOF",
         "VEOL",
         "VERASE",
@@ -18,7 +21,12 @@ ints = ["NCCS",
         "VSTOP",
         "VSUSP",
         "VTIME",
-        "BRKINT",
+        ]
+
+[[custom]]
+c_type = "int"
+rs_type = "tcflag_t"
+vars = ["BRKINT",
         "ICRNL",
         "IGNBRK",
         "IGNCR",
