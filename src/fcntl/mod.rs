@@ -66,6 +66,10 @@ pub fn posix_fallocate(fd: int_t, off: off_t, len: off_t) -> int_t {
     unsafe { posix_fallocate(fd, off, len) }
 }
 
+pub fn open1<T: NTStr>(file: &T, oflag: int_t) -> int_t {
+    unsafe { open(file.as_ptr(), oflag) }
+}
+
 extern "C" {
     pub fn fcntl(fd: int_t, cmd: int_t, ...) -> int_t;
     pub fn open(file: *const char_t, oflag: int_t, ...) -> int_t;
