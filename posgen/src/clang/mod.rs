@@ -1,5 +1,5 @@
-use libc::{c_uint, c_char, c_int};
-use std::{mem, ptr, str};
+use libc::{c_uint, c_int};
+use std::{mem, ptr, string};
 use std::fmt;
 use std::hash::Hash;
 use std::hash::sip::SipState;
@@ -239,8 +239,8 @@ impl fmt::Show for String_ {
             return "".fmt(f);
         }
         unsafe {
-            let c_str = ll::clang_getCString(self.x) as *const c_char;
-            str::raw::from_c_str(c_str).fmt(f)
+            let c_str = ll::clang_getCString(self.x) as *const u8;
+            string::raw::from_buf(c_str).fmt(f)
         }
     }
 }

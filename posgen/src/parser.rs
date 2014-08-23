@@ -1,5 +1,5 @@
 use il;
-use cx = clang;
+use clang as cx;
 
 static PREFIX: &'static str = "POSGEN_VAR_";
 
