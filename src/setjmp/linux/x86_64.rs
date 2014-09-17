@@ -1,6 +1,9 @@
+#[repr(C)]
 pub struct jmp_buf {
     _data: [u64, ..25]
 }
+
+#[repr(C)]
 pub struct sigjmp_buf {
     _data: [u64, ..25]
 }

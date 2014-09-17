@@ -1,7 +1,7 @@
 #![crate_name = "posix"]
 #![crate_type = "lib"]
 #![allow(non_camel_case_types)]
-#![allow(non_snake_case_functions)]
+#![allow(non_snake_case)]
 #![feature(macro_rules)]
 
 pub use os::arch::{char_t, schar_t, uchar_t, short_t, ushort_t, int_t, uint_t, long_t};

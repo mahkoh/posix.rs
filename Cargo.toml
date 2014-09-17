@@ -3,6 +3,6 @@ name = "posix"
 version = "0.1.0"
 authors = [ "mahkoh" ]
 
-[[lib]]
+[lib]
 name = "posix"
 path = "src/lib.rs"
