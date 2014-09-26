@@ -180,7 +180,7 @@ impl<'a> Context<'a> {
             name: spelling,
             fields: fields,
         };
-        self.globals.push(il::Struct(s));
+        self.globals.push(il::StructVar(s));
         if cursor.kind() == cx::ll::CXCursor_FieldDecl {
             cx::ll::CXChildVisit_Break
         } else {
@@ -200,7 +200,7 @@ impl<'a> Context<'a> {
         } else {
             let dst = self.type_to_str_int(&dst, false);
             let typedef = il::Typedef { name: spelling, dst: dst };
-            self.globals.push(il::Typedef(typedef));
+            self.globals.push(il::TypedefVar(typedef));
         }
         cx::ll::CXChildVisit_Continue
     }
@@ -242,7 +242,7 @@ impl<'a> Context<'a> {
                             ty: var.rs_type.clone(),
                             val: val
                         };
-                        self.globals.push(il::Constant(info));
+                        self.globals.push(il::ConstantVar(info));
                     },
                     _ => { },
                 }
@@ -295,7 +295,7 @@ fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {
 pub fn parse(defs: &::Defs) -> ::std::io::IoResult<Vec<il::Global>> {
     let pp = try!(preprocess(defs));
     let tmpdir = match ::std::io::TempDir::new("") {
-        Some(d) => d,
+        Ok(d) => d,
         _ => return Err(::std::io::IoError::last_error())
     };
     let mut path = tmpdir.path().clone();

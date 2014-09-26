@@ -1,7 +1,7 @@
 pub enum Global {
-    Typedef(Typedef),
-    Struct(Struct),
-    Constant(Constant),
+    TypedefVar(Typedef),
+    StructVar(Struct),
+    ConstantVar(Constant),
 }
 
 pub struct Typedef {

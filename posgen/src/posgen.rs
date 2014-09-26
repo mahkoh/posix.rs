@@ -67,7 +67,7 @@ fn load_defs(file: &[u8]) -> Option<Defs> {
     macro_rules! decode {
         ($ty:ident, $ct:expr, $rt:expr) => {
             if defs.$ty.is_some() {
-                for v in defs.$ty.take().unwrap().move_iter() {
+                for v in defs.$ty.take().unwrap().into_iter() {
                     consts.push( Const { name: v,
                                          c_type: $ct.to_string(),
                                          rs_type: $rt.to_string(), });
@@ -89,9 +89,9 @@ fn load_defs(file: &[u8]) -> Option<Defs> {
     decode!(floats,     "float",              "::float_t");
     decode!(doubles,    "double",             "::double_t");
     if defs.custom.is_some() {
-        for v in defs.custom.take().unwrap().move_iter() {
+        for v in defs.custom.take().unwrap().into_iter() {
             let Custom { vars, c_type, rs_type } = v;
-            for var in vars.move_iter() {
+            for var in vars.into_iter() {
                 consts.push( Const { name: var,
                                      c_type: c_type.clone(),
                                      rs_type: rs_type.clone(), });

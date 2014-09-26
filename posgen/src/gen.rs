@@ -3,10 +3,10 @@ use il;
 pub fn gen(globals: Vec<il::Global>) {
     for g in globals.iter() {
         match *g {
-            il::Typedef(ref v) => {
+            il::TypedefVar(ref v) => {
                 println!("pub type {} = {};", v.name, v.dst);
             },
-            il::Struct(ref v) => {
+            il::StructVar(ref v) => {
                 println!("#[repr(C)]");
                 println!("pub struct {} {{", v.name);
                 if v.fields.len() == 0 {
@@ -22,7 +22,7 @@ pub fn gen(globals: Vec<il::Global>) {
                 println!("}}");
                 println!("new!({})", v.name);
             },
-            il::Constant(ref v) => {
+            il::ConstantVar(ref v) => {
                 println!("pub static {}: {} = {};", v.name, v.ty, v.val);
             },
         }
