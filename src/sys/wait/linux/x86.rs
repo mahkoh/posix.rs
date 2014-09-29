@@ -22,7 +22,7 @@ pub fn WIFEXITED(status: ::int_t) -> bool {
 }
 
 pub fn WIFSIGNALED(status: ::int_t) -> bool {
-    (((((status) & 0x7f) + 1) >> 1) as i8) > 0
+    ((((status) & 0x7f) + 1) as i8 >> 1) > 0
 }
 
 pub fn WIFSTOPPED(status: ::int_t) -> bool {
