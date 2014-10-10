@@ -16,8 +16,8 @@ pub struct shmid_ds {
     __glibc_reserved5: [u32, ..1],
 }
 new!(shmid_ds)
-pub static SHM_RDONLY: ::int_t = 0o10000;
-pub static SHM_RND: ::int_t = 0o20000;
+pub const SHM_RDONLY: ::int_t = 0o10000;
+pub const SHM_RND: ::int_t = 0o20000;
 
 pub fn SHMLBA() -> ::int_t {
     extern { fn __getpagesize() -> ::int_t; }

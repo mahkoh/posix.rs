@@ -1,14 +1,14 @@
 pub type idtype_t = ::int_t;
-pub static P_ALL:  idtype_t = 0;
-pub static P_PID:  idtype_t = 1;
-pub static P_PGID: idtype_t = 2;
+pub const P_ALL:  idtype_t = 0;
+pub const P_PID:  idtype_t = 1;
+pub const P_PGID: idtype_t = 2;
 
-pub static WCONTINUED: ::int_t = 8;
-pub static WNOHANG:    ::int_t = 1;
-pub static WUNTRACED:  ::int_t = 2;
-pub static WEXITED:    ::int_t = 4;
-pub static WNOWAIT:    ::int_t = 16777216;
-pub static WSTOPPED:   ::int_t = 2;
+pub const WCONTINUED: ::int_t = 8;
+pub const WNOHANG:    ::int_t = 1;
+pub const WUNTRACED:  ::int_t = 2;
+pub const WEXITED:    ::int_t = 4;
+pub const WNOWAIT:    ::int_t = 16777216;
+pub const WSTOPPED:   ::int_t = 2;
 
 pub fn WEXITSTATUS(status: ::int_t) -> ::int_t {
     (status & 0xff00) >> 8

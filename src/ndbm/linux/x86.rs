@@ -13,5 +13,5 @@ pub struct DBM {
     _dbm_errno: [u32, ..1],
 }
 new!(DBM)
-pub static DBM_INSERT: ::int_t = 0;
-pub static DBM_REPLACE: ::int_t = 1;
+pub const DBM_INSERT: ::int_t = 0;
+pub const DBM_REPLACE: ::int_t = 1;

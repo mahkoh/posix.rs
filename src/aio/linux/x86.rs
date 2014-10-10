@@ -16,11 +16,11 @@ pub struct aiocb {
     __glibc_reserved: [u8, ..32],
 }
 new!(aiocb)
-pub static AIO_CANCELED: ::uint_t = 0;
-pub static AIO_NOTCANCELED: ::uint_t = 1;
-pub static AIO_ALLDONE: ::uint_t = 2;
-pub static LIO_READ: ::uint_t = 0;
-pub static LIO_WRITE: ::uint_t = 1;
-pub static LIO_NOP: ::uint_t = 2;
-pub static LIO_WAIT: ::uint_t = 0;
-pub static LIO_NOWAIT: ::uint_t = 1;
+pub const AIO_CANCELED: ::uint_t = 0;
+pub const AIO_NOTCANCELED: ::uint_t = 1;
+pub const AIO_ALLDONE: ::uint_t = 2;
+pub const LIO_READ: ::uint_t = 0;
+pub const LIO_WRITE: ::uint_t = 1;
+pub const LIO_NOP: ::uint_t = 2;
+pub const LIO_WAIT: ::uint_t = 0;
+pub const LIO_NOWAIT: ::uint_t = 1;

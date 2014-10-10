@@ -28,21 +28,21 @@ use time::{timespec};
 #[path = "linux/mod.rs"]
 mod os;
 
-pub static S_IRWXU: mode_t = 0o700;
-pub static S_IRUSR: mode_t = 0o400;
-pub static S_IWUSR: mode_t = 0o200;
-pub static S_IXUSR: mode_t = 0o100;
-pub static S_IRWXG: mode_t = 0o70;
-pub static S_IRGRP: mode_t = 0o40;
-pub static S_IWGRP: mode_t = 0o20;
-pub static S_IXGRP: mode_t = 0o10;
-pub static S_IRWXO: mode_t = 0o7;
-pub static S_IROTH: mode_t = 0o4;
-pub static S_IWOTH: mode_t = 0o2;
-pub static S_IXOTH: mode_t = 0o1;
-pub static S_ISUID: mode_t = 0o4000;
-pub static S_ISGID: mode_t = 0o2000;
-pub static S_ISVTX: mode_t = 0o1000;
+pub const S_IRWXU: mode_t = 0o700;
+pub const S_IRUSR: mode_t = 0o400;
+pub const S_IWUSR: mode_t = 0o200;
+pub const S_IXUSR: mode_t = 0o100;
+pub const S_IRWXG: mode_t = 0o70;
+pub const S_IRGRP: mode_t = 0o40;
+pub const S_IWGRP: mode_t = 0o20;
+pub const S_IXGRP: mode_t = 0o10;
+pub const S_IRWXO: mode_t = 0o7;
+pub const S_IROTH: mode_t = 0o4;
+pub const S_IWOTH: mode_t = 0o2;
+pub const S_IXOTH: mode_t = 0o1;
+pub const S_ISUID: mode_t = 0o4000;
+pub const S_ISGID: mode_t = 0o2000;
+pub const S_ISVTX: mode_t = 0o1000;
 
 pub fn chmod<T: NTStr>(file: &T, mode: mode_t) -> int_t {
     extern { fn chmod(file: *const char_t, mode: mode_t) -> int_t; }

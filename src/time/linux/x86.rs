@@ -25,12 +25,12 @@ pub struct itimerspec {
     pub it_value: timespec,
 }
 new!(itimerspec)
-pub static TIMER_ABSTIME: ::uint_t = 1;
-pub static CLOCKS_PER_SEC: ::sys::types::clock_t = 1000000;
-pub static CLOCK_MONOTONIC: ::sys::types::clockid_t = 1;
-pub static CLOCK_PROCESS_CPUTIME_ID: ::sys::types::clockid_t = 2;
-pub static CLOCK_REALTIME: ::sys::types::clockid_t = 0;
-pub static CLOCK_THREAD_CPUTIME_ID: ::sys::types::clockid_t = 3;
+pub const TIMER_ABSTIME: ::uint_t = 1;
+pub const CLOCKS_PER_SEC: ::sys::types::clock_t = 1000000;
+pub const CLOCK_MONOTONIC: ::sys::types::clockid_t = 1;
+pub const CLOCK_PROCESS_CPUTIME_ID: ::sys::types::clockid_t = 2;
+pub const CLOCK_REALTIME: ::sys::types::clockid_t = 0;
+pub const CLOCK_THREAD_CPUTIME_ID: ::sys::types::clockid_t = 3;
 
 pub fn getdate_err() -> &'static mut ::int_t {
     extern { static mut getdate_err: ::int_t; }

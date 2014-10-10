@@ -4,4 +4,4 @@ pub struct if_nameindex {
     pub if_name: *mut ::char_t,
 }
 
-pub static IF_NAMESIZE: ::uint_t = 16;
+pub const IF_NAMESIZE: ::uint_t = 16;

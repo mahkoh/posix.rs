@@ -14,6 +14,6 @@ pub struct itimerval {
 
 new!(itimerval)
 
-pub static ITIMER_REAL:    ::int_t = 0;
-pub static ITIMER_VIRTUAL: ::int_t = 1;
-pub static ITIMER_PROF:    ::int_t = 2;
+pub const ITIMER_REAL:    ::int_t = 0;
+pub const ITIMER_VIRTUAL: ::int_t = 1;
+pub const ITIMER_PROF:    ::int_t = 2;

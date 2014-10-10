@@ -21,11 +21,11 @@ pub struct sembuf {
 
 new!(sembuf)
 
-pub static SEM_UNDO: ::int_t = 4096;
-pub static GETNCNT:  ::int_t = 14;
-pub static GETPID:   ::int_t = 11;
-pub static GETVAL:   ::int_t = 12;
-pub static GETALL:   ::int_t = 13;
-pub static GETZCNT:  ::int_t = 15;
-pub static SETVAL:   ::int_t = 16;
-pub static SETALL:   ::int_t = 17;
+pub const SEM_UNDO: ::int_t = 4096;
+pub const GETNCNT:  ::int_t = 14;
+pub const GETPID:   ::int_t = 11;
+pub const GETVAL:   ::int_t = 12;
+pub const GETALL:   ::int_t = 13;
+pub const GETZCNT:  ::int_t = 15;
+pub const SETVAL:   ::int_t = 16;
+pub const SETALL:   ::int_t = 17;

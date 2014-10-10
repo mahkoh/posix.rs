@@ -24,8 +24,8 @@ use {NTStr, int_t, long_t, char_t};
 #[path = "linux/mod.rs"]
 mod os;
 
-pub static MM_NULLSEV: int_t = 0;
-pub static MM_NULLMC: long_t = 0;
+pub const MM_NULLSEV: int_t = 0;
+pub const MM_NULLMC: long_t = 0;
 
 pub fn fmtmsg<T: NTStr, U: NTStr, V: NTStr, W: NTStr>
              (class: long_t, label: Option<&T>, severity: int_t, text: Option<&U>,

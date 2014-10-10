@@ -20,16 +20,16 @@ pub struct fenv_t {
 
 new!(fenv_t)
 
-pub static FE_DIVBYZERO:  ::int_t = 4;
-pub static FE_INEXACT:    ::int_t = 32;
-pub static FE_INVALID:    ::int_t = 1;
-pub static FE_OVERFLOW:   ::int_t = 8;
-pub static FE_UNDERFLOW:  ::int_t = 16;
-pub static FE_ALL_EXCEPT: ::int_t = 61;
-pub static FE_DOWNWARD:   ::int_t = 1024;
-pub static FE_TONEAREST:  ::int_t = 0;
-pub static FE_TOWARDZERO: ::int_t = 3072;
-pub static FE_UPWARD:     ::int_t = 2048;
+pub const FE_DIVBYZERO:  ::int_t = 4;
+pub const FE_INEXACT:    ::int_t = 32;
+pub const FE_INVALID:    ::int_t = 1;
+pub const FE_OVERFLOW:   ::int_t = 8;
+pub const FE_UNDERFLOW:  ::int_t = 16;
+pub const FE_ALL_EXCEPT: ::int_t = 61;
+pub const FE_DOWNWARD:   ::int_t = 1024;
+pub const FE_TONEAREST:  ::int_t = 0;
+pub const FE_TOWARDZERO: ::int_t = 3072;
+pub const FE_UPWARD:     ::int_t = 2048;
 
 pub fn FE_DFL_ENV() -> *const fenv_t {
     unsafe { ::std::mem::transmute(-1i64) }

@@ -17,9 +17,9 @@ pub struct posix_spawn_file_actions_t {
     __pad: [u32, ..16],
 }
 new!(posix_spawn_file_actions_t)
-pub static POSIX_SPAWN_RESETIDS: ::short_t = 0x01;
-pub static POSIX_SPAWN_SETPGROUP: ::short_t = 0x02;
-pub static POSIX_SPAWN_SETSCHEDPARAM: ::short_t = 0x10;
-pub static POSIX_SPAWN_SETSCHEDULER: ::short_t = 0x20;
-pub static POSIX_SPAWN_SETSIGDEF: ::short_t = 0x04;
-pub static POSIX_SPAWN_SETSIGMASK: ::short_t = 0x08;
+pub const POSIX_SPAWN_RESETIDS: ::short_t = 0x01;
+pub const POSIX_SPAWN_SETPGROUP: ::short_t = 0x02;
+pub const POSIX_SPAWN_SETSCHEDPARAM: ::short_t = 0x10;
+pub const POSIX_SPAWN_SETSCHEDULER: ::short_t = 0x20;
+pub const POSIX_SPAWN_SETSIGDEF: ::short_t = 0x04;
+pub const POSIX_SPAWN_SETSIGMASK: ::short_t = 0x08;

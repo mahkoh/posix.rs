@@ -159,7 +159,7 @@ pub trait ToNTStr {
 
 impl<'a> ToNTStr for &'a [u8] {
     fn to_nt_str(&self) -> NTStrOwned {
-        let mut vec = Vec::from_slice(*self);
+        let mut vec = self.to_vec();
         vec.push(0);
         NTStrOwned { vec: vec }
     }

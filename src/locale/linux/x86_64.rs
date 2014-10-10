@@ -30,19 +30,19 @@ new!(lconv)
 
 pub type locale_t = *mut ::void_t;
 
-pub static LC_ALL:           ::int_t = 6;
-pub static LC_COLLATE:       ::int_t = 3;
-pub static LC_CTYPE:         ::int_t = 0;
-pub static LC_MESSAGES:      ::int_t = 5;
-pub static LC_MONETARY:      ::int_t = 4;
-pub static LC_NUMERIC:       ::int_t = 1;
-pub static LC_TIME:          ::int_t = 2;
-pub static LC_COLLATE_MASK:  ::int_t = 8;
-pub static LC_CTYPE_MASK:    ::int_t = 1;
-pub static LC_MESSAGES_MASK: ::int_t = 32;
-pub static LC_MONETARY_MASK: ::int_t = 16;
-pub static LC_NUMERIC_MASK:  ::int_t = 2;
-pub static LC_TIME_MASK:     ::int_t = 4;
-pub static LC_ALL_MASK:      ::int_t = 8127;
+pub const LC_ALL:           ::int_t = 6;
+pub const LC_COLLATE:       ::int_t = 3;
+pub const LC_CTYPE:         ::int_t = 0;
+pub const LC_MESSAGES:      ::int_t = 5;
+pub const LC_MONETARY:      ::int_t = 4;
+pub const LC_NUMERIC:       ::int_t = 1;
+pub const LC_TIME:          ::int_t = 2;
+pub const LC_COLLATE_MASK:  ::int_t = 8;
+pub const LC_CTYPE_MASK:    ::int_t = 1;
+pub const LC_MESSAGES_MASK: ::int_t = 32;
+pub const LC_MONETARY_MASK: ::int_t = 16;
+pub const LC_NUMERIC_MASK:  ::int_t = 2;
+pub const LC_TIME_MASK:     ::int_t = 4;
+pub const LC_ALL_MASK:      ::int_t = 8127;
 
-pub static LC_GLOBAL_LOCALE: locale_t = -1i64 as locale_t;
+pub const LC_GLOBAL_LOCALE: locale_t = -1i64 as locale_t;

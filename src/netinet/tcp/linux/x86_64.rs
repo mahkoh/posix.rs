@@ -1,1 +1,1 @@
-pub static TCP_NODELAY: ::int_t = 1;
+pub const TCP_NODELAY: ::int_t = 1;

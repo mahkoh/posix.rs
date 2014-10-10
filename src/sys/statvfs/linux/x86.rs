@@ -15,5 +15,5 @@ pub struct statvfs {
     __f_spare: [u32, ..6],
 }
 new!(statvfs)
-pub static ST_RDONLY: ::int_t = 1;
-pub static ST_NOSUID: ::int_t = 2;
+pub const ST_RDONLY: ::int_t = 1;
+pub const ST_NOSUID: ::int_t = 2;

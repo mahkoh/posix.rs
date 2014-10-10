@@ -5,4 +5,4 @@ pub struct sem_t {
 
 new!(sem_t)
 
-pub static SEM_FAILED: *mut sem_t = 0 as *mut _;
+pub const SEM_FAILED: *mut sem_t = 0 as *mut _;

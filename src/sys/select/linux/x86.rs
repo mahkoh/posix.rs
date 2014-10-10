@@ -9,7 +9,7 @@ pub struct fd_set {
     _bits: [u32, ..32],
 }
 new!(fd_set)
-pub static FD_SETSIZE: ::int_t = 1024;
+pub const FD_SETSIZE: ::int_t = 1024;
 
 pub fn FD_CLR(fd: ::int_t, set: &mut fd_set) {
     let fd = fd as uint;

@@ -30,4 +30,4 @@ pub struct msginfo {
     pub msgseg: ::ushort_t,
 }
 new!(msginfo)
-pub static MSG_NOERROR: ::int_t = 0o10000;
+pub const MSG_NOERROR: ::int_t = 0o10000;

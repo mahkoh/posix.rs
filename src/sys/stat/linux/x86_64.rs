@@ -19,14 +19,14 @@ pub struct stat {
 
 new!(stat)
 
-pub static S_IFMT:   ::sys::types::mode_t = 61440;
-pub static S_IFBLK:  ::sys::types::mode_t = 24576;
-pub static S_IFCHR:  ::sys::types::mode_t = 8192;
-pub static S_IFIFO:  ::sys::types::mode_t = 4096;
-pub static S_IFREG:  ::sys::types::mode_t = 32768;
-pub static S_IFDIR:  ::sys::types::mode_t = 16384;
-pub static S_IFLNK:  ::sys::types::mode_t = 40960;
-pub static S_IFSOCK: ::sys::types::mode_t = 49152;
+pub const S_IFMT:   ::sys::types::mode_t = 61440;
+pub const S_IFBLK:  ::sys::types::mode_t = 24576;
+pub const S_IFCHR:  ::sys::types::mode_t = 8192;
+pub const S_IFIFO:  ::sys::types::mode_t = 4096;
+pub const S_IFREG:  ::sys::types::mode_t = 32768;
+pub const S_IFDIR:  ::sys::types::mode_t = 16384;
+pub const S_IFLNK:  ::sys::types::mode_t = 40960;
+pub const S_IFSOCK: ::sys::types::mode_t = 49152;
 
 pub fn S_ISBLK(m: ::sys::types::mode_t) -> bool {
     m & S_IFMT == S_IFBLK
@@ -68,5 +68,5 @@ pub fn S_TYPEISSHM(_: &stat) -> bool {
     false
 }
 
-pub static UTIME_NOW: ::int_t = (1 << 30) - 1;
-pub static UTIME_OMIT: ::int_t = (1 << 30) - 2;
+pub const UTIME_NOW: ::int_t = (1 << 30) - 1;
+pub const UTIME_OMIT: ::int_t = (1 << 30) - 2;

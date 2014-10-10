@@ -1,22 +1,22 @@
-pub static FLT_RADIX: ::int_t = 2;
-pub static FLT_MANT_DIG: ::int_t = 24;
-pub static DBL_MANT_DIG: ::int_t = 53;
-pub static LDBL_MANT_DIG: ::int_t = 64;
-pub static FLT_DIG: ::int_t = 6;
-pub static DBL_DIG: ::int_t = 15;
-pub static LDBL_DIG: ::int_t = 18;
-pub static FLT_MIN_EXP: ::int_t = (-125);
-pub static DBL_MIN_EXP: ::int_t = (-1021);
-pub static LDBL_MIN_EXP: ::int_t = (-16381);
-pub static FLT_MIN_10_EXP: ::int_t = (-37);
-pub static DBL_MIN_10_EXP: ::int_t = (-307);
-pub static LDBL_MIN_10_EXP: ::int_t = (-4931);
-pub static FLT_MAX_EXP: ::int_t = 128;
-pub static DBL_MAX_EXP: ::int_t = 1024;
-pub static LDBL_MAX_EXP: ::int_t = 16384;
-pub static FLT_MAX_10_EXP: ::int_t = 38;
-pub static DBL_MAX_10_EXP: ::int_t = 308;
-pub static LDBL_MAX_10_EXP: ::int_t = 4932;
+pub const FLT_RADIX: ::int_t = 2;
+pub const FLT_MANT_DIG: ::int_t = 24;
+pub const DBL_MANT_DIG: ::int_t = 53;
+pub const LDBL_MANT_DIG: ::int_t = 64;
+pub const FLT_DIG: ::int_t = 6;
+pub const DBL_DIG: ::int_t = 15;
+pub const LDBL_DIG: ::int_t = 18;
+pub const FLT_MIN_EXP: ::int_t = (-125);
+pub const DBL_MIN_EXP: ::int_t = (-1021);
+pub const LDBL_MIN_EXP: ::int_t = (-16381);
+pub const FLT_MIN_10_EXP: ::int_t = (-37);
+pub const DBL_MIN_10_EXP: ::int_t = (-307);
+pub const LDBL_MIN_10_EXP: ::int_t = (-4931);
+pub const FLT_MAX_EXP: ::int_t = 128;
+pub const DBL_MAX_EXP: ::int_t = 1024;
+pub const LDBL_MAX_EXP: ::int_t = 16384;
+pub const FLT_MAX_10_EXP: ::int_t = 38;
+pub const DBL_MAX_10_EXP: ::int_t = 308;
+pub const LDBL_MAX_10_EXP: ::int_t = 4932;
 
 pub fn FLT_MAX() -> &'static mut ::float_t {
     extern { static mut _FLT_MAX: ::float_t; }

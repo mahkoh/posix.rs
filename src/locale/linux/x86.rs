@@ -27,18 +27,18 @@ pub struct lconv {
 }
 new!(lconv)
 pub type locale_t =  *mut ::void_t;
-pub static LC_ALL: ::int_t = 6;
-pub static LC_COLLATE: ::int_t = 3;
-pub static LC_CTYPE: ::int_t = 0;
-pub static LC_MESSAGES: ::int_t = 5;
-pub static LC_MONETARY: ::int_t = 4;
-pub static LC_NUMERIC: ::int_t = 1;
-pub static LC_TIME: ::int_t = 2;
-pub static LC_COLLATE_MASK: ::int_t = (1 << 3);
-pub static LC_CTYPE_MASK: ::int_t = (1 << 0);
-pub static LC_MESSAGES_MASK: ::int_t = (1 << 5);
-pub static LC_MONETARY_MASK: ::int_t = (1 << 4);
-pub static LC_NUMERIC_MASK: ::int_t = (1 << 1);
-pub static LC_TIME_MASK: ::int_t = (1 << 2);
-pub static LC_ALL_MASK: ::int_t = ((1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5) | (1 << 7) | (1 << 8) | (1 << 9) | (1 << 10) | (1 << 11) | (1 << 12) );
-pub static LC_GLOBAL_LOCALE: locale_t = -1 as locale_t;
+pub const LC_ALL: ::int_t = 6;
+pub const LC_COLLATE: ::int_t = 3;
+pub const LC_CTYPE: ::int_t = 0;
+pub const LC_MESSAGES: ::int_t = 5;
+pub const LC_MONETARY: ::int_t = 4;
+pub const LC_NUMERIC: ::int_t = 1;
+pub const LC_TIME: ::int_t = 2;
+pub const LC_COLLATE_MASK: ::int_t = (1 << 3);
+pub const LC_CTYPE_MASK: ::int_t = (1 << 0);
+pub const LC_MESSAGES_MASK: ::int_t = (1 << 5);
+pub const LC_MONETARY_MASK: ::int_t = (1 << 4);
+pub const LC_NUMERIC_MASK: ::int_t = (1 << 1);
+pub const LC_TIME_MASK: ::int_t = (1 << 2);
+pub const LC_ALL_MASK: ::int_t = ((1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5) | (1 << 7) | (1 << 8) | (1 << 9) | (1 << 10) | (1 << 11) | (1 << 12) );
+pub const LC_GLOBAL_LOCALE: locale_t = -1 as locale_t;

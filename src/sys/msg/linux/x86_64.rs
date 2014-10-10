@@ -32,4 +32,4 @@ pub struct msginfo {
 
 new!(msginfo)
 
-pub static MSG_NOERROR: ::int_t = 4096;
+pub const MSG_NOERROR: ::int_t = 4096;

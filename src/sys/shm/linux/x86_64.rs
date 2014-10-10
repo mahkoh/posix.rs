@@ -16,8 +16,8 @@ pub struct shmid_ds {
 
 new!(shmid_ds)
 
-pub static SHM_RDONLY: ::int_t = 4096;
-pub static SHM_RND:    ::int_t = 8192;
+pub const SHM_RDONLY: ::int_t = 4096;
+pub const SHM_RND:    ::int_t = 8192;
 
 pub fn SHMLBA() -> ::int_t {
     extern { fn __getpagesize() -> ::int_t; }

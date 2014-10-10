@@ -1,8 +1,8 @@
 pub type in_port_t = u16;
 pub type in_addr_t = u32;
 
-pub static INADDR_ANY:       in_addr_t = 0x00000000;
-pub static INADDR_BROADCAST: in_addr_t = 0xffffffff;
+pub const INADDR_ANY:       in_addr_t = 0x00000000;
+pub const INADDR_BROADCAST: in_addr_t = 0xffffffff;
 
 #[repr(C)]
 pub struct in_addr {
@@ -14,20 +14,20 @@ new!(in_addr)
 impl ::AsSlice for in_addr { }
 impl ::AsMutSlice for in_addr { }
 
-pub static IPPROTO_IP:   ::int_t = 0;
-pub static IPPROTO_ICMP: ::int_t = 1;
-pub static IPPROTO_TCP:  ::int_t = 6;
-pub static IPPROTO_UDP:  ::int_t = 17;
-pub static IPPROTO_IPV6: ::int_t = 41;
-pub static IPPROTO_RAW:  ::int_t = 255;
+pub const IPPROTO_IP:   ::int_t = 0;
+pub const IPPROTO_ICMP: ::int_t = 1;
+pub const IPPROTO_TCP:  ::int_t = 6;
+pub const IPPROTO_UDP:  ::int_t = 17;
+pub const IPPROTO_IPV6: ::int_t = 41;
+pub const IPPROTO_RAW:  ::int_t = 255;
 
-pub static IPV6_JOIN_GROUP:     ::int_t = 20;
-pub static IPV6_LEAVE_GROUP:    ::int_t = 21;
-pub static IPV6_MULTICAST_HOPS: ::int_t = 18;
-pub static IPV6_MULTICAST_IF:   ::int_t = 17;
-pub static IPV6_MULTICAST_LOOP: ::int_t = 19;
-pub static IPV6_UNICAST_HOPS:   ::int_t = 16;
-pub static IPV6_V6ONLY:         ::int_t = 26;
+pub const IPV6_JOIN_GROUP:     ::int_t = 20;
+pub const IPV6_LEAVE_GROUP:    ::int_t = 21;
+pub const IPV6_MULTICAST_HOPS: ::int_t = 18;
+pub const IPV6_MULTICAST_IF:   ::int_t = 17;
+pub const IPV6_MULTICAST_LOOP: ::int_t = 19;
+pub const IPV6_UNICAST_HOPS:   ::int_t = 16;
+pub const IPV6_V6ONLY:         ::int_t = 26;
 
 #[repr(C)]
 pub struct in6_addr {
@@ -87,7 +87,7 @@ pub fn IN6_IS_ADDR_MC_GLOBAL(a: &in6_addr) -> bool {
 	IN6_IS_ADDR_MULTICAST(a) && (a.addr8()[1] & 0xf) == 0xe
 }
 
-pub static IN6ADDR_ANY_INIT: in6_addr = in6_addr { data: [0, ..4] };
+pub const IN6ADDR_ANY_INIT: in6_addr = in6_addr { data: [0, ..4] };
 
 impl in6_addr {
     pub fn addr8(&self) -> &[u8, ..16u] {

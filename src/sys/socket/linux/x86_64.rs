@@ -1,12 +1,12 @@
 pub type socklen_t = ::uint_t;
 pub type sa_family_t = ::ushort_t;
 
-pub static SOCK_STREAM:    ::uint_t = 1;
-pub static SOCK_DGRAM:     ::uint_t = 2;
-pub static SOCK_RAW:       ::uint_t = 3;
-pub static SOCK_SEQPACKET: ::uint_t = 5;
+pub const SOCK_STREAM:    ::uint_t = 1;
+pub const SOCK_DGRAM:     ::uint_t = 2;
+pub const SOCK_RAW:       ::uint_t = 3;
+pub const SOCK_SEQPACKET: ::uint_t = 5;
 
-pub static SOL_SOCKET: ::int_t = 1;
+pub const SOL_SOCKET: ::int_t = 1;
 
 #[repr(C)]
 pub struct sockaddr {
@@ -31,14 +31,14 @@ new!(sockaddr_storage)
 impl ::AsSlice    for sockaddr_storage { }
 impl ::AsMutSlice for sockaddr_storage { }
 
-pub static MSG_OOB: ::uint_t = 1;
-pub static MSG_PEEK: ::uint_t = 2;
-pub static MSG_DONTROUTE: ::uint_t = 4;
-pub static MSG_CTRUNC: ::uint_t = 8;
-pub static MSG_TRUNC: ::uint_t = 32;
-pub static MSG_EOR: ::uint_t = 128;
-pub static MSG_WAITALL: ::uint_t = 256;
-pub static MSG_NOSIGNAL: ::uint_t = 16384;
+pub const MSG_OOB: ::uint_t = 1;
+pub const MSG_PEEK: ::uint_t = 2;
+pub const MSG_DONTROUTE: ::uint_t = 4;
+pub const MSG_CTRUNC: ::uint_t = 8;
+pub const MSG_TRUNC: ::uint_t = 32;
+pub const MSG_EOR: ::uint_t = 128;
+pub const MSG_WAITALL: ::uint_t = 256;
+pub const MSG_NOSIGNAL: ::uint_t = 16384;
 
 #[repr(C)]
 pub struct msghdr {
@@ -84,26 +84,26 @@ pub fn CMSG_DATA(hdr: &mut cmsghdr) -> *mut ::uchar_t {
     hdr.__cmsg_data.as_mut_ptr()
 }
 
-pub static SCM_RIGHTS: ::uint_t = 1;
+pub const SCM_RIGHTS: ::uint_t = 1;
 
-pub static SO_ACCEPTCONN: ::int_t = 30;
-pub static SO_BROADCAST:  ::int_t = 6;
-pub static SO_DEBUG:      ::int_t = 1;
-pub static SO_DONTROUTE:  ::int_t = 5;
-pub static SO_ERROR:      ::int_t = 4;
-pub static SO_KEEPALIVE:  ::int_t = 9;
-pub static SO_LINGER:     ::int_t = 13;
-pub static SO_OOBINLINE:  ::int_t = 10;
-pub static SO_RCVBUF:     ::int_t = 8;
-pub static SO_RCVLOWAT:   ::int_t = 18;
-pub static SO_RCVTIMEO:   ::int_t = 20;
-pub static SO_REUSEADDR:  ::int_t = 2;
-pub static SO_SNDBUF:     ::int_t = 7;
-pub static SO_SNDLOWAT:   ::int_t = 19;
-pub static SO_SNDTIMEO:   ::int_t = 21;
-pub static SO_TYPE:       ::int_t = 3;
+pub const SO_ACCEPTCONN: ::int_t = 30;
+pub const SO_BROADCAST:  ::int_t = 6;
+pub const SO_DEBUG:      ::int_t = 1;
+pub const SO_DONTROUTE:  ::int_t = 5;
+pub const SO_ERROR:      ::int_t = 4;
+pub const SO_KEEPALIVE:  ::int_t = 9;
+pub const SO_LINGER:     ::int_t = 13;
+pub const SO_OOBINLINE:  ::int_t = 10;
+pub const SO_RCVBUF:     ::int_t = 8;
+pub const SO_RCVLOWAT:   ::int_t = 18;
+pub const SO_RCVTIMEO:   ::int_t = 20;
+pub const SO_REUSEADDR:  ::int_t = 2;
+pub const SO_SNDBUF:     ::int_t = 7;
+pub const SO_SNDLOWAT:   ::int_t = 19;
+pub const SO_SNDTIMEO:   ::int_t = 21;
+pub const SO_TYPE:       ::int_t = 3;
 
-pub static SOMAXCONN: ::int_t = 128;
+pub const SOMAXCONN: ::int_t = 128;
 
 #[repr(C)]
 pub struct linger {
@@ -113,11 +113,11 @@ pub struct linger {
 
 new!(linger)
 
-pub static SHUT_RD:   ::int_t = 0;
-pub static SHUT_WR:   ::int_t = 1;
-pub static SHUT_RDWR: ::int_t = 2;
+pub const SHUT_RD:   ::int_t = 0;
+pub const SHUT_WR:   ::int_t = 1;
+pub const SHUT_RDWR: ::int_t = 2;
 
-pub static AF_INET:   ::int_t = 2;
-pub static AF_INET6:  ::int_t = 10;
-pub static AF_UNIX:   ::int_t = 1;
-pub static AF_UNSPEC: ::int_t = 0;
+pub const AF_INET:   ::int_t = 2;
+pub const AF_INET6:  ::int_t = 10;
+pub const AF_UNIX:   ::int_t = 1;
+pub const AF_UNSPEC: ::int_t = 0;

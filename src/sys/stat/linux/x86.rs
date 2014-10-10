@@ -19,16 +19,16 @@ pub struct stat {
     __glibc_reserved5: [u32, ..1],
 }
 new!(stat)
-pub static UTIME_NOW: ::int_t = ((1 << 30) - 1);
-pub static UTIME_OMIT: ::int_t = ((1 << 30) - 2);
-pub static S_IFMT: ::sys::types::mode_t = 0o170000;
-pub static S_IFBLK: ::sys::types::mode_t = 0o060000;
-pub static S_IFCHR: ::sys::types::mode_t = 0o020000;
-pub static S_IFIFO: ::sys::types::mode_t = 0o010000;
-pub static S_IFREG: ::sys::types::mode_t = 0o100000;
-pub static S_IFDIR: ::sys::types::mode_t = 0o040000;
-pub static S_IFLNK: ::sys::types::mode_t = 0o120000;
-pub static S_IFSOCK: ::sys::types::mode_t = 0o140000;
+pub const UTIME_NOW: ::int_t = ((1 << 30) - 1);
+pub const UTIME_OMIT: ::int_t = ((1 << 30) - 2);
+pub const S_IFMT: ::sys::types::mode_t = 0o170000;
+pub const S_IFBLK: ::sys::types::mode_t = 0o060000;
+pub const S_IFCHR: ::sys::types::mode_t = 0o020000;
+pub const S_IFIFO: ::sys::types::mode_t = 0o010000;
+pub const S_IFREG: ::sys::types::mode_t = 0o100000;
+pub const S_IFDIR: ::sys::types::mode_t = 0o040000;
+pub const S_IFLNK: ::sys::types::mode_t = 0o120000;
+pub const S_IFSOCK: ::sys::types::mode_t = 0o140000;
 
 pub fn S_ISBLK(m: ::sys::types::mode_t) -> bool {
     m & S_IFMT == S_IFBLK

@@ -21,11 +21,11 @@ pub struct utmpx {
 
 new!(utmpx)
 
-pub static EMPTY:         ::short_t = 0;
-pub static BOOT_TIME:     ::short_t = 2;
-pub static OLD_TIME:      ::short_t = 4;
-pub static NEW_TIME:      ::short_t = 3;
-pub static USER_PROCESS:  ::short_t = 7;
-pub static INIT_PROCESS:  ::short_t = 5;
-pub static LOGIN_PROCESS: ::short_t = 6;
-pub static DEAD_PROCESS:  ::short_t = 8;
+pub const EMPTY:         ::short_t = 0;
+pub const BOOT_TIME:     ::short_t = 2;
+pub const OLD_TIME:      ::short_t = 4;
+pub const NEW_TIME:      ::short_t = 3;
+pub const USER_PROCESS:  ::short_t = 7;
+pub const INIT_PROCESS:  ::short_t = 5;
+pub const LOGIN_PROCESS: ::short_t = 6;
+pub const DEAD_PROCESS:  ::short_t = 8;

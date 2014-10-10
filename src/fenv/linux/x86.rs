@@ -16,16 +16,16 @@ pub struct fenv_t {
     __glibc_reserved5: [u16, ..1],
 }
 new!(fenv_t)
-pub static FE_DIVBYZERO: ::int_t = 0x04;
-pub static FE_INEXACT: ::int_t = 0x20;
-pub static FE_INVALID: ::int_t = 0x01;
-pub static FE_OVERFLOW: ::int_t = 0x08;
-pub static FE_UNDERFLOW: ::int_t = 0x10;
-pub static FE_ALL_EXCEPT: ::int_t = (0x20 | 0x04 | 0x10 | 0x08 | 0x01);
-pub static FE_DOWNWARD: ::int_t = 0x400;
-pub static FE_TONEAREST: ::int_t = 0;
-pub static FE_TOWARDZERO: ::int_t = 0xc00;
-pub static FE_UPWARD: ::int_t = 0x800;
+pub const FE_DIVBYZERO: ::int_t = 0x04;
+pub const FE_INEXACT: ::int_t = 0x20;
+pub const FE_INVALID: ::int_t = 0x01;
+pub const FE_OVERFLOW: ::int_t = 0x08;
+pub const FE_UNDERFLOW: ::int_t = 0x10;
+pub const FE_ALL_EXCEPT: ::int_t = (0x20 | 0x04 | 0x10 | 0x08 | 0x01);
+pub const FE_DOWNWARD: ::int_t = 0x400;
+pub const FE_TONEAREST: ::int_t = 0;
+pub const FE_TOWARDZERO: ::int_t = 0xc00;
+pub const FE_UPWARD: ::int_t = 0x800;
 
 pub fn FE_DFL_ENV() -> *const fenv_t {
     unsafe { ::std::mem::transmute(-1i32) }

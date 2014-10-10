@@ -8,4 +8,4 @@ pub struct mbstate_t {
 
 new!(mbstate_t)
 
-pub static WEOF: wint_t = -1;
+pub const WEOF: wint_t = -1;

@@ -6,5 +6,5 @@ pub struct datum {
 
 pub type DBM = ::void_t;
 
-pub static DBM_INSERT:  ::int_t = 0;
-pub static DBM_REPLACE: ::int_t = 1;
+pub const DBM_INSERT:  ::int_t = 0;
+pub const DBM_REPLACE: ::int_t = 1;

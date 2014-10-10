@@ -15,10 +15,10 @@ pub struct ipc_perm {
 
 new!(ipc_perm)
 
-pub static IPC_CREAT:   ::int_t = 512;
-pub static IPC_EXCL:    ::int_t = 1024;
-pub static IPC_NOWAIT:  ::int_t = 2048;
-pub static IPC_PRIVATE: ::int_t = 0;
-pub static IPC_RMID:    ::int_t = 0;
-pub static IPC_SET:     ::int_t = 1;
-pub static IPC_STAT:    ::int_t = 2;
+pub const IPC_CREAT:   ::int_t = 512;
+pub const IPC_EXCL:    ::int_t = 1024;
+pub const IPC_NOWAIT:  ::int_t = 2048;
+pub const IPC_PRIVATE: ::int_t = 0;
+pub const IPC_RMID:    ::int_t = 0;
+pub const IPC_SET:     ::int_t = 1;
+pub const IPC_STAT:    ::int_t = 2;
