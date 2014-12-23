@@ -20,7 +20,7 @@ pub fn gen(globals: Vec<il::Global>) {
                     println!("{}: {},", f.name, f.ty);
                 }
                 println!("}}");
-                println!("new!({})", v.name);
+                println!("new!({});", v.name);
             },
             il::Global::ConstantVar(ref v) => {
                 println!("pub const {}: {} = {};", v.name, v.ty, v.val);
