@@ -275,13 +275,13 @@ fn unknown_array(ty: &cx::Type) -> String {
 
 fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {
     let mut wr = ::std::io::MemWriter::new();
-    try!(writeln!(wr, "#include <{}>", defs.header.as_slice()));
+    try!(writeln!(&mut wr, "#include <{}>", defs.header.as_slice()));
     for c in defs.consts.iter() {
-        try!(writeln!(wr, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
+        try!(writeln!(&mut wr, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
                       c.name.as_slice(), c.name.as_slice()));
     }
     let header = wr.unwrap();
-    let mut process = try!(::std::io::Command::new("clang").args(["-P", "-E", "-"]).spawn());
+    let mut process = try!(::std::io::Command::new("clang").args(&["-P", "-E", "-"]).spawn());
     process.stdin.as_mut().unwrap().write(header.as_slice()).ok();
     let output = try!(process.wait_with_output());
     if !output.status.success() {
