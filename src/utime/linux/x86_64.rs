@@ -4,4 +4,4 @@ pub struct utimbuf {
     pub modtime: ::sys::types::time_t,
 }
 
-new!(utimbuf)
+new!(utimbuf);

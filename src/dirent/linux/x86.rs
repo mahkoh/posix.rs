@@ -6,9 +6,9 @@ pub struct dirent {
     pub d_type: ::uchar_t,
     pub d_name: [::schar_t, ..256],
 }
-new!(dirent)
+new!(dirent);
 #[repr(C)]
 pub struct DIR {
     _dummy: (),
 }
-new!(DIR)
+new!(DIR);

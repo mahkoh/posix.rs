@@ -26,7 +26,7 @@ pub struct lconv {
     pub int_n_sign_posn: ::char_t,
 }
 
-new!(lconv)
+new!(lconv);
 
 pub type locale_t = *mut ::void_t;
 

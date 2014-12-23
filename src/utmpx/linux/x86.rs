@@ -12,7 +12,7 @@ pub struct utmpx {
     pub ut_addr_v6: [::stdint::int32_t, ..4],
     __glibc_reserved: [u8, ..20],
 }
-new!(utmpx)
+new!(utmpx);
 pub const EMPTY: ::short_t = 0;
 pub const BOOT_TIME: ::short_t = 2;
 pub const OLD_TIME: ::short_t = 4;

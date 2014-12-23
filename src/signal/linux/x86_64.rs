@@ -5,7 +5,7 @@ pub struct sigset_t {
     _data: [::ulong_t, ..16u],
 }
 
-new!(sigset_t)
+new!(sigset_t);
 
 #[repr(C)]
 pub struct sigevent {
@@ -17,14 +17,14 @@ pub struct sigevent {
     _pad: [u64, ..4u],
 }
 
-new!(sigevent)
+new!(sigevent);
 
 #[repr(C)]
 pub struct sigval {
     _data: [u64, ..1u],
 }
 
-new!(sigval)
+new!(sigval);
 
 impl sigval {
     pub fn sival_int(&self) -> &::int_t {
@@ -52,7 +52,7 @@ pub struct sigaction {
     pub sa_restorer: ::std::option::Option<extern fn()>,
 }
 
-new!(sigaction)
+new!(sigaction);
 
 impl sigaction {
     pub fn sa_handler(&self) -> &::std::option::Option<extern fn(arg1: ::int_t)> {
@@ -80,7 +80,7 @@ pub struct mcontext_t {
     _data: [u64, ..32],
 }
 
-new!(mcontext_t)
+new!(mcontext_t);
 
 #[repr(C)]
 pub struct ucontext {
@@ -92,7 +92,7 @@ pub struct ucontext {
     _data: [u64, ..64],
 }
 
-new!(ucontext)
+new!(ucontext);
 
 #[repr(C)]
 pub struct stack_t {
@@ -101,7 +101,7 @@ pub struct stack_t {
     pub ss_size: ::size_t,
 }
 
-new!(stack_t)
+new!(stack_t);
 
 #[repr(C)]
 pub struct siginfo_t {
@@ -111,7 +111,7 @@ pub struct siginfo_t {
     _data: [u64, ..14u],
 }
 
-new!(siginfo_t)
+new!(siginfo_t);
 
 impl siginfo_t {
     pub fn si_pid(&self) -> &::sys::types::pid_t {

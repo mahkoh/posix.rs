@@ -14,7 +14,7 @@ pub struct shmid_ds {
     __glibc_reserved5: ::ulong_t,
 }
 
-new!(shmid_ds)
+new!(shmid_ds);
 
 pub const SHM_RDONLY: ::int_t = 4096;
 pub const SHM_RND:    ::int_t = 8192;

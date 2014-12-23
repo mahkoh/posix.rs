@@ -15,7 +15,7 @@ pub struct fenv_t {
     __data_selector: [u16, ..1],
     __glibc_reserved5: [u16, ..1],
 }
-new!(fenv_t)
+new!(fenv_t);
 pub const FE_DIVBYZERO: ::int_t = 0x04;
 pub const FE_INEXACT: ::int_t = 0x20;
 pub const FE_INVALID: ::int_t = 0x01;

@@ -6,4 +6,4 @@ pub struct group {
     pub gr_mem: *mut *mut ::char_t,
 }
 
-new!(group)
+new!(group);

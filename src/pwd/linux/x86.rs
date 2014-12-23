@@ -8,4 +8,4 @@ pub struct passwd {
     pub pw_dir: *mut ::schar_t,
     pub pw_shell: *mut ::schar_t,
 }
-new!(passwd)
+new!(passwd);

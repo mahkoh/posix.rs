@@ -25,7 +25,7 @@ pub struct lconv {
     pub int_p_sign_posn: ::schar_t,
     pub int_n_sign_posn: ::schar_t,
 }
-new!(lconv)
+new!(lconv);
 pub type locale_t =  *mut ::void_t;
 pub const LC_ALL: ::int_t = 6;
 pub const LC_COLLATE: ::int_t = 3;

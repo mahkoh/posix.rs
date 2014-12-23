@@ -17,7 +17,7 @@ pub struct sockaddr {
 impl ::AsSlice for sockaddr { }
 impl ::AsMutSlice for sockaddr { }
 
-new!(sockaddr)
+new!(sockaddr);
 
 #[repr(C)]
 pub struct sockaddr_storage {
@@ -26,7 +26,7 @@ pub struct sockaddr_storage {
     __ss_padding: [::char_t, ..112u],
 }
 
-new!(sockaddr_storage)
+new!(sockaddr_storage);
 
 impl ::AsSlice    for sockaddr_storage { }
 impl ::AsMutSlice for sockaddr_storage { }
@@ -51,7 +51,7 @@ pub struct msghdr {
     pub msg_flags: ::int_t,
 }
 
-new!(msghdr)
+new!(msghdr);
 
 pub fn CMSG_NXTHDR<'a>(msghdr: &'a mut msghdr,
                        cmsghdr: &mut cmsghdr) -> Option<&'a mut cmsghdr> {
@@ -78,7 +78,7 @@ pub struct cmsghdr {
     __cmsg_data: [u8, ..0],
 }
 
-new!(cmsghdr)
+new!(cmsghdr);
 
 pub fn CMSG_DATA(hdr: &mut cmsghdr) -> *mut ::uchar_t {
     hdr.__cmsg_data.as_mut_ptr()
@@ -111,7 +111,7 @@ pub struct linger {
     pub l_linger: ::int_t,
 }
 
-new!(linger)
+new!(linger);
 
 pub const SHUT_RD:   ::int_t = 0;
 pub const SHUT_WR:   ::int_t = 1;

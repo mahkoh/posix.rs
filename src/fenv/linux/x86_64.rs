@@ -18,7 +18,7 @@ pub struct fenv_t {
     __mxcsr: ::uint_t,
 }
 
-new!(fenv_t)
+new!(fenv_t);
 
 pub const FE_DIVBYZERO:  ::int_t = 4;
 pub const FE_INEXACT:    ::int_t = 32;

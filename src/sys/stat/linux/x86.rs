@@ -18,7 +18,7 @@ pub struct stat {
     __glibc_reserved4: [u32, ..1],
     __glibc_reserved5: [u32, ..1],
 }
-new!(stat)
+new!(stat);
 pub const UTIME_NOW: ::int_t = ((1 << 30) - 1);
 pub const UTIME_OMIT: ::int_t = ((1 << 30) - 2);
 pub const S_IFMT: ::sys::types::mode_t = 0o170000;

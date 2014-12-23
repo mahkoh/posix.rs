@@ -8,4 +8,4 @@ pub struct utsname {
     __domainname: [::char_t, ..65u],
 }
 
-new!(utsname)
+new!(utsname);

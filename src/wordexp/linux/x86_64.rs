@@ -5,7 +5,7 @@ pub struct wordexp_t {
     pub we_offs: ::size_t,
 }
 
-new!(wordexp_t)
+new!(wordexp_t);
 
 pub const WRDE_APPEND:  ::int_t = 2;
 pub const WRDE_DOOFFS:  ::int_t = 1;

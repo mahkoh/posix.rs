@@ -6,7 +6,7 @@ pub struct flock {
     pub l_len: ::sys::types::off_t,
     pub l_pid: ::sys::types::pid_t,
 }
-new!(flock)
+new!(flock);
 pub const F_DUPFD: ::int_t = 0;
 pub const F_DUPFD_CLOEXEC: ::int_t = 1030;
 pub const F_GETFD: ::int_t = 1;

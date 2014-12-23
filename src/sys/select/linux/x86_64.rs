@@ -9,7 +9,7 @@ pub struct fd_set {
     _bits: [::long_t, ..16u],
 }
 
-new!(fd_set)
+new!(fd_set);
 
 pub const FD_SETSIZE: ::int_t = 1024;
 

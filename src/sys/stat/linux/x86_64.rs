@@ -17,7 +17,7 @@ pub struct stat {
     __glibc_reserved: [::long_t, ..3u],
 }
 
-new!(stat)
+new!(stat);
 
 pub const S_IFMT:   ::sys::types::mode_t = 61440;
 pub const S_IFBLK:  ::sys::types::mode_t = 24576;

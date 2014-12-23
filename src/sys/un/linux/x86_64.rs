@@ -7,4 +7,4 @@ pub struct sockaddr_un {
 impl ::AsSlice for sockaddr_un { }
 impl ::AsMutSlice for sockaddr_un { }
 
-new!(sockaddr_un)
+new!(sockaddr_un);

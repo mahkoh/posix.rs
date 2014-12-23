@@ -7,4 +7,4 @@ pub struct mq_attr {
     pub mq_curmsgs: ::long_t,
     __pad: [u32, ..4],
 }
-new!(mq_attr)
+new!(mq_attr);

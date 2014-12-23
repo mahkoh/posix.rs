@@ -16,7 +16,7 @@ pub struct aiocb {
     __glibc_reserved: [::char_t, ..32u],
 }
 
-new!(aiocb)
+new!(aiocb);
 
 pub const AIO_CANCELED:    ::uint_t = 0;
 pub const AIO_NOTCANCELED: ::uint_t = 1;

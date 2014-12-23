@@ -4,7 +4,7 @@ pub struct timeval {
     pub tv_usec: ::sys::types::suseconds_t,
 }
 
-new!(timeval)
+new!(timeval);
 
 #[repr(C)]
 pub struct itimerval {
@@ -12,7 +12,7 @@ pub struct itimerval {
     pub it_value: timeval,
 }
 
-new!(itimerval)
+new!(itimerval);
 
 pub const ITIMER_REAL:    ::int_t = 0;
 pub const ITIMER_VIRTUAL: ::int_t = 1;

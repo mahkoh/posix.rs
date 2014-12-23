@@ -6,6 +6,6 @@ pub struct mbstate_t {
     _data: [u32, ..2],
 }
 
-new!(mbstate_t)
+new!(mbstate_t);
 
 pub const WEOF: wint_t = -1;

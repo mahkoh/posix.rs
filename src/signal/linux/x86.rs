@@ -7,12 +7,12 @@ pub struct siginfo_t {
     pub si_code: ::int_t,
     _sifields: [u32, ..29],
 }
-new!(siginfo_t)
+new!(siginfo_t);
 #[repr(C)]
 pub struct sigval {
     _data: [u32, ..1u],
 }
-new!(sigval)
+new!(sigval);
 impl sigval {
     pub fn sival_int(&self) -> &::int_t {
         unsafe { ::std::mem::transmute(self) }
@@ -39,7 +39,7 @@ pub struct sigevent {
     pub sigev_notify_attribute: *mut ::sys::types::pthread_attr_t,
     _pad: [u32, ..11],
 }
-new!(sigevent)
+new!(sigevent);
 #[repr(C)]
 pub struct sigaction {
     __sigaction_handler: [u32, ..1],
@@ -47,14 +47,14 @@ pub struct sigaction {
     pub sa_flags: ::int_t,
     pub sa_restorer: fn(),
 }
-new!(sigaction)
+new!(sigaction);
 #[repr(C)]
 pub struct stack_t {
     pub ss_sp: *mut ::void_t,
     pub ss_flags: ::int_t,
     pub ss_size: ::size_t,
 }
-new!(stack_t)
+new!(stack_t);
 #[repr(C)]
 pub struct mcontext_t {
     pub gregs: [::int_t, ..19],
@@ -62,7 +62,7 @@ pub struct mcontext_t {
     pub oldmask: ::ulong_t,
     pub cr2: ::ulong_t,
 }
-new!(mcontext_t)
+new!(mcontext_t);
 #[repr(C)]
 pub struct ucontext {
     pub uc_flags: ::ulong_t,
@@ -72,7 +72,7 @@ pub struct ucontext {
     pub uc_sigmask: sigset_t,
     __fpregs_mem: [u32, ..28],
 }
-new!(ucontext)
+new!(ucontext);
 pub fn SIG_DFL() -> extern fn(::int_t) {
     unsafe { ::std::mem::transmute::<uint,_>(0) }
 }
