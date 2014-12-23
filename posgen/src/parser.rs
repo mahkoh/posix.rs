@@ -180,7 +180,7 @@ impl<'a> Context<'a> {
             name: spelling,
             fields: fields,
         };
-        self.globals.push(il::StructVar(s));
+        self.globals.push(il::Global::StructVar(s));
         if cursor.kind() == cx::ll::CXCursor_FieldDecl {
             cx::ll::CXChildVisit_Break
         } else {
@@ -200,7 +200,7 @@ impl<'a> Context<'a> {
         } else {
             let dst = self.type_to_str_int(&dst, false);
             let typedef = il::Typedef { name: spelling, dst: dst };
-            self.globals.push(il::TypedefVar(typedef));
+            self.globals.push(il::Global::TypedefVar(typedef));
         }
         cx::ll::CXChildVisit_Continue
     }
@@ -242,7 +242,7 @@ impl<'a> Context<'a> {
                             ty: var.rs_type.clone(),
                             val: val
                         };
-                        self.globals.push(il::ConstantVar(info));
+                        self.globals.push(il::Global::ConstantVar(info));
                     },
                     _ => { },
                 }
