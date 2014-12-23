@@ -1,4 +1,4 @@
-static TYPES: ::phf::PhfMap<&'static str, &'static str> = phf_map! {
+static TYPES: ::phf::Map<&'static str, &'static str> = phf_map! {
     "utmpx"                      => "::utmpx::utmpx",
     "group"                      => "::grp::group",
     "t_scalar_t"                 => "::stropts::t_scalar_t",
@@ -172,5 +172,5 @@ static TYPES: ::phf::PhfMap<&'static str, &'static str> = phf_map! {
 };
 
 pub fn find(s: &str) -> Option<&'static str> {
-    TYPES.find_equiv(&s).map(|v| *v)
+    TYPES.get(s).map(|v| *v)
 }
