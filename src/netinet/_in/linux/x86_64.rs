@@ -1,3 +1,5 @@
+use std::num::Int;
+
 pub type in_port_t = u16;
 pub type in_addr_t = u32;
 

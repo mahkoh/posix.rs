@@ -45,7 +45,7 @@ mod tests {
         let mut buf = [0, ..1024];
         let mut res = 0;
         let mut dst = super::group::new();
-        assert_eq!(super::getgrgid_r(0, &mut dst, buf, &mut res), 0);
+        assert_eq!(super::getgrgid_r(0, &mut dst, &mut buf, &mut res), 0);
         assert!(res != 0);
         assert_eq!(dst.gr_gid, 0);
         unsafe {
@@ -60,7 +60,7 @@ mod tests {
         let mut buf = [0, ..1024];
         let mut res = 0;
         let mut dst = super::group::new();
-        assert_eq!(super::getgrnam_r(&"root".to_nt_str(), &mut dst, buf, &mut res), 0);
+        assert_eq!(super::getgrnam_r(&"root".to_nt_str(), &mut dst, &mut buf, &mut res), 0);
         assert!(res != 0);
         assert_eq!(dst.gr_gid, 0);
         unsafe {
