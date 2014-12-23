@@ -101,7 +101,7 @@ impl<'a> Context<'a> {
                             2 => "i16".to_string(),
                             4 => "i32".to_string(),
                             8 => "i64".to_string(),
-                            _ => fail!("Enum type too large"),
+                            _ => panic!("Enum type too large"),
                         }
                     },
                     cx::ll::CXCursor_TypedefDecl => {
@@ -117,7 +117,7 @@ impl<'a> Context<'a> {
                     2 => "i16".to_string(),
                     4 => "i32".to_string(),
                     8 => "i64".to_string(),
-                    _ => fail!("Enum type too large"),
+                    _ => panic!("Enum type too large"),
                 }
             },
             cx::ll::CXType_ConstantArray => {
