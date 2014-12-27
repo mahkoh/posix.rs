@@ -5,7 +5,7 @@ pub struct pollfd {
     pub events: ::short_t,
     pub revents: ::short_t,
 }
-new!(pollfd)
+new!(pollfd);
 pub const POLLIN: ::short_t = 0x001;
 pub const POLLRDNORM: ::short_t = 0x040;
 pub const POLLRDBAND: ::short_t = 0x080;

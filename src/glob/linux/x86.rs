@@ -10,7 +10,7 @@ pub struct glob_t {
     pub gl_lstat: fn(*const ::schar_t, *mut ::void_t, ) -> ::int_t,
     pub gl_stat: fn(*const ::schar_t, *mut ::void_t, ) -> ::int_t,
 }
-new!(glob_t)
+new!(glob_t);
 pub const GLOB_APPEND: ::int_t = (1 << 5);
 pub const GLOB_DOOFFS: ::int_t = (1 << 3);
 pub const GLOB_ERR: ::int_t = (1 << 0);

@@ -101,7 +101,7 @@ impl<'a> Context<'a> {
                             2 => "i16".to_string(),
                             4 => "i32".to_string(),
                             8 => "i64".to_string(),
-                            _ => fail!("Enum type too large"),
+                            _ => panic!("Enum type too large"),
                         }
                     },
                     cx::ll::CXCursor_TypedefDecl => {
@@ -117,7 +117,7 @@ impl<'a> Context<'a> {
                     2 => "i16".to_string(),
                     4 => "i32".to_string(),
                     8 => "i64".to_string(),
-                    _ => fail!("Enum type too large"),
+                    _ => panic!("Enum type too large"),
                 }
             },
             cx::ll::CXType_ConstantArray => {
@@ -180,7 +180,7 @@ impl<'a> Context<'a> {
             name: spelling,
             fields: fields,
         };
-        self.globals.push(il::StructVar(s));
+        self.globals.push(il::Global::StructVar(s));
         if cursor.kind() == cx::ll::CXCursor_FieldDecl {
             cx::ll::CXChildVisit_Break
         } else {
@@ -200,7 +200,7 @@ impl<'a> Context<'a> {
         } else {
             let dst = self.type_to_str_int(&dst, false);
             let typedef = il::Typedef { name: spelling, dst: dst };
-            self.globals.push(il::TypedefVar(typedef));
+            self.globals.push(il::Global::TypedefVar(typedef));
         }
         cx::ll::CXChildVisit_Continue
     }
@@ -242,7 +242,7 @@ impl<'a> Context<'a> {
                             ty: var.rs_type.clone(),
                             val: val
                         };
-                        self.globals.push(il::ConstantVar(info));
+                        self.globals.push(il::Global::ConstantVar(info));
                     },
                     _ => { },
                 }
@@ -275,13 +275,13 @@ fn unknown_array(ty: &cx::Type) -> String {
 
 fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {
     let mut wr = ::std::io::MemWriter::new();
-    try!(writeln!(wr, "#include <{}>", defs.header.as_slice()));
+    try!(writeln!(&mut wr, "#include <{}>", defs.header.as_slice()));
     for c in defs.consts.iter() {
-        try!(writeln!(wr, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
+        try!(writeln!(&mut wr, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
                       c.name.as_slice(), c.name.as_slice()));
     }
     let header = wr.unwrap();
-    let mut process = try!(::std::io::Command::new("clang").args(["-P", "-E", "-"]).spawn());
+    let mut process = try!(::std::io::Command::new("clang").args(&["-P", "-E", "-"]).spawn());
     process.stdin.as_mut().unwrap().write(header.as_slice()).ok();
     let output = try!(process.wait_with_output());
     if !output.status.success() {

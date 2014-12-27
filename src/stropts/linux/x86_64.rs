@@ -46,7 +46,7 @@ pub struct strrecvfd {
     __fill: [::char_t, ..8u],
 }
 
-new!(strrecvfd)
+new!(strrecvfd);
 
 #[repr(C)]
 pub struct str_mlist {

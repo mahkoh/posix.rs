@@ -3,12 +3,12 @@ pub struct timeval {
     pub tv_sec: ::sys::types::time_t,
     pub tv_usec: ::sys::types::suseconds_t,
 }
-new!(timeval)
+new!(timeval);
 #[repr(C)]
 pub struct fd_set {
     _bits: [u32, ..32],
 }
-new!(fd_set)
+new!(fd_set);
 pub const FD_SETSIZE: ::int_t = 1024;
 
 pub fn FD_CLR(fd: ::int_t, set: &mut fd_set) {

@@ -17,7 +17,7 @@ pub struct msqid_ds {
     __glibc_reserved4: [u32, ..1],
     __glibc_reserved5: [u32, ..1],
 }
-new!(msqid_ds)
+new!(msqid_ds);
 #[repr(C)]
 pub struct msginfo {
     pub msgpool: ::int_t,
@@ -29,5 +29,5 @@ pub struct msginfo {
     pub msgtql: ::int_t,
     pub msgseg: ::ushort_t,
 }
-new!(msginfo)
+new!(msginfo);
 pub const MSG_NOERROR: ::int_t = 0o10000;

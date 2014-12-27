@@ -4,4 +4,4 @@ pub struct iovec {
     pub iov_len: ::size_t,
 }
 
-new!(iovec)
+new!(iovec);

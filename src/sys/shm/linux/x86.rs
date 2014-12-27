@@ -15,7 +15,7 @@ pub struct shmid_ds {
     __glibc_reserved4: [u32, ..1],
     __glibc_reserved5: [u32, ..1],
 }
-new!(shmid_ds)
+new!(shmid_ds);
 pub const SHM_RDONLY: ::int_t = 0o10000;
 pub const SHM_RND: ::int_t = 0o20000;
 

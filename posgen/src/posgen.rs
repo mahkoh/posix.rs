@@ -107,7 +107,7 @@ fn load_defs(file: &[u8]) -> Option<Defs> {
 }
 
 macro_rules! errln {
-    ($($arg:tt)*) => {(writeln!(::std::io::stdio::stderr(), $($arg)*)).ok()}
+    ($($arg:tt)*) => {(writeln!(&mut ::std::io::stdio::stderr(), $($arg)*)).ok()}
 }
 
 fn main() {

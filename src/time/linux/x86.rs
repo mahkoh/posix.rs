@@ -3,7 +3,7 @@ pub struct timespec {
     pub tv_sec: ::sys::types::time_t,
     pub tv_nsec: ::long_t,
 }
-new!(timespec)
+new!(timespec);
 #[repr(C)]
 pub struct tm {
     pub tm_sec: ::int_t,
@@ -18,13 +18,13 @@ pub struct tm {
     pub tm_gmtoff: ::long_t,
     pub tm_zone: *const ::schar_t,
 }
-new!(tm)
+new!(tm);
 #[repr(C)]
 pub struct itimerspec {
     pub it_interval: timespec,
     pub it_value: timespec,
 }
-new!(itimerspec)
+new!(itimerspec);
 pub const TIMER_ABSTIME: ::uint_t = 1;
 pub const CLOCKS_PER_SEC: ::sys::types::clock_t = 1000000;
 pub const CLOCK_MONOTONIC: ::sys::types::clockid_t = 1;

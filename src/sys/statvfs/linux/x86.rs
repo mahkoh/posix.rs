@@ -14,6 +14,6 @@ pub struct statvfs {
     pub f_namemax: ::ulong_t,
     __f_spare: [u32, ..6],
 }
-new!(statvfs)
+new!(statvfs);
 pub const ST_RDONLY: ::int_t = 1;
 pub const ST_NOSUID: ::int_t = 2;

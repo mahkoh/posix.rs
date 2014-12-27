@@ -14,7 +14,7 @@ pub struct termios {
     pub c_ospeed: speed_t,
 }
 
-new!(termios)
+new!(termios);
 
 pub const NCCS:      uint = 32;
 pub const VEOF:      uint = 4;

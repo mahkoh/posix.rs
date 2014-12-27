@@ -8,7 +8,7 @@ pub struct posix_spawnattr_t {
     __policy: [u32, ..1],
     __pad: [u32, ..16],
 }
-new!(posix_spawnattr_t)
+new!(posix_spawnattr_t);
 #[repr(C)]
 pub struct posix_spawn_file_actions_t {
     __allocated: [u32, ..1],
@@ -16,7 +16,7 @@ pub struct posix_spawn_file_actions_t {
     __actions: [u32, ..1],
     __pad: [u32, ..16],
 }
-new!(posix_spawn_file_actions_t)
+new!(posix_spawn_file_actions_t);
 pub const POSIX_SPAWN_RESETIDS: ::short_t = 0x01;
 pub const POSIX_SPAWN_SETPGROUP: ::short_t = 0x02;
 pub const POSIX_SPAWN_SETSCHEDPARAM: ::short_t = 0x10;

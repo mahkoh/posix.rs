@@ -5,21 +5,21 @@ pub struct bandinfo {
     pub bi_pri: ::uchar_t,
     pub bi_flag: ::int_t,
 }
-new!(bandinfo)
+new!(bandinfo);
 #[repr(C)]
 pub struct strbuf {
     pub maxlen: ::int_t,
     pub len: ::int_t,
     pub buf: *mut ::schar_t,
 }
-new!(strbuf)
+new!(strbuf);
 #[repr(C)]
 pub struct strpeek {
     pub ctlbuf: strbuf,
     pub databuf: strbuf,
     pub flags: t_uscalar_t,
 }
-new!(strpeek)
+new!(strpeek);
 #[repr(C)]
 pub struct strfdinsert {
     pub ctlbuf: strbuf,
@@ -28,7 +28,7 @@ pub struct strfdinsert {
     pub fildes: ::int_t,
     pub offset: ::int_t,
 }
-new!(strfdinsert)
+new!(strfdinsert);
 #[repr(C)]
 pub struct strioctl {
     pub ic_cmd: ::int_t,
@@ -36,7 +36,7 @@ pub struct strioctl {
     pub ic_len: ::int_t,
     pub ic_dp: *mut ::schar_t,
 }
-new!(strioctl)
+new!(strioctl);
 #[repr(C)]
 pub struct strrecvfd {
     pub fd: ::int_t,
@@ -44,18 +44,18 @@ pub struct strrecvfd {
     pub gid: ::sys::types::gid_t,
     __fill: [u8, ..8],
 }
-new!(strrecvfd)
+new!(strrecvfd);
 #[repr(C)]
 pub struct str_mlist {
     pub l_name: [::schar_t, ..9],
 }
-new!(str_mlist)
+new!(str_mlist);
 #[repr(C)]
 pub struct str_list {
     pub sl_nmods: ::int_t,
     pub sl_modlist: *mut str_mlist,
 }
-new!(str_list)
+new!(str_list);
 pub const I_ATMARK:    ::int_t = (('S' as ::int_t << 8) |31);
 pub const I_CANPUT:    ::int_t = (('S' as ::int_t << 8) |34);
 pub const I_CKBAND:    ::int_t = (('S' as ::int_t << 8) |29);

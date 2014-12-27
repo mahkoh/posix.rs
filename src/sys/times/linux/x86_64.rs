@@ -6,4 +6,4 @@ pub struct tms {
     pub tms_cstime: ::sys::types::clock_t,
 }
 
-new!(tms)
+new!(tms);

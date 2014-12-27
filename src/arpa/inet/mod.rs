@@ -42,12 +42,12 @@ pub fn inet_ntop(addr: InAddr, buf: &mut [u8]) {
                           *const char_t; }
     unsafe {
         match addr {
-            Inet4(v) => inet_ntop(AF_INET, v as *const _ as *const _,
-                                  buf.as_mut_ptr() as *mut char_t,
-                                  buf.len() as socklen_t),
-            Inet6(v) => inet_ntop(AF_INET6, v as *const _ as *const _,
-                                  buf.as_mut_ptr() as *mut char_t,
-                                  buf.len() as socklen_t),
+            InAddr::Inet4(v) => inet_ntop(AF_INET, v as *const _ as *const _,
+                                          buf.as_mut_ptr() as *mut char_t,
+                                          buf.len() as socklen_t),
+            InAddr::Inet6(v) => inet_ntop(AF_INET6, v as *const _ as *const _,
+                                          buf.as_mut_ptr() as *mut char_t,
+                                          buf.len() as socklen_t),
         };
     }
 }
@@ -63,14 +63,18 @@ pub fn inet_pton(dst: &MutInAddr, src: &::NTStr) -> int_t {
     }
     unsafe {
         match *dst {
-            MutInet4(ref v) => inet_pton(AF_INET, src.as_ptr(), *v as *mut _ as *mut _),
-            MutInet6(ref v) => inet_pton(AF_INET6, src.as_ptr(), *v as *mut _ as *mut _),
+            MutInAddr::MutInet4(ref v) => inet_pton(AF_INET, src.as_ptr(),
+                                                    *v as *mut _ as *mut _),
+            MutInAddr::MutInet6(ref v) => inet_pton(AF_INET6, src.as_ptr(),
+                                                    *v as *mut _ as *mut _),
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use std::num::Int;
+
     #[test]
     pub fn ntohl() {
         assert_eq!(Int::from_be(7531), super::ntohl(7531))

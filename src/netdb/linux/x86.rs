@@ -5,7 +5,7 @@ pub struct netent {
     pub n_addrtype: ::int_t,
     pub n_net: ::stdint::uint32_t,
 }
-new!(netent)
+new!(netent);
 #[repr(C)]
 pub struct hostent {
     pub h_name: *mut ::schar_t,
@@ -14,7 +14,7 @@ pub struct hostent {
     pub h_length: ::int_t,
     pub h_addr_list: *mut *mut ::schar_t,
 }
-new!(hostent)
+new!(hostent);
 #[repr(C)]
 pub struct servent {
     pub s_name: *mut ::schar_t,
@@ -22,14 +22,14 @@ pub struct servent {
     pub s_port: ::int_t,
     pub s_proto: *mut ::schar_t,
 }
-new!(servent)
+new!(servent);
 #[repr(C)]
 pub struct protoent {
     pub p_name: *mut ::schar_t,
     pub p_aliases: *mut *mut ::schar_t,
     pub p_proto: ::int_t,
 }
-new!(protoent)
+new!(protoent);
 #[repr(C)]
 pub struct addrinfo {
     pub ai_flags: ::int_t,
@@ -41,7 +41,7 @@ pub struct addrinfo {
     pub ai_canonname: *mut ::schar_t,
     pub ai_next: *mut addrinfo,
 }
-new!(addrinfo)
+new!(addrinfo);
 pub const IPPORT_RESERVED: ::int_t = 1024;
 pub const AI_PASSIVE: ::int_t = 0x0001;
 pub const AI_CANONNAME: ::int_t = 0x0002;

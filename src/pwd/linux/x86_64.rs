@@ -9,4 +9,4 @@ pub struct passwd {
     pub pw_shell: *mut ::char_t,
 }
 
-new!(passwd)
+new!(passwd);

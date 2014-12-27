@@ -10,7 +10,7 @@ pub struct semid_ds {
     __glibc_reserved4: ::ulong_t,
 }
 
-new!(semid_ds)
+new!(semid_ds);
 
 #[repr(C)]
 pub struct sembuf {
@@ -19,7 +19,7 @@ pub struct sembuf {
     pub sem_flg: ::short_t,
 }
 
-new!(sembuf)
+new!(sembuf);
 
 pub const SEM_UNDO: ::int_t = 4096;
 pub const GETNCNT:  ::int_t = 14;

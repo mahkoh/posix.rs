@@ -5,14 +5,14 @@ pub struct sockaddr {
     pub sa_family: sa_family_t,
     pub sa_data: [::schar_t, ..14],
 }
-new!(sockaddr)
+new!(sockaddr);
 #[repr(C)]
 pub struct sockaddr_storage {
     pub ss_family: sa_family_t,
     __ss_align: [u32, ..1],
     __ss_padding: [u8, ..120],
 }
-new!(sockaddr_storage)
+new!(sockaddr_storage);
 #[repr(C)]
 pub struct msghdr {
     pub msg_name: *mut ::void_t,
@@ -23,7 +23,7 @@ pub struct msghdr {
     pub msg_controllen: ::size_t,
     pub msg_flags: ::int_t,
 }
-new!(msghdr)
+new!(msghdr);
 #[repr(C)]
 pub struct cmsghdr {
     pub cmsg_len: ::size_t,
@@ -31,13 +31,13 @@ pub struct cmsghdr {
     pub cmsg_type: ::int_t,
     __cmsg_data: [u8, ..0],
 }
-new!(cmsghdr)
+new!(cmsghdr);
 #[repr(C)]
 pub struct linger {
     pub l_onoff: ::int_t,
     pub l_linger: ::int_t,
 }
-new!(linger)
+new!(linger);
 pub const SHUT_RD: ::int_t = 0;
 pub const SHUT_WR: ::int_t = 1;
 pub const SHUT_RDWR: ::int_t = 2;

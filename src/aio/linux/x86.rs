@@ -15,7 +15,7 @@ pub struct aiocb {
     __pad: [u8, ..4],
     __glibc_reserved: [u8, ..32],
 }
-new!(aiocb)
+new!(aiocb);
 pub const AIO_CANCELED: ::uint_t = 0;
 pub const AIO_NOTCANCELED: ::uint_t = 1;
 pub const AIO_ALLDONE: ::uint_t = 2;

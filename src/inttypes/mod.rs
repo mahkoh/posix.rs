@@ -32,14 +32,14 @@ extern "C" {
 #[cfg(test)]
 mod tests {
     use stdint::{intmax_t};
-    use std::num::{Bounded};
+    use std::num::{Bounded, SignedInt};
 
     #[test]
     fn test_abs() {
         assert_eq!(super::imaxabs(-55), 55);
         assert_eq!(super::imaxabs(44), 44);
         let min: intmax_t = Bounded::min_value();
-        assert_eq!(super::imaxabs(min + 55), (min + 55).abs());
+        assert_eq!(super::imaxabs(min + 55), SignedInt::abs(min + 55));
     }
 
     #[test]

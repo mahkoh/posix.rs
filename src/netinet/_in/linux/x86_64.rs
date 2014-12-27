@@ -1,3 +1,5 @@
+use std::num::Int;
+
 pub type in_port_t = u16;
 pub type in_addr_t = u32;
 
@@ -9,7 +11,7 @@ pub struct in_addr {
     pub s_addr: in_addr_t,
 }
 
-new!(in_addr)
+new!(in_addr);
 
 impl ::AsSlice for in_addr { }
 impl ::AsMutSlice for in_addr { }
@@ -34,7 +36,7 @@ pub struct in6_addr {
     pub data: [u32, ..4u],
 }
 
-new!(in6_addr)
+new!(in6_addr);
 
 impl ::AsSlice for in6_addr { }
 impl ::AsMutSlice for in6_addr { }
@@ -123,7 +125,7 @@ pub struct sockaddr_in {
     pub sin_zero: [::uchar_t, ..8u],
 }
 
-new!(sockaddr_in)
+new!(sockaddr_in);
 
 impl ::AsSlice for sockaddr_in { }
 impl ::AsMutSlice for sockaddr_in { }
@@ -137,7 +139,7 @@ pub struct sockaddr_in6 {
     pub sin6_scope_id: u32,
 }
 
-new!(sockaddr_in6)
+new!(sockaddr_in6);
 
 impl ::AsSlice for sockaddr_in6 { }
 impl ::AsMutSlice for sockaddr_in6 { }
@@ -148,4 +150,4 @@ pub struct ipv6_mreq {
     pub ipv6mr_interface: ::uint_t,
 }
 
-new!(ipv6_mreq)
+new!(ipv6_mreq);

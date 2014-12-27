@@ -16,7 +16,7 @@ pub struct regex_t {
     __newline_anchor: ::uint_t,
 }
 
-new!(regex_t)
+new!(regex_t);
 
 pub type regoff_t = ::int_t;
 
@@ -26,7 +26,7 @@ pub struct regmatch_t {
     pub rm_eo: regoff_t,
 }
 
-new!(regmatch_t)
+new!(regmatch_t);
 
 pub const REG_EXTENDED: ::int_t = 1;
 pub const REG_ICASE:    ::int_t = 2;

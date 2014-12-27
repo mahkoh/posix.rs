@@ -19,7 +19,7 @@ pub struct utmpx {
     __glibc_reserved: [::char_t, ..20u],
 }
 
-new!(utmpx)
+new!(utmpx);
 
 pub const EMPTY:         ::short_t = 0;
 pub const BOOT_TIME:     ::short_t = 2;

@@ -4,7 +4,7 @@ pub struct timespec {
     pub tv_nsec: i64,
 }
 
-new!(timespec)
+new!(timespec);
 
 #[repr(C)]
 pub struct tm {
@@ -21,7 +21,7 @@ pub struct tm {
     pub tm_zone: *const i8,
 }
 
-new!(tm)
+new!(tm);
 
 #[repr(C)]
 pub struct itimerspec {
@@ -29,7 +29,7 @@ pub struct itimerspec {
     pub it_value: timespec,
 }
 
-new!(itimerspec)
+new!(itimerspec);
 
 pub const CLOCKS_PER_SEC: ::sys::types::clock_t = 1000000;
 

@@ -7,7 +7,7 @@ pub struct pollfd {
     pub revents: ::short_t,
 }
 
-new!(pollfd)
+new!(pollfd);
 
 pub const POLLIN:     ::short_t = 1;
 pub const POLLRDNORM: ::short_t = 64;

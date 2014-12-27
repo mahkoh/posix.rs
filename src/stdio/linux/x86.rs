@@ -30,7 +30,7 @@ pub struct FILE {
     _mode: [u32, ..1],
     _unused2: [u8, ..40],
 }
-new!(FILE)
+new!(FILE);
 pub type fpos_t = [u32, ..3];
 pub const BUFSIZ: ::int_t = 8192;
 pub const L_ctermid: ::int_t = 9;
