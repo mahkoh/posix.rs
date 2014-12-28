@@ -1,5 +1,6 @@
 pub type shmatt_t = ::ulong_t;
 #[repr(C)]
+#[deriving(Copy)]
 pub struct shmid_ds {
     pub shm_perm: ::sys::ipc::ipc_perm,
     pub shm_segsz: ::size_t,

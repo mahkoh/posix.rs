@@ -1,12 +1,14 @@
 pub type socklen_t = ::uint_t;
 pub type sa_family_t = ::ushort_t;
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sockaddr {
     pub sa_family: sa_family_t,
     pub sa_data: [::schar_t, ..14],
 }
 new!(sockaddr);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sockaddr_storage {
     pub ss_family: sa_family_t,
     __ss_align: [u32, ..1],
@@ -14,6 +16,7 @@ pub struct sockaddr_storage {
 }
 new!(sockaddr_storage);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct msghdr {
     pub msg_name: *mut ::void_t,
     pub msg_namelen: socklen_t,
@@ -25,6 +28,7 @@ pub struct msghdr {
 }
 new!(msghdr);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct cmsghdr {
     pub cmsg_len: ::size_t,
     pub cmsg_level: ::int_t,
@@ -33,6 +37,7 @@ pub struct cmsghdr {
 }
 new!(cmsghdr);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct linger {
     pub l_onoff: ::int_t,
     pub l_linger: ::int_t,

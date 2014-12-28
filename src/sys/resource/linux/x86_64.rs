@@ -1,6 +1,7 @@
 pub type rlim_t = ::ulong_t;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct rlimit {
     pub rlim_cur: rlim_t,
     pub rlim_max: rlim_t,
@@ -9,6 +10,7 @@ pub struct rlimit {
 new!(rlimit);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct rusage {
     pub ru_utime: ::sys::time::timeval,
     pub ru_stime: ::sys::time::timeval,

@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct stat {
     pub st_dev: ::sys::types::dev_t,
     __pad1: [u16, ..1],

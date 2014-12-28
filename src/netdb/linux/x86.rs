@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct netent {
     pub n_name: *mut ::schar_t,
     pub n_aliases: *mut *mut ::schar_t,
@@ -7,6 +8,7 @@ pub struct netent {
 }
 new!(netent);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct hostent {
     pub h_name: *mut ::schar_t,
     pub h_aliases: *mut *mut ::schar_t,
@@ -16,6 +18,7 @@ pub struct hostent {
 }
 new!(hostent);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct servent {
     pub s_name: *mut ::schar_t,
     pub s_aliases: *mut *mut ::schar_t,
@@ -24,6 +27,7 @@ pub struct servent {
 }
 new!(servent);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct protoent {
     pub p_name: *mut ::schar_t,
     pub p_aliases: *mut *mut ::schar_t,
@@ -31,6 +35,7 @@ pub struct protoent {
 }
 new!(protoent);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct addrinfo {
     pub ai_flags: ::int_t,
     pub ai_family: ::int_t,

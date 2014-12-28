@@ -1,10 +1,12 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct datum {
     pub dptr: *mut ::schar_t,
     pub dsize: ::int_t,
 }
 new!(datum);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct DBM {
     pub file: [u8, ..0],
     pub dirfd: ::int_t,

@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sem_t {
     _data: [u64, ..4u],
 }

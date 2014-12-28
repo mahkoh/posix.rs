@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sched_param {
     __sched_priority: [u32, ..1],
 }

@@ -1,7 +1,9 @@
 #![crate_name = "posix"]
 #![crate_type = "lib"]
 #![allow(non_camel_case_types)]
+#![allow(raw_pointer_deriving)]
 #![allow(non_snake_case)]
+#![allow(non_upper_case_globals)]
 #![feature(macro_rules)]
 
 pub use os::arch::{char_t, schar_t, uchar_t, short_t, ushort_t, int_t, uint_t, long_t};
@@ -81,6 +83,7 @@ pub mod wctype;
 pub mod wordexp;
 
 #[repr(u8)]
+#[deriving(Copy)]
 pub enum void_t {
     __variant1,
     __variant2,

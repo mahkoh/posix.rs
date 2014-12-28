@@ -1,11 +1,11 @@
-#![allow(non_uppercase_statics)]
-
 #[repr(C)]
+#[deriving(Copy)]
 pub struct FILE {
     _data: [u64, ..27],
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct fpos_t {
     _data: [u64, ..2],
 }

@@ -2,6 +2,7 @@ pub type cc_t = ::uchar_t;
 pub type speed_t = ::uint_t;
 pub type tcflag_t = ::uint_t;
 #[repr(C)]
+#[deriving(Copy)]
 pub struct termios {
     pub c_iflag: tcflag_t,
     pub c_oflag: tcflag_t,

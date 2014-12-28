@@ -1,16 +1,19 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct div_t {
     pub quot: ::int_t,
     pub rem: ::int_t,
 }
 new!(div_t);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct ldiv_t {
     pub quot: ::long_t,
     pub rem: ::long_t,
 }
 new!(ldiv_t);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct lldiv_t {
     pub quot: ::longlong_t,
     pub rem: ::longlong_t,

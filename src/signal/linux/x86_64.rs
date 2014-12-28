@@ -1,6 +1,7 @@
 pub type sig_atomic_t = ::int_t;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sigset_t {
     _data: [::ulong_t, ..16u],
 }
@@ -8,6 +9,7 @@ pub struct sigset_t {
 new!(sigset_t);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sigevent {
     pub sigev_value: sigval,
     pub sigev_signo: ::int_t,
@@ -20,6 +22,7 @@ pub struct sigevent {
 new!(sigevent);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sigval {
     _data: [u64, ..1u],
 }
@@ -45,6 +48,7 @@ impl sigval {
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct sigaction {
     hlr: [u64, ..1u],
     pub sa_mask: sigset_t,
@@ -76,6 +80,7 @@ impl sigaction {
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct mcontext_t {
     _data: [u64, ..32],
 }
@@ -83,6 +88,7 @@ pub struct mcontext_t {
 new!(mcontext_t);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct ucontext {
     pub uc_flags: ::ulong_t,
     pub uc_link: *mut ucontext,
@@ -95,6 +101,7 @@ pub struct ucontext {
 new!(ucontext);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct stack_t {
     pub ss_sp: *mut ::void_t,
     pub ss_flags: ::int_t,
@@ -104,6 +111,7 @@ pub struct stack_t {
 new!(stack_t);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct siginfo_t {
     pub si_signo: ::int_t,
     pub si_errno: ::int_t,
@@ -176,6 +184,7 @@ impl siginfo_t {
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 struct _rt {
     si_pid: ::sys::types::pid_t,
     si_uid: ::sys::types::uid_t,
@@ -183,6 +192,7 @@ struct _rt {
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 struct _sigchld {
     si_pid: ::sys::types::pid_t,
     si_uid: ::sys::types::uid_t,
@@ -190,12 +200,14 @@ struct _sigchld {
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 struct _sigfault {
     si_addr: *mut ::void_t,
     si_addr_lsb: ::short_t,
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 struct _sigpoll {
     si_band: ::long_t,
 }

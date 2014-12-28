@@ -9,12 +9,14 @@ mod os;
 pub type ENTRY = entry;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub enum ACTION {
     FIND,
     ENTER,
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub enum VISIT {
     preorder,
     postorder,

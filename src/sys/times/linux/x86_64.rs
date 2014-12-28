@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct tms {
     pub tms_utime:  ::sys::types::clock_t,
     pub tms_stime:  ::sys::types::clock_t,

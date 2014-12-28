@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct posix_spawnattr_t {
     __flags: [u16, ..1],
     __pgrp: [u32, ..1],
@@ -10,6 +11,7 @@ pub struct posix_spawnattr_t {
 }
 new!(posix_spawnattr_t);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct posix_spawn_file_actions_t {
     __allocated: [u32, ..1],
     __used: [u32, ..1],

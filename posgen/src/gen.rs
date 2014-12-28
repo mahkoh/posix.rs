@@ -8,6 +8,7 @@ pub fn gen(globals: Vec<il::Global>) {
             },
             il::Global::StructVar(ref v) => {
                 println!("#[repr(C)]");
+                println!("#[deriving(Copy)]");
                 println!("pub struct {} {{", v.name);
                 if v.fields.len() == 0 {
                     println!("    _dummy: (),");

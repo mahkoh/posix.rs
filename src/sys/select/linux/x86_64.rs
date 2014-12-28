@@ -1,10 +1,12 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct timeval {
     pub tv_sec: ::sys::types::time_t,
     pub tv_usec: ::sys::types::suseconds_t,
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct fd_set {
     _bits: [::long_t, ..16u],
 }

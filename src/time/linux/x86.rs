@@ -1,10 +1,12 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct timespec {
     pub tv_sec: ::sys::types::time_t,
     pub tv_nsec: ::long_t,
 }
 new!(timespec);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct tm {
     pub tm_sec: ::int_t,
     pub tm_min: ::int_t,
@@ -20,6 +22,7 @@ pub struct tm {
 }
 new!(tm);
 #[repr(C)]
+#[deriving(Copy)]
 pub struct itimerspec {
     pub it_interval: timespec,
     pub it_value: timespec,

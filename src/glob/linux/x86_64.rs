@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct glob_t {
     pub gl_pathc: ::size_t,
     pub gl_pathv: *mut *mut ::char_t,

@@ -1,10 +1,12 @@
 #[repr(C)]
+#[deriving(Copy)]
 struct __exit_status {
     __e_termination: ::short_t,
     __e_exit: ::short_t,
 }
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct utmpx {
     pub ut_type:          ::short_t,
     pub ut_pid:           ::sys::types::pid_t,

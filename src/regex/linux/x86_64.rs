@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct regex_t {
     __buffer: *mut ::uchar_t,
     __allocated: ::ulong_t,
@@ -21,6 +22,7 @@ new!(regex_t);
 pub type regoff_t = ::int_t;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct regmatch_t {
     pub rm_so: regoff_t,
     pub rm_eo: regoff_t,

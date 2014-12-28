@@ -2,6 +2,7 @@ pub type msgqnum_t = ::ulong_t;
 pub type msglen_t = ::ulong_t;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct msqid_ds {
     pub msg_perm: ::sys::ipc::ipc_perm,
     pub msg_stime: ::sys::types::time_t,
@@ -19,6 +20,7 @@ pub struct msqid_ds {
 new!(msqid_ds);
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct msginfo {
     pub msgpool: ::int_t,
     pub msgmap: ::int_t,

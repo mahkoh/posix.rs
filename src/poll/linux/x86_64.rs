@@ -1,6 +1,7 @@
 pub type nfds_t = ::ulong_t;
 
 #[repr(C)]
+#[deriving(Copy)]
 pub struct pollfd {
     pub fd: ::int_t,
     pub events: ::short_t,

@@ -1,4 +1,5 @@
 #[repr(C)]
+#[deriving(Copy)]
 pub struct flock {
     pub l_type: ::short_t,
     pub l_whence: ::short_t,
