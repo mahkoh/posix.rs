@@ -182,7 +182,7 @@ pub fn tzset() {
 }
 
 extern "C" {
-    pub static mut tzname: [*mut char_t, ..2u];
+    pub static mut tzname: [*mut char_t; 2u];
     pub static mut daylight: int_t;
     pub static mut timezone: long_t;
 

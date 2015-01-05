@@ -1,8 +1,8 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sem_t {
-    __size: [u8, ..16],
-    __align: [u32, ..1],
+    __size: [u8; 16],
+    __align: [u32; 1],
 }
 new!(sem_t);
 

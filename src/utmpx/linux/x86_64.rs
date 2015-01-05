@@ -1,24 +1,24 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 struct __exit_status {
     __e_termination: ::short_t,
     __e_exit: ::short_t,
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct utmpx {
     pub ut_type:          ::short_t,
     pub ut_pid:           ::sys::types::pid_t,
-    pub ut_line:          [::char_t, ..32u],
-    pub ut_id:            [::char_t, ..4u],
-    pub ut_user:          [::char_t, ..32u],
-    pub ut_host:          [::char_t, ..256u],
+    pub ut_line:          [::char_t; 32u],
+    pub ut_id:            [::char_t; 4u],
+    pub ut_user:          [::char_t; 32u],
+    pub ut_host:          [::char_t; 256u],
     ut_exit:          __exit_status,
     pub ut_session:       i32,
     pub ut_tv:            ::sys::time::timeval,
-    pub ut_addr_v6:       [i32, ..4u],
-    __glibc_reserved: [::char_t, ..20u],
+    pub ut_addr_v6:       [i32; 4u],
+    __glibc_reserved: [::char_t; 20u],
 }
 
 new!(utmpx);

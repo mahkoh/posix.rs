@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct wordexp_t {
     pub we_wordc: ::size_t,
     pub we_wordv: *mut *mut ::char_t,

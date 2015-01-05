@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct FTW {
     pub base: ::int_t,
     pub level: ::int_t,

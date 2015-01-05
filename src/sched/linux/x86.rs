@@ -1,7 +1,7 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sched_param {
-    __sched_priority: [u32, ..1],
+    __sched_priority: [u32; 1],
 }
 new!(sched_param);
 pub const SCHED_FIFO: ::int_t = 1;

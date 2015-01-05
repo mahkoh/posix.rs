@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct utimbuf {
     pub actime: ::sys::types::time_t,
     pub modtime: ::sys::types::time_t,

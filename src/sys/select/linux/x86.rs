@@ -1,14 +1,14 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct timeval {
     pub tv_sec: ::sys::types::time_t,
     pub tv_usec: ::sys::types::suseconds_t,
 }
 new!(timeval);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct fd_set {
-    _bits: [u32, ..32],
+    _bits: [u32; 32],
 }
 new!(fd_set);
 pub const FD_SETSIZE: ::int_t = 1024;
@@ -29,5 +29,5 @@ pub fn FD_SET(fd: ::int_t, set: &mut fd_set) {
 }
 
 pub fn FD_ZERO(set: &mut fd_set) {
-    set._bits = [0, ..32u];
+    set._bits = [0; 32u];
 }

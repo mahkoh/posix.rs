@@ -1,25 +1,25 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct regex_t {
-    __buffer: [u32, ..1],
-    __allocated: [u32, ..1],
-    __used: [u32, ..1],
-    __syntax: [u32, ..1],
-    __fastmap: [u32, ..1],
-    __translate: [u32, ..1],
+    __buffer: [u32; 1],
+    __allocated: [u32; 1],
+    __used: [u32; 1],
+    __syntax: [u32; 1],
+    __fastmap: [u32; 1],
+    __translate: [u32; 1],
     pub re_nsub: ::size_t,
-    __can_be_null: [u32, ..1],
-    __regs_allocated: [u32, ..1],
-    __fastmap_accurate: [u32, ..1],
-    __no_sub: [u32, ..1],
-    __not_bol: [u32, ..1],
-    __not_eol: [u32, ..1],
-    __newline_anchor: [u32, ..1],
+    __can_be_null: [u32; 1],
+    __regs_allocated: [u32; 1],
+    __fastmap_accurate: [u32; 1],
+    __no_sub: [u32; 1],
+    __not_bol: [u32; 1],
+    __not_eol: [u32; 1],
+    __newline_anchor: [u32; 1],
 }
 new!(regex_t);
 pub type regoff_t = ::int_t;
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct regmatch_t {
     pub rm_so: regoff_t,
     pub rm_eo: regoff_t,

@@ -30,13 +30,13 @@ struct Defs {
 }
 
 fn load_defs(file: &[u8]) -> Option<Defs> {
-    #[deriving(Decodable)]
+    #[derive(Decodable)]
     struct Custom {
         c_type: String,
         rs_type: String,
         vars: Vec<String>,
     }
-    #[deriving(Decodable)]
+    #[derive(Decodable)]
     struct Defs_ {
         header:     String,
         types:      Option<Vec<String>>,

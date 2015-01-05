@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct imaxdiv_t {
     pub quot: ::longlong_t,
     pub rem: ::longlong_t,

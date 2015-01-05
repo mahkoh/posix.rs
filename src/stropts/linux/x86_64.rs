@@ -2,14 +2,14 @@ pub type t_scalar_t = ::int_t;
 pub type t_uscalar_t = ::uint_t;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct bandinfo {
     pub bi_pri: ::uchar_t,
     pub bi_flag: ::int_t,
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct strbuf {
     pub maxlen: ::int_t,
     pub len: ::int_t,
@@ -17,7 +17,7 @@ pub struct strbuf {
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct strpeek {
     pub ctlbuf: strbuf,
     pub databuf: strbuf,
@@ -25,7 +25,7 @@ pub struct strpeek {
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct strfdinsert {
     pub ctlbuf: strbuf,
     pub databuf: strbuf,
@@ -35,7 +35,7 @@ pub struct strfdinsert {
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct strioctl {
     pub ic_cmd: ::int_t,
     pub ic_timout: ::int_t,
@@ -44,24 +44,24 @@ pub struct strioctl {
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct strrecvfd {
     pub fd: ::int_t,
     pub uid: ::sys::types::uid_t,
     pub gid: ::sys::types::gid_t,
-    __fill: [::char_t, ..8u],
+    __fill: [::char_t; 8u],
 }
 
 new!(strrecvfd);
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct str_mlist {
-    pub l_name: [::char_t, ..9u],
+    pub l_name: [::char_t; 9u],
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct str_list {
     pub sl_nmods: ::int_t,
     pub sl_modlist: *mut str_mlist,

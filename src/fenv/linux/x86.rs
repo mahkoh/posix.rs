@@ -1,20 +1,20 @@
 pub type fexcept_t = ::ushort_t;
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct fenv_t {
-    __control_word: [u16, ..1],
-    __glibc_reserved1: [u16, ..1],
-    __status_word: [u16, ..1],
-    __glibc_reserved2: [u16, ..1],
-    __tags: [u16, ..1],
-    __glibc_reserved3: [u16, ..1],
-    __eip: [u32, ..1],
-    __cs_selector: [u16, ..1],
-    __opcode: [u32, ..1],
-    __glibc_reserved4: [u32, ..1],
-    __data_offset: [u32, ..1],
-    __data_selector: [u16, ..1],
-    __glibc_reserved5: [u16, ..1],
+    __control_word: [u16; 1],
+    __glibc_reserved1: [u16; 1],
+    __status_word: [u16; 1],
+    __glibc_reserved2: [u16; 1],
+    __tags: [u16; 1],
+    __glibc_reserved3: [u16; 1],
+    __eip: [u32; 1],
+    __cs_selector: [u16; 1],
+    __opcode: [u32; 1],
+    __glibc_reserved4: [u32; 1],
+    __data_offset: [u32; 1],
+    __data_selector: [u16; 1],
+    __glibc_reserved5: [u16; 1],
 }
 new!(fenv_t);
 pub const FE_DIVBYZERO: ::int_t = 0x04;

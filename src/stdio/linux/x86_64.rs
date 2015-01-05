@@ -1,13 +1,13 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct FILE {
-    _data: [u64, ..27],
+    _data: [u64; 27],
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct fpos_t {
-    _data: [u64, ..2],
+    _data: [u64; 2],
 }
 
 pub const BUFSIZ:       ::int_t = 8192;

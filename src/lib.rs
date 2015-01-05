@@ -83,7 +83,7 @@ pub mod wctype;
 pub mod wordexp;
 
 #[repr(u8)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub enum void_t {
     __variant1,
     __variant2,
@@ -191,7 +191,7 @@ impl<'a> AsNTStr<'a> for &'a [u8] {
     }
 }
 
-pub trait AsSlice {
+pub trait AsSlice: Sized {
     fn as_slice(&self) -> &[u8] {
         unsafe {
             ::std::mem::transmute(::std::raw::Slice {
@@ -202,7 +202,7 @@ pub trait AsSlice {
     }
 }
 
-pub trait AsMutSlice {
+pub trait AsMutSlice: Sized {
     fn as_mut_slice(&mut self) -> &mut [u8] {
         unsafe {
             ::std::mem::transmute(::std::raw::Slice {

@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct statvfs {
     pub f_bsize: ::ulong_t,
     pub f_frsize: ::ulong_t,
@@ -10,10 +10,10 @@ pub struct statvfs {
     pub f_ffree: ::sys::types::fsfilcnt_t,
     pub f_favail: ::sys::types::fsfilcnt_t,
     pub f_fsid: ::ulong_t,
-    __f_unused: [u32, ..1],
+    __f_unused: [u32; 1],
     pub f_flag: ::ulong_t,
     pub f_namemax: ::ulong_t,
-    __f_spare: [u32, ..6],
+    __f_spare: [u32; 6],
 }
 new!(statvfs);
 pub const ST_RDONLY: ::int_t = 1;

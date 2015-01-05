@@ -9,10 +9,10 @@ pub const SOCK_SEQPACKET: ::uint_t = 5;
 pub const SOL_SOCKET: ::int_t = 1;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sockaddr {
     pub sa_family: sa_family_t,
-    pub sa_data: [::char_t, ..14u],
+    pub sa_data: [::char_t; 14u],
 }
 
 impl ::AsSlice for sockaddr { }
@@ -21,11 +21,11 @@ impl ::AsMutSlice for sockaddr { }
 new!(sockaddr);
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sockaddr_storage {
     pub ss_family: sa_family_t,
     __ss_align: ::ulong_t,
-    __ss_padding: [::char_t, ..112u],
+    __ss_padding: [::char_t; 112u],
 }
 
 new!(sockaddr_storage);
@@ -43,7 +43,7 @@ pub const MSG_WAITALL: ::uint_t = 256;
 pub const MSG_NOSIGNAL: ::uint_t = 16384;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct msghdr {
     pub msg_name: *mut ::void_t,
     pub msg_namelen: socklen_t,
@@ -74,12 +74,12 @@ pub fn CMSG_FIRSTHDR<'a>(hdr: &'a msghdr) -> Option<&'a cmsghdr> {
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct cmsghdr {
     pub cmsg_len: ::size_t,
     pub cmsg_level: ::int_t,
     pub cmsg_type: ::int_t,
-    __cmsg_data: [u8, ..0],
+    __cmsg_data: [u8; 0],
 }
 
 new!(cmsghdr);
@@ -110,7 +110,7 @@ pub const SO_TYPE:       ::int_t = 3;
 pub const SOMAXCONN: ::int_t = 128;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct linger {
     pub l_onoff: ::int_t,
     pub l_linger: ::int_t,

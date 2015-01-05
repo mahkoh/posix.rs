@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct passwd {
     pub pw_name: *mut ::char_t,
     pub pw_passwd: *mut ::char_t,

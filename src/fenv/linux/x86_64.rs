@@ -1,7 +1,7 @@
 pub type fexcept_t = ::ushort_t;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct fenv_t {
     __control_word: ::ushort_t,
     __glibc_reserved1: ::ushort_t,

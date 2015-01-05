@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct stat {
     pub st_dev:           ::sys::types::dev_t,
     pub st_ino:           ::sys::types::ino_t,
@@ -15,7 +15,7 @@ pub struct stat {
     pub st_atim:          ::time::timespec,
     pub st_mtim:          ::time::timespec,
     pub st_ctim:          ::time::timespec,
-    __glibc_reserved: [::long_t, ..3u],
+    __glibc_reserved: [::long_t; 3u],
 }
 
 new!(stat);

@@ -166,7 +166,7 @@ pub fn socket(domain: int_t, ty: int_t, protocol: int_t) -> int_t {
 }
 
 pub fn socketpair(domain: int_t, ty: int_t, protocol: int_t,
-                  fds: &mut [int_t, ..2]) -> int_t {
+                  fds: &mut [int_t; 2]) -> int_t {
     extern {
         fn socketpair(domain: int_t, ty: int_t, protocol: int_t,
                       fds: *mut int_t) -> int_t;

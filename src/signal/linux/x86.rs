@@ -1,18 +1,18 @@
 pub type sig_atomic_t = ::int_t;
-pub type sigset_t = [u32, ..32];
+pub type sigset_t = [u32; 32];
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct siginfo_t {
     pub si_signo: ::int_t,
     pub si_errno: ::int_t,
     pub si_code: ::int_t,
-    _sifields: [u32, ..29],
+    _sifields: [u32; 29],
 }
 new!(siginfo_t);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sigval {
-    _data: [u32, ..1u],
+    _data: [u32; 1u],
 }
 new!(sigval);
 impl sigval {
@@ -33,27 +33,27 @@ impl sigval {
     }
 }
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sigevent {
     pub sigev_value: sigval,
     pub sigev_signo: ::int_t,
     pub sigev_notify: ::int_t,
     pub sigev_notify_function: ::std::option::Option<extern fn(arg1: sigval)>,
     pub sigev_notify_attribute: *mut ::sys::types::pthread_attr_t,
-    _pad: [u32, ..11],
+    _pad: [u32; 11],
 }
 new!(sigevent);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sigaction {
-    __sigaction_handler: [u32, ..1],
+    __sigaction_handler: [u32; 1],
     pub sa_mask: sigset_t,
     pub sa_flags: ::int_t,
     pub sa_restorer: fn(),
 }
 new!(sigaction);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct stack_t {
     pub ss_sp: *mut ::void_t,
     pub ss_flags: ::int_t,
@@ -61,23 +61,23 @@ pub struct stack_t {
 }
 new!(stack_t);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct mcontext_t {
-    pub gregs: [::int_t, ..19],
-    pub fpregs: [u32, ..28],
+    pub gregs: [::int_t; 19],
+    pub fpregs: [u32; 28],
     pub oldmask: ::ulong_t,
     pub cr2: ::ulong_t,
 }
 new!(mcontext_t);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct ucontext {
     pub uc_flags: ::ulong_t,
     pub uc_link: *mut ucontext,
     pub uc_stack: stack_t,
     pub uc_mcontext: mcontext_t,
     pub uc_sigmask: sigset_t,
-    __fpregs_mem: [u32, ..28],
+    __fpregs_mem: [u32; 28],
 }
 new!(ucontext);
 pub fn SIG_DFL() -> extern fn(::int_t) {

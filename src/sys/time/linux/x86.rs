@@ -1,12 +1,12 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct timeval {
     pub tv_sec: ::sys::types::time_t,
     pub tv_usec: ::sys::types::suseconds_t,
 }
 new!(timeval);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct itimerval {
     pub it_interval: timeval,
     pub it_value: timeval,

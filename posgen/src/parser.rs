@@ -122,7 +122,7 @@ impl<'a> Context<'a> {
             },
             cx::ll::CXType_ConstantArray => {
                 let ts = self.type_to_str(&ty.elem_type());
-                format!("[{}, ..{}]", ts, ty.array_size())
+                format!("[{}; {}]", ts, ty.array_size())
             }
             _ => format!("Can't handle type {}", ty.kind()),
         }
@@ -270,7 +270,7 @@ fn unknown_array(ty: &cx::Type) -> String {
         8 => "u64",
         _ => unreachable!(),
     };
-    format!("[{}, ..{}]", ut, size / align)
+    format!("[{}; {}]", ut, size / align)
 }
 
 fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {

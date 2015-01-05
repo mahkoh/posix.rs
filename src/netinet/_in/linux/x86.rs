@@ -7,7 +7,7 @@ pub const INADDR_ANY: in_addr_t = 0x00000000;
 pub const INADDR_BROADCAST: in_addr_t = 0xffffffff;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct in_addr {
     pub s_addr: in_addr_t,
 }
@@ -33,9 +33,9 @@ pub const IPV6_UNICAST_HOPS: ::int_t = 16;
 pub const IPV6_V6ONLY: ::int_t = 26;
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct in6_addr {
-    pub data: [u32, ..4],
+    pub data: [u32; 4],
 }
 
 new!(in6_addr);
@@ -44,7 +44,7 @@ impl ::AsSlice for in6_addr { }
 impl ::AsMutSlice for in6_addr { }
 
 pub fn IN6_IS_ADDR_UNSPECIFIED(a: &in6_addr) -> bool {
-    a.data.as_slice() == [0, ..4].as_slice()
+    a.data.as_slice() == [0; 4].as_slice()
 }
 
 pub fn IN6_IS_ADDR_LOOPBACK(a: &in6_addr) -> bool {
@@ -91,41 +91,41 @@ pub fn IN6_IS_ADDR_MC_GLOBAL(a: &in6_addr) -> bool {
 	IN6_IS_ADDR_MULTICAST(a) && (a.addr8()[1] & 0xf) == 0xe
 }
 
-pub const IN6ADDR_ANY_INIT: in6_addr = in6_addr { data: [0, ..4] };
+pub const IN6ADDR_ANY_INIT: in6_addr = in6_addr { data: [0; 4] };
 
 impl in6_addr {
-    pub fn addr8(&self) -> &[u8, ..16u] {
+    pub fn addr8(&self) -> &[u8; 16u] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr16(&self) -> &[u16, ..8u] {
+    pub fn addr16(&self) -> &[u16; 8u] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr32(&self) -> &[u32, ..4u] {
+    pub fn addr32(&self) -> &[u32; 4u] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr8_mut(&mut self) -> &mut [u8, ..16u] {
+    pub fn addr8_mut(&mut self) -> &mut [u8; 16u] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr16_mut(&mut self) -> &mut [u16, ..8u] {
+    pub fn addr16_mut(&mut self) -> &mut [u16; 8u] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr32_mut(&mut self) -> &mut [u32, ..4u] {
+    pub fn addr32_mut(&mut self) -> &mut [u32; 4u] {
         unsafe { ::std::mem::transmute(self) }
     }
 }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sockaddr_in {
     pub sin_family: ::sys::socket::sa_family_t,
     pub sin_port: in_port_t,
     pub sin_addr: in_addr,
-    pub sin_zero: [::uchar_t, ..8],
+    pub sin_zero: [::uchar_t; 8],
 }
 
 new!(sockaddr_in);
@@ -134,7 +134,7 @@ impl ::AsSlice for sockaddr_in { }
 impl ::AsMutSlice for sockaddr_in { }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct sockaddr_in6 {
     pub sin6_family: ::sys::socket::sa_family_t,
     pub sin6_port: in_port_t,
@@ -149,7 +149,7 @@ impl ::AsSlice for sockaddr_in6 { }
 impl ::AsMutSlice for sockaddr_in6 { }
 
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct ipv6_mreq {
     pub ipv6mr_multiaddr: in6_addr,
     pub ipv6mr_interface: ::uint_t,

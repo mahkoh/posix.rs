@@ -1,5 +1,5 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct aiocb {
     pub aio_fildes: ::int_t,
     pub aio_lio_opcode: ::int_t,
@@ -13,8 +13,8 @@ pub struct aiocb {
     __error_code: ::int_t,
     __return_value: ::ssize_t,
     pub aio_offset: ::sys::types::off_t,
-    __pad: [::char_t, ..0u],
-    __glibc_reserved: [::char_t, ..32u],
+    __pad: [::char_t; 0u],
+    __glibc_reserved: [::char_t; 32u],
 }
 
 new!(aiocb);

@@ -49,7 +49,7 @@ mod tests {
     #[test]
     fn test_pwuid() {
         // Maybe this test assumes too much.
-        let mut buf = [0, ..1024];
+        let mut buf = [0; 1024];
         let mut res = 0;
         let mut dst = super::passwd::new();
         assert_eq!(super::getpwuid_r(0, &mut dst, &mut buf, &mut res), 0);
@@ -64,7 +64,7 @@ mod tests {
     #[test]
     fn test_pwnam() {
         // Maybe this test assumes too much.
-        let mut buf = [0, ..1024];
+        let mut buf = [0; 1024];
         let mut res = 0;
         let mut dst = super::passwd::new();
         assert_eq!(super::getpwnam_r(&"root".to_nt_str(), &mut dst, &mut buf, &mut res), 0);

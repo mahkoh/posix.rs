@@ -42,7 +42,7 @@ mod tests {
     #[test]
     fn test_grgid() {
         // Maybe this test assumes too much.
-        let mut buf = [0, ..1024];
+        let mut buf = [0; 1024];
         let mut res = 0;
         let mut dst = super::group::new();
         assert_eq!(super::getgrgid_r(0, &mut dst, &mut buf, &mut res), 0);
@@ -57,7 +57,7 @@ mod tests {
     #[test]
     fn test_grnam() {
         // Maybe this test assumes too much.
-        let mut buf = [0, ..1024];
+        let mut buf = [0; 1024];
         let mut res = 0;
         let mut dst = super::group::new();
         assert_eq!(super::getgrnam_r(&"root".to_nt_str(), &mut dst, &mut buf, &mut res), 0);

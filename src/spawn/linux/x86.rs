@@ -1,22 +1,22 @@
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct posix_spawnattr_t {
-    __flags: [u16, ..1],
-    __pgrp: [u32, ..1],
-    __sd: [u32, ..32],
-    __ss: [u32, ..32],
-    __sp: [u32, ..1],
-    __policy: [u32, ..1],
-    __pad: [u32, ..16],
+    __flags: [u16; 1],
+    __pgrp: [u32; 1],
+    __sd: [u32; 32],
+    __ss: [u32; 32],
+    __sp: [u32; 1],
+    __policy: [u32; 1],
+    __pad: [u32; 16],
 }
 new!(posix_spawnattr_t);
 #[repr(C)]
-#[deriving(Copy)]
+#[derive(Copy)]
 pub struct posix_spawn_file_actions_t {
-    __allocated: [u32, ..1],
-    __used: [u32, ..1],
-    __actions: [u32, ..1],
-    __pad: [u32, ..16],
+    __allocated: [u32; 1],
+    __used: [u32; 1],
+    __actions: [u32; 1],
+    __pad: [u32; 16],
 }
 new!(posix_spawn_file_actions_t);
 pub const POSIX_SPAWN_RESETIDS: ::short_t = 0x01;
