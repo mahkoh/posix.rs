@@ -30,16 +30,16 @@ extern {
     pub fn calloc(nmemb: size_t, size: size_t) -> *mut void_t;
     pub fn div(numer: int_t, denom: int_t) -> div_t;
     pub fn drand48() -> double_t;
-    pub fn erand48(xsubi: [ushort_t; 3u]) -> double_t;
+    pub fn erand48(xsubi: [ushort_t; 3us]) -> double_t;
     pub fn exit(status: int_t);
     pub fn free(ptr: *mut void_t);
     pub fn getenv(name: *const char_t) -> *mut char_t;
     pub fn getsubopt(optionp: *mut *mut char_t, tokens: *const *mut char_t, valuep: *mut *mut char_t) -> int_t;
     pub fn initstate(seed: uint_t, statebuf: *mut char_t, statelen: size_t) -> *mut char_t;
-    pub fn jrand48(xsubi: [ushort_t; 3u]) -> long_t;
+    pub fn jrand48(xsubi: [ushort_t; 3us]) -> long_t;
     pub fn l64a(n: long_t) -> *mut char_t;
     pub fn labs(x: long_t) -> long_t;
-    pub fn lcong48(param: [ushort_t; 7u]);
+    pub fn lcong48(param: [ushort_t; 7us]);
     pub fn ldiv(numer: long_t, denom: long_t) -> ldiv_t;
     pub fn llabs(x: longlong_t) -> longlong_t;
     pub fn lldiv(numer: longlong_t, denom: longlong_t) -> lldiv_t;
@@ -52,7 +52,7 @@ extern {
     pub fn mkstemp(template: *mut char_t) -> int_t;
     pub fn mktemp(template: *mut char_t) -> *mut char_t;
     pub fn mrand48() -> long_t;
-    pub fn nrand48(xsubi: [ushort_t; 3u]) -> long_t;
+    pub fn nrand48(xsubi: [ushort_t; 3us]) -> long_t;
     pub fn posix_memalign(memptr: *mut *mut void_t, alignment: size_t, size: size_t) -> int_t;
     pub fn putenv(string: *mut char_t) -> int_t;
     pub fn qsort(base: *mut void_t, nmemb: size_t, size: size_t, compar: compar_fn_t);
@@ -61,7 +61,7 @@ extern {
     pub fn random() -> long_t;
     pub fn realloc(ptr: *mut void_t, size: size_t) -> *mut void_t;
     pub fn realpath(name: *const char_t, resolved: *mut char_t) -> *mut char_t;
-    pub fn seed48(seed16v: [ushort_t; 3u]) -> *mut ushort_t;
+    pub fn seed48(seed16v: [ushort_t; 3us]) -> *mut ushort_t;
     pub fn setenv(name: *const char_t, value: *const char_t, replace: int_t) -> int_t;
     pub fn setstate(statebuf: *mut char_t) -> *mut char_t;
     pub fn srand(seed: uint_t);

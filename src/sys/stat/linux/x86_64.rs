@@ -15,7 +15,7 @@ pub struct stat {
     pub st_atim:          ::time::timespec,
     pub st_mtim:          ::time::timespec,
     pub st_ctim:          ::time::timespec,
-    __glibc_reserved: [::long_t; 3u],
+    __glibc_reserved: [::long_t; 3us],
 }
 
 new!(stat);

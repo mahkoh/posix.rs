@@ -1,8 +1,7 @@
 use libc::{c_uint, c_int};
-use std::{mem, ptr, string};
+use std::{ffi, str, mem, ptr};
 use std::fmt;
-use std::hash::Hash;
-use std::hash::sip::SipState;
+use std::hash::{Hash, Hasher, Writer};
 
 pub mod ll;
 
@@ -11,7 +10,7 @@ pub struct Cursor {
     x: ll::CXCursor
 }
 
-pub type CursorVisitor<'s> = |c: &Cursor, p: &Cursor|: 's -> ll::Enum_CXChildVisitResult;
+pub type CursorVisitor<'s> = &'s mut(FnMut(&Cursor, &Cursor) -> ll::Enum_CXChildVisitResult + 's);
 
 impl Cursor {
     // common
@@ -31,10 +30,12 @@ impl Cursor {
         unsafe { Cursor { x: ll::clang_getCursorDefinition(self.x) } }
     }
 
-    pub fn visit(&self, func: CursorVisitor) {
+    pub fn visit(&self, mut func: CursorVisitor) {
         unsafe {
-            let data = mem::transmute::<&CursorVisitor, ll::CXClientData>(&func);
-            ll::clang_visitChildren(self.x, Some(visit_children), data);
+            let data = mem::transmute::<&mut CursorVisitor, ll::CXClientData>(&mut func);
+            let f: extern fn(cur: ll::CXCursor, parent: ll::CXCursor,
+                         data: ll::CXClientData) -> ll::Enum_CXChildVisitResult = visit_children;
+            ll::clang_visitChildren(self.x, Some(f), data);
         };
     }
 
@@ -47,13 +48,13 @@ impl Cursor {
         unsafe { Type { x: ll::clang_getTypedefDeclUnderlyingType(self.x) } }
     }
 
-    pub fn get_location(&self) -> uint {
+    pub fn get_location(&self) -> usize {
         unsafe {
             let loc = ll::clang_getCursorLocation(self.x);
             let mut offset = 0;
             ll::clang_getSpellingLocation(loc, 0 as *mut _, 0 as *mut _, 0 as *mut _,
                                           &mut offset as *mut _);
-            offset as uint
+            offset as usize
         }
     }
 }
@@ -61,7 +62,7 @@ impl Cursor {
 extern fn visit_children(cur: ll::CXCursor, parent: ll::CXCursor,
                          data: ll::CXClientData) -> ll::Enum_CXChildVisitResult {
     unsafe {
-        let func = mem::transmute::<ll::CXClientData, &mut CursorVisitor>(data);
+        let mut func = mem::transmute::<ll::CXClientData, &mut CursorVisitor>(data);
         return (*func)(&Cursor { x: cur }, &Cursor { x: parent });
     }
 }
@@ -78,8 +79,8 @@ impl PartialEq for Cursor {
 
 impl Eq for Cursor {}
 
-impl Hash for Cursor {
-    fn hash(&self, state: &mut SipState) {
+impl<H: Hasher+Writer> Hash<H> for Cursor {
+    fn hash(&self, state: &mut H) {
         self.x.kind.hash(state);
         self.x.xdata.hash(state);
         self.x.data[0].hash(state);
@@ -115,17 +116,17 @@ impl Type {
         }
     }
 
-    pub fn size(&self) -> uint {
+    pub fn size(&self) -> usize {
         unsafe {
             let val = ll::clang_Type_getSizeOf(self.x);
-            if val < 0 { 0 } else { val as uint }
+            if val < 0 { 0 } else { val as usize }
         }
     }
 
-    pub fn align(&self) -> uint {
+    pub fn align(&self) -> usize {
         unsafe {
             let val = ll::clang_Type_getAlignOf(self.x);
-            if val < 0 { 0 } else { val as uint }
+            if val < 0 { 0 } else { val as usize }
         }
     }
 
@@ -143,9 +144,9 @@ impl Type {
         }
     }
 
-    pub fn array_size(&self) -> uint {
+    pub fn array_size(&self) -> usize {
         unsafe {
-            ll::clang_getArraySize(self.x) as uint
+            ll::clang_getArraySize(self.x) as usize
         }
     }
 
@@ -180,14 +181,14 @@ pub struct SourceLocation {
 }
 
 impl SourceLocation {
-    pub fn location(&self) -> (File, uint, uint, uint) {
+    pub fn location(&self) -> (File, usize, usize, usize) {
         unsafe {
             let mut file = ptr::null_mut();
             let mut line = 0;
             let mut col = 0;
             let mut off = 0;
             ll::clang_getSpellingLocation(self.x, &mut file, &mut line, &mut col, &mut off);
-            return (File { x: file }, line as uint, col as uint, off as uint);
+            return (File { x: file }, line as usize, col as usize, off as usize);
         }
     }
 }
@@ -233,14 +234,14 @@ pub struct String_ {
     x: ll::CXString
 }
 
-impl fmt::Show for String_ {
+impl fmt::String for String_ {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.x.data.is_null() {
             return "".fmt(f);
         }
         unsafe {
-            let c_str = ll::clang_getCString(self.x) as *const u8;
-            string::raw::from_buf(c_str).fmt(f)
+            let c_str = ll::clang_getCString(self.x);
+            str::from_utf8(ffi::c_str_to_bytes(&c_str)).unwrap().fmt(f)
         }
     }
 }
@@ -275,7 +276,7 @@ pub struct TranslationUnit {
 
 impl TranslationUnit {
     pub fn parse(ix: &Index, file: &Path) -> TranslationUnit {
-        let _fname = file.to_c_str();
+        let _fname = ffi::CString::from_slice(file.as_vec());
         let fname = _fname.as_ptr();
         let c_args = vec!();
         let mut c_unsaved = vec!();

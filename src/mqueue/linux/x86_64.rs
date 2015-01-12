@@ -7,5 +7,5 @@ pub struct mq_attr {
     pub mq_maxmsg: ::long_t,
     pub mq_msgsize: ::long_t,
     pub mq_curmsgs: ::long_t,
-    __pad: [::long_t; 4u],
+    __pad: [::long_t; 4us],
 }

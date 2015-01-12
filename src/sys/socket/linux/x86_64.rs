@@ -12,7 +12,7 @@ pub const SOL_SOCKET: ::int_t = 1;
 #[derive(Copy)]
 pub struct sockaddr {
     pub sa_family: sa_family_t,
-    pub sa_data: [::char_t; 14u],
+    pub sa_data: [::char_t; 14us],
 }
 
 impl ::AsSlice for sockaddr { }
@@ -25,7 +25,7 @@ new!(sockaddr);
 pub struct sockaddr_storage {
     pub ss_family: sa_family_t,
     __ss_align: ::ulong_t,
-    __ss_padding: [::char_t; 112u],
+    __ss_padding: [::char_t; 112us],
 }
 
 new!(sockaddr_storage);
@@ -59,14 +59,14 @@ new!(msghdr);
 pub fn CMSG_NXTHDR<'a>(msghdr: &'a mut msghdr,
                        cmsghdr: &mut cmsghdr) -> Option<&'a mut cmsghdr> {
     extern { fn __cmsg_nxthdr(mhdr: *mut msghdr, cmsg: *mut cmsghdr) -> *mut cmsghdr; }
-    match unsafe { __cmsg_nxthdr(msghdr as *mut _, cmsghdr as *mut _) as uint } {
+    match unsafe { __cmsg_nxthdr(msghdr as *mut _, cmsghdr as *mut _) as usize } {
         0 => None,
         n => unsafe { Some(::std::mem::transmute(n as *mut cmsghdr)) },
     }
 }
 
 pub fn CMSG_FIRSTHDR<'a>(hdr: &'a msghdr) -> Option<&'a cmsghdr> {
-    if hdr.msg_controllen as uint >= ::std::mem::size_of::<cmsghdr>() {
+    if hdr.msg_controllen as usize >= ::std::mem::size_of::<cmsghdr>() {
         unsafe { Some(::std::mem::transmute(hdr.msg_control)) }
     } else {
         None

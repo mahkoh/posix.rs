@@ -12,7 +12,7 @@ new!(siginfo_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct sigval {
-    _data: [u32; 1u],
+    _data: [u32; 1us],
 }
 new!(sigval);
 impl sigval {

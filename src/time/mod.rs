@@ -123,13 +123,13 @@ pub fn strftime_l<T: NTStr>(dst: &mut [u8], fmt: &T, tm: &tm,
                       tm as *const _, locale) }
 }
 
-pub fn strptime<T: NTStr, U: NTStr>(src: &T, fmt: &T, dst: &mut tm) -> uint {
+pub fn strptime<T: NTStr, U: NTStr>(src: &T, fmt: &T, dst: &mut tm) -> usize {
     extern {
         fn strptime(src: *const char_t, fmt: *const char_t,
                     dst: *mut tm) -> *mut char_t;
     }
     let r = unsafe { strptime(src.as_ptr(), fmt.as_ptr(), dst as *mut _) };
-    r as uint - src.as_ptr() as uint
+    r as usize - src.as_ptr() as usize
 }
 
 pub fn time() -> time_t {
@@ -182,7 +182,7 @@ pub fn tzset() {
 }
 
 extern "C" {
-    pub static mut tzname: [*mut char_t; 2u];
+    pub static mut tzname: [*mut char_t; 2us];
     pub static mut daylight: int_t;
     pub static mut timezone: long_t;
 

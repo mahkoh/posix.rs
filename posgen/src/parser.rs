@@ -51,7 +51,7 @@ impl<'a> Context<'a> {
     }
 
     fn find_type(&self, spelling: &str, skip: bool) -> Option<String> {
-        let trimmed = spelling.as_slice().trim_left_chars('_');
+        let trimmed = spelling.as_slice().trim_left_matches('_');
         match self.defs.types.iter().find(|t| t.as_slice() == trimmed) {
             Some(s) => if skip { return Some(s.to_string()) },
             _ => match ::types::find(trimmed) {
@@ -163,7 +163,7 @@ impl<'a> Context<'a> {
                     Some(p) => slc.slice_to(p),
                     _ => slc,
                 };
-                *dst = ::std::str::from_utf8(slc).map(|s| s.to_string());
+                *dst = ::std::str::from_utf8(slc).map(|s| s.to_string()).ok();
                 cx::ll::CXChildVisit_Break
             },
             _ => cx::ll::CXChildVisit_Recurse,
@@ -173,7 +173,7 @@ impl<'a> Context<'a> {
     fn handle_struct(&mut self, cursor: &cx::Cursor,
                      spelling: String) -> cx::ll::Enum_CXVisitorResult {
         let mut fields = vec!();
-        cursor.visit(|c, _| {
+        cursor.visit(&mut |&mut:c, _| {
             self.visit_struct(c, &mut fields)
         });
         let s = il::Struct {
@@ -227,7 +227,7 @@ impl<'a> Context<'a> {
             cx::ll::CXCursor_VarDecl => {
                 let real_name = spelling.as_slice().slice_from(PREFIX.len());
                 let mut val = None;
-                cursor.visit(|c, _| {
+                cursor.visit(&mut |&mut :c, _| {
                     self.visit_var(c, &mut val)
                 });
                 let var = self.defs.consts.iter().find(|v| v.name.as_slice() == real_name);
@@ -274,19 +274,18 @@ fn unknown_array(ty: &cx::Type) -> String {
 }
 
 fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {
-    let mut wr = ::std::io::MemWriter::new();
-    try!(writeln!(&mut wr, "#include <{}>", defs.header.as_slice()));
+    let mut header = vec!();
+    try!(writeln!(&mut header, "#include <{}>", defs.header.as_slice()));
     for c in defs.consts.iter() {
-        try!(writeln!(&mut wr, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
+        try!(writeln!(&mut header, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
                       c.name.as_slice(), c.name.as_slice()));
     }
-    let header = wr.unwrap();
     let mut process = try!(::std::io::Command::new("clang").args(&["-P", "-E", "-"]).spawn());
     process.stdin.as_mut().unwrap().write(header.as_slice()).ok();
     let output = try!(process.wait_with_output());
     if !output.status.success() {
         let mut err = ::std::io::standard_error(::std::io::InvalidInput);
-        err.detail = Some(String::from_utf8_lossy(output.error.as_slice()).into_string());
+        err.detail = Some(String::from_utf8_lossy(output.error.as_slice()).to_string());
         return Err(err);
     }
     Ok(output.output)
@@ -322,7 +321,7 @@ pub fn parse(defs: &::Defs) -> ::std::io::IoResult<Vec<il::Global>> {
 
     let cursor = unit.cursor();
 
-    cursor.visit(|cur, _| ctx.visit_top(cur));
+    cursor.visit(&mut |&mut :cur, _| ctx.visit_top(cur));
 
     unit.dispose();
     ix.dispose();

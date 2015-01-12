@@ -18,7 +18,7 @@ pub fn setpwent() {
 }
 
 pub fn getpwnam_r<T: NTStr>(name: &T, pwd: &mut passwd, buf: &mut [u8],
-                            res: &mut uint) -> int_t {
+                            res: &mut usize) -> int_t {
     extern { fn getpwnam_r(name: *const char_t, resultbuf: *mut passwd,
                            buffer: *mut char_t, buflen: size_t,
                            result: *mut *mut passwd) -> int_t; }
@@ -26,7 +26,7 @@ pub fn getpwnam_r<T: NTStr>(name: &T, pwd: &mut passwd, buf: &mut [u8],
                         buf.len() as size_t, res as *mut _ as *mut _) }
 }
 
-pub fn getpwuid_r(uid: uid_t, pwd: &mut passwd, buf: &mut [u8], res: &mut uint) -> int_t {
+pub fn getpwuid_r(uid: uid_t, pwd: &mut passwd, buf: &mut [u8], res: &mut usize) -> int_t {
     extern { fn getpwuid_r(uid: uid_t,
                            resultbuf: *mut passwd,
                            buffer: *mut char_t, buflen: size_t,

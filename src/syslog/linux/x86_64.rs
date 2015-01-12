@@ -30,5 +30,5 @@ pub const LOG_INFO:    ::int_t = 6;
 pub const LOG_DEBUG:   ::int_t = 7;
 
 pub fn LOG_MASK(pri: ::int_t) -> ::int_t {
-    1 << pri as uint
+    1 << pri as usize
 }

@@ -72,6 +72,6 @@ ushorts = ["USHRT_MAX",
 
 [[custom]]
 c_type = "int"
-rs_type = "uint"
+rs_type = "usize"
 vars = ["MB_LEN_MAX",
         ]

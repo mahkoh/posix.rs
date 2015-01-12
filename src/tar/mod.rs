@@ -1,7 +1,7 @@
 pub const TMAGIC: &'static [u8] = b"ustar\x00";
-pub const TMAGLEN: uint = 6;
+pub const TMAGLEN: usize = 6;
 pub const TVERSION: &'static [u8] = b"00";
-pub const TVERSLEN: uint = 2;
+pub const TVERSLEN: usize = 2;
 pub const REGTYPE:  ::int_t = '0' as ::int_t; 
 pub const AREGTYPE: ::int_t = '\0' as ::int_t;
 pub const LNKTYPE:  ::int_t = '1' as ::int_t; 

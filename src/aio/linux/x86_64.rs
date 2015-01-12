@@ -13,8 +13,8 @@ pub struct aiocb {
     __error_code: ::int_t,
     __return_value: ::ssize_t,
     pub aio_offset: ::sys::types::off_t,
-    __pad: [::char_t; 0u],
-    __glibc_reserved: [::char_t; 32u],
+    __pad: [::char_t; 0us],
+    __glibc_reserved: [::char_t; 32us],
 }
 
 new!(aiocb);

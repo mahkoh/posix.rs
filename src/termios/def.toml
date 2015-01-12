@@ -20,7 +20,7 @@ ints = ["TCSANOW",
 
 [[custom]]
 c_type = "int"
-rs_type = "uint"
+rs_type = "usize"
 vars = ["NCCS",
         "VEOF",
         "VEOL",

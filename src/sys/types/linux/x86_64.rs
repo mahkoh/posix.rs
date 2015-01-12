@@ -22,7 +22,7 @@ pub type pthread_t = u64;
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_attr_t {
-    _data: [u64; 7u],
+    _data: [u64; 7us],
 }
 
 new!(pthread_attr_t);
@@ -30,7 +30,7 @@ new!(pthread_attr_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_mutex_t {
-    _data: [u64; 5u],
+    _data: [u64; 5us],
 }
 
 new!(pthread_mutex_t);
@@ -38,7 +38,7 @@ new!(pthread_mutex_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_mutexattr_t {
-    _data: [u32; 1u],
+    _data: [u32; 1us],
 }
 
 new!(pthread_mutexattr_t);
@@ -46,7 +46,7 @@ new!(pthread_mutexattr_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_cond_t {
-    _data: [u64; 6u],
+    _data: [u64; 6us],
 }
 
 new!(pthread_cond_t);
@@ -54,7 +54,7 @@ new!(pthread_cond_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_condattr_t {
-    _data: [u32; 1u],
+    _data: [u32; 1us],
 }
 
 new!(pthread_condattr_t);
@@ -65,7 +65,7 @@ pub type pthread_once_t = i32;
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_rwlock_t {
-    _data: [u64; 7u],
+    _data: [u64; 7us],
 }
 
 new!(pthread_rwlock_t);
@@ -73,7 +73,7 @@ new!(pthread_rwlock_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_rwlockattr_t {
-    _data: [u64; 1u],
+    _data: [u64; 1us],
 }
 
 new!(pthread_rwlockattr_t);
@@ -83,7 +83,7 @@ pub type pthread_spinlock_t = i32;
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_barrier_t {
-    _data: [u64; 4u],
+    _data: [u64; 4us],
 }
 
 new!(pthread_barrier_t);
@@ -91,7 +91,7 @@ new!(pthread_barrier_t);
 #[repr(C)]
 #[derive(Copy)]
 pub struct pthread_barrierattr_t {
-    _data: [u32; 1u],
+    _data: [u32; 1us],
 }
 
 new!(pthread_barrierattr_t);

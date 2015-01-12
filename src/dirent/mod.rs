@@ -27,7 +27,7 @@ pub fn opendir<T: ::NTStr>(name: &T) -> *mut DIR {
     unsafe { opendir(name.as_ptr()) }
 }
 
-pub fn readdir_r(dirp: *mut DIR, entry: &mut dirent, result: &mut uint) -> int_t {
+pub fn readdir_r(dirp: *mut DIR, entry: &mut dirent, result: &mut usize) -> int_t {
     extern { fn readdir_r(dirp: *mut DIR, entry: *mut dirent,
                           result: *mut *mut dirent) -> int_t; }
     unsafe { readdir_r(dirp, entry as *mut _, result as *mut _ as *mut _) }

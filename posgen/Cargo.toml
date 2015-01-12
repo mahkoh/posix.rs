@@ -15,3 +15,6 @@ git = "https://github.com/sfackler/rust-phf"
 
 [dependencies.phf_mac]
 git = "https://github.com/sfackler/rust-phf"
+
+[dependencies]
+rustc-serialize = "0.2.0"

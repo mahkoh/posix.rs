@@ -1,7 +1,7 @@
 #[repr(C)]
 #[derive(Copy)]
 pub struct sem_t {
-    _data: [u64; 4u],
+    _data: [u64; 4us],
 }
 
 new!(sem_t);

@@ -35,7 +35,7 @@ pub const IPV6_V6ONLY:         ::int_t = 26;
 #[repr(C)]
 #[derive(Copy)]
 pub struct in6_addr {
-    pub data: [u32; 4u],
+    pub data: [u32; 4us],
 }
 
 new!(in6_addr);
@@ -94,27 +94,27 @@ pub fn IN6_IS_ADDR_MC_GLOBAL(a: &in6_addr) -> bool {
 pub const IN6ADDR_ANY_INIT: in6_addr = in6_addr { data: [0; 4] };
 
 impl in6_addr {
-    pub fn addr8(&self) -> &[u8; 16u] {
+    pub fn addr8(&self) -> &[u8; 16us] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr16(&self) -> &[u16; 8u] {
+    pub fn addr16(&self) -> &[u16; 8us] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr32(&self) -> &[u32; 4u] {
+    pub fn addr32(&self) -> &[u32; 4us] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr8_mut(&mut self) -> &mut [u8; 16u] {
+    pub fn addr8_mut(&mut self) -> &mut [u8; 16us] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr16_mut(&mut self) -> &mut [u16; 8u] {
+    pub fn addr16_mut(&mut self) -> &mut [u16; 8us] {
         unsafe { ::std::mem::transmute(self) }
     }
 
-    pub fn addr32_mut(&mut self) -> &mut [u32; 4u] {
+    pub fn addr32_mut(&mut self) -> &mut [u32; 4us] {
         unsafe { ::std::mem::transmute(self) }
     }
 }
@@ -125,7 +125,7 @@ pub struct sockaddr_in {
     pub sin_family: ::sys::socket::sa_family_t,
     pub sin_port: in_port_t,
     pub sin_addr: in_addr,
-    pub sin_zero: [::uchar_t; 8u],
+    pub sin_zero: [::uchar_t; 8us],
 }
 
 new!(sockaddr_in);

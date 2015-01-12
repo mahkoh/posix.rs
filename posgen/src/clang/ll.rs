@@ -47,20 +47,20 @@ pub type CXFile = *mut ::libc::c_void;
 #[repr(C)]
 #[derive(Copy)]
 pub struct Struct_Unnamed3 {
-    pub data: [::libc::c_ulonglong; 3u],
+    pub data: [::libc::c_ulonglong; 3],
 }
 pub type CXFileUniqueID = Struct_Unnamed3;
 #[repr(C)]
 #[derive(Copy)]
 pub struct Struct_Unnamed4 {
-    pub ptr_data: [*const ::libc::c_void; 2u],
+    pub ptr_data: [*const ::libc::c_void; 2],
     pub int_data: ::libc::c_uint,
 }
 pub type CXSourceLocation = Struct_Unnamed4;
 #[repr(C)]
 #[derive(Copy)]
 pub struct Struct_Unnamed5 {
-    pub ptr_data: [*const ::libc::c_void; 2u],
+    pub ptr_data: [*const ::libc::c_void; 2],
     pub begin_int_data: ::libc::c_uint,
     pub end_int_data: ::libc::c_uint,
 }
@@ -346,7 +346,7 @@ pub const CXCursor_LastExtraDecl: ::libc::c_uint = 600;
 pub struct Struct_Unnamed7 {
     pub kind: Enum_CXCursorKind,
     pub xdata: ::libc::c_int,
-    pub data: [*const ::libc::c_void; 3u],
+    pub data: [*const ::libc::c_void; 3],
 }
 pub type CXCursor = Struct_Unnamed7;
 pub type Enum_CXLinkageKind = ::libc::c_uint;
@@ -443,7 +443,7 @@ pub const CXCallingConv_Unexposed: ::libc::c_uint = 200;
 #[derive(Copy)]
 pub struct Struct_Unnamed8 {
     pub kind: Enum_CXTypeKind,
-    pub data: [*mut ::libc::c_void; 2u],
+    pub data: [*mut ::libc::c_void; 2],
 }
 pub type CXType = Struct_Unnamed8;
 pub type Enum_CXTypeLayoutError = ::libc::c_int;
@@ -509,7 +509,7 @@ pub type CXTokenKind = Enum_CXTokenKind;
 #[repr(C)]
 #[derive(Copy)]
 pub struct Struct_Unnamed11 {
-    pub int_data: [::libc::c_uint; 4u],
+    pub int_data: [::libc::c_uint; 4],
     pub ptr_data: *mut ::libc::c_void,
 }
 pub type CXToken = Struct_Unnamed11;
@@ -611,7 +611,7 @@ pub type CXIdxClientASTFile = *mut ::libc::c_void;
 #[repr(C)]
 #[derive(Copy)]
 pub struct Struct_Unnamed16 {
-    pub ptr_data: [*mut ::libc::c_void; 2u],
+    pub ptr_data: [*mut ::libc::c_void; 2],
     pub int_data: ::libc::c_uint,
 }
 pub type CXIdxLoc = Struct_Unnamed16;

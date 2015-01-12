@@ -14,7 +14,7 @@ pub fn if_nametoindex<T: NTStr>(ifname: &T) -> uint_t {
 
 pub fn if_indextoname(ifindex: uint_t, dst: &mut [u8]) -> *mut char_t {
     extern { fn if_indextoname(ifindex: uint_t, ifname: *mut char_t) -> *mut char_t; }
-    if dst.len() < IF_NAMESIZE as uint {
+    if dst.len() < IF_NAMESIZE as usize {
         0 as *mut _
     } else {
         unsafe { if_indextoname(ifindex, dst.as_mut_ptr() as *mut _) }

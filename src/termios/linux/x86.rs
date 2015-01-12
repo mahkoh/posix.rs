@@ -14,18 +14,18 @@ pub struct termios {
     pub c_ospeed: speed_t,
 }
 new!(termios);
-pub const NCCS:      uint = 32;
-pub const VEOF:      uint = 4;
-pub const VEOL:      uint = 11;
-pub const VERASE:    uint = 2;
-pub const VINTR:     uint = 0;
-pub const VKILL:     uint = 3;
-pub const VMIN:      uint = 6;
-pub const VQUIT:     uint = 1;
-pub const VSTART:    uint = 8;
-pub const VSTOP:     uint = 9;
-pub const VSUSP:     uint = 10;
-pub const VTIME:     uint = 5;
+pub const NCCS:      usize = 32;
+pub const VEOF:      usize = 4;
+pub const VEOL:      usize = 11;
+pub const VERASE:    usize = 2;
+pub const VINTR:     usize = 0;
+pub const VKILL:     usize = 3;
+pub const VMIN:      usize = 6;
+pub const VQUIT:     usize = 1;
+pub const VSTART:    usize = 8;
+pub const VSTOP:     usize = 9;
+pub const VSUSP:     usize = 10;
+pub const VTIME:     usize = 5;
 pub const BRKINT:    tcflag_t = 0o000002;
 pub const ICRNL:     tcflag_t = 0o000400;
 pub const IGNBRK:    tcflag_t = 0o000001;

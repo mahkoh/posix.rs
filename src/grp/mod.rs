@@ -8,7 +8,7 @@ use sys::types::{gid_t};
 mod os;
 
 pub fn getgrgid_r<'a>(gid: gid_t, dst: &'a mut group, buf: &'a mut [u8],
-                      res: &mut uint) -> int_t {
+                      res: &mut usize) -> int_t {
     extern {
         fn getgrgid_r(gid: gid_t, resultbuf: *mut group, buffer: *mut char_t,
                       buflen: size_t, result: *mut *mut group) -> int_t;
@@ -18,7 +18,7 @@ pub fn getgrgid_r<'a>(gid: gid_t, dst: &'a mut group, buf: &'a mut [u8],
 }
 
 pub fn getgrnam_r<'a, T: NTStr>(name: &T, dst: &'a mut group, buf: &'a mut [u8],
-                                  res: &mut uint) -> int_t {
+                                  res: &mut usize) -> int_t {
     extern {
         fn getgrnam_r(name: *const char_t, resultbuf: *mut group, buffer: *mut char_t,
                       buflen: size_t, result: *mut *mut group) -> int_t;

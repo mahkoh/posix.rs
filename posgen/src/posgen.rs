@@ -1,11 +1,13 @@
 #![crate_name = "posgen"]
-#![feature(macro_rules, quote, phase)]
+#![allow(unstable, dead_code, non_upper_case_globals, raw_pointer_derive, non_snake_case, non_camel_case_types)]
+#![feature(quote, plugin)]
 
-#[phase(plugin)]
+#[plugin]
+#[no_link]
 extern crate phf_mac;
 extern crate phf;
-extern crate serialize;
 extern crate libc;
+extern crate "rustc-serialize" as rustc_serialize;
 extern crate toml;
 
 use std::{os};
@@ -30,13 +32,13 @@ struct Defs {
 }
 
 fn load_defs(file: &[u8]) -> Option<Defs> {
-    #[derive(Decodable)]
+    #[derive(RustcDecodable)]
     struct Custom {
         c_type: String,
         rs_type: String,
         vars: Vec<String>,
     }
-    #[derive(Decodable)]
+    #[derive(RustcDecodable)]
     struct Defs_ {
         header:     String,
         types:      Option<Vec<String>>,
