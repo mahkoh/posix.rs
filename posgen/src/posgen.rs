@@ -1,17 +1,17 @@
 #![crate_name = "posgen"]
-#![allow(unstable, dead_code, non_upper_case_globals, raw_pointer_derive, non_snake_case, non_camel_case_types)]
-#![feature(quote, plugin)]
+#![allow(dead_code, non_upper_case_globals, raw_pointer_derive, non_snake_case,
+         non_camel_case_types)]
+#![feature(quote, plugin, io, path, core, libc, hash, os, std_misc,
+           env)]
+#![plugin(phf_macros)]
 
-#[plugin]
-#[no_link]
-extern crate phf_mac;
 extern crate phf;
 extern crate libc;
 extern crate "rustc-serialize" as rustc_serialize;
 extern crate toml;
 
-use std::{os};
-use std::io::{fs};
+use std::{os, env};
+use std::old_io::{fs};
 
 mod il;
 mod clang;
@@ -109,14 +109,15 @@ fn load_defs(file: &[u8]) -> Option<Defs> {
 }
 
 macro_rules! errln {
-    ($($arg:tt)*) => {(writeln!(&mut ::std::io::stdio::stderr(), $($arg)*)).ok()}
+    ($($arg:tt)*) => {(writeln!(&mut ::std::old_io::stdio::stderr(), $($arg)*)).ok()}
 }
 
+#[allow(deprecated)]
 fn main() {
     let bind_args = os::args_as_bytes();
     if bind_args.len() != 2 {
         errln!("USAGE: posgen def.toml");
-        os::set_exit_status(1);
+        env::set_exit_status(1);
         return;
     }
     load_defs(bind_args[1].as_slice())

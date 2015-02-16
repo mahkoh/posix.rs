@@ -158,9 +158,9 @@ impl<'a> Context<'a> {
             cx::ll::CXCursor_ParenExpr | cx::ll::CXCursor_IntegerLiteral
                     | cx::ll::CXCursor_FloatingLiteral => {
                 let offset = cursor.get_location();
-                let mut slc = self.file.slice_from(offset);
+                let mut slc = &self.file[offset..];
                 slc = match slc.iter().position(|b| *b == ';' as u8) {
-                    Some(p) => slc.slice_to(p),
+                    Some(p) => &slc[..p],
                     _ => slc,
                 };
                 *dst = ::std::str::from_utf8(slc).map(|s| s.to_string()).ok();
@@ -173,7 +173,7 @@ impl<'a> Context<'a> {
     fn handle_struct(&mut self, cursor: &cx::Cursor,
                      spelling: String) -> cx::ll::Enum_CXVisitorResult {
         let mut fields = vec!();
-        cursor.visit(&mut |&mut:c, _| {
+        cursor.visit(&mut |c, _| {
             self.visit_struct(c, &mut fields)
         });
         let s = il::Struct {
@@ -225,9 +225,9 @@ impl<'a> Context<'a> {
             cx::ll::CXCursor_StructDecl => self.handle_struct(cursor, spelling),
             cx::ll::CXCursor_TypedefDecl => self.handle_typedef(cursor, spelling),
             cx::ll::CXCursor_VarDecl => {
-                let real_name = spelling.as_slice().slice_from(PREFIX.len());
+                let real_name = &spelling.as_slice()[PREFIX.len()..];
                 let mut val = None;
-                cursor.visit(&mut |&mut :c, _| {
+                cursor.visit(&mut |c, _| {
                     self.visit_var(c, &mut val)
                 });
                 let var = self.defs.consts.iter().find(|v| v.name.as_slice() == real_name);
@@ -273,34 +273,34 @@ fn unknown_array(ty: &cx::Type) -> String {
     format!("[{}; {}]", ut, size / align)
 }
 
-fn preprocess(defs: &::Defs) -> ::std::io::IoResult<Vec<u8>> {
+fn preprocess(defs: &::Defs) -> ::std::old_io::IoResult<Vec<u8>> {
     let mut header = vec!();
     try!(writeln!(&mut header, "#include <{}>", defs.header.as_slice()));
     for c in defs.consts.iter() {
         try!(writeln!(&mut header, "static const {} {}{} = {};", c.c_type.as_slice(), PREFIX,
                       c.name.as_slice(), c.name.as_slice()));
     }
-    let mut process = try!(::std::io::Command::new("clang").args(&["-P", "-E", "-"]).spawn());
-    process.stdin.as_mut().unwrap().write(header.as_slice()).ok();
+    let mut process = try!(::std::old_io::Command::new("clang").args(&["-P", "-E", "-"]).spawn());
+    process.stdin.as_mut().unwrap().write_all(header.as_slice()).ok();
     let output = try!(process.wait_with_output());
     if !output.status.success() {
-        let mut err = ::std::io::standard_error(::std::io::InvalidInput);
+        let mut err = ::std::old_io::standard_error(::std::old_io::InvalidInput);
         err.detail = Some(String::from_utf8_lossy(output.error.as_slice()).to_string());
         return Err(err);
     }
     Ok(output.output)
 }
 
-pub fn parse(defs: &::Defs) -> ::std::io::IoResult<Vec<il::Global>> {
+pub fn parse(defs: &::Defs) -> ::std::old_io::IoResult<Vec<il::Global>> {
     let pp = try!(preprocess(defs));
-    let tmpdir = match ::std::io::TempDir::new("") {
+    let tmpdir = match ::std::old_io::TempDir::new("") {
         Ok(d) => d,
-        _ => return Err(::std::io::IoError::last_error())
+        _ => return Err(::std::old_io::IoError::last_error())
     };
     let mut path = tmpdir.path().clone();
     path.push("file.c");
-    let mut file = try!(::std::io::fs::File::create(&path));
-    try!(file.write(pp.as_slice()));
+    let mut file = try!(::std::old_io::fs::File::create(&path));
+    try!(file.write_all(pp.as_slice()));
     drop(file);
 
     let mut ctx = Context {
@@ -311,17 +311,17 @@ pub fn parse(defs: &::Defs) -> ::std::io::IoResult<Vec<il::Global>> {
 
     let ix = cx::Index::create(false, true);
     if ix.is_null() {
-        return Err(::std::io::standard_error(::std::io::OtherIoError))
+        return Err(::std::old_io::standard_error(::std::old_io::OtherIoError))
     }
 
     let unit = cx::TranslationUnit::parse(&ix, &path);
     if unit.is_null() {
-        return Err(::std::io::standard_error(::std::io::OtherIoError))
+        return Err(::std::old_io::standard_error(::std::old_io::OtherIoError))
     }
 
     let cursor = unit.cursor();
 
-    cursor.visit(&mut |&mut :cur, _| ctx.visit_top(cur));
+    cursor.visit(&mut |cur, _| ctx.visit_top(cur));
 
     unit.dispose();
     ix.dispose();

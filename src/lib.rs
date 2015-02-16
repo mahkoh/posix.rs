@@ -1,10 +1,10 @@
 #![crate_name = "posix"]
 #![crate_type = "lib"]
+#![feature(core, path)]
 #![allow(non_camel_case_types)]
 #![allow(raw_pointer_derive)]
 #![allow(non_snake_case)]
 #![allow(non_upper_case_globals)]
-#![allow(unstable)]
 
 pub use os::arch::{char_t, schar_t, uchar_t, short_t, ushort_t, int_t, uint_t, long_t};
 pub use os::arch::{ulong_t, longlong_t, ulonglong_t, float_t, double_t, size_t, ssize_t}; 
@@ -168,7 +168,7 @@ impl<'a> ToNTStr for &'a [u8] {
 
 impl ToNTStr for Path {
     fn to_nt_str(&self) -> NTStrOwned {
-        use std::path::{BytesContainer};
+        use std::old_path::{BytesContainer};
         self.container_as_bytes().to_nt_str()
     }
 }

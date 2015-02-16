@@ -1,6 +1,6 @@
 use libc::{c_uint, c_int};
 use std::{ffi, str, mem, ptr};
-use std::fmt;
+use std::fmt::{self, Display};
 use std::hash::{Hash, Hasher, Writer};
 
 pub mod ll;
@@ -193,18 +193,18 @@ impl SourceLocation {
     }
 }
 
-impl fmt::Show for SourceLocation {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+impl fmt::Debug for SourceLocation {
+    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         let (file, line, col, _) = self.location();
         match file.is_null() {
             false => {
-                try!(file.name().fmt(f));
-                try!(":".fmt(f));
-                try!(line.fmt(f));
-                try!(":".fmt(f));
-                col.fmt(f)
+                try!(write!(f, "{}", file.name()));
+                try!(write!(f, ":"));
+                try!(write!(f, "{}", line));
+                try!(write!(f, ":"));
+                write!(f, "{}", col)
             },
-            true => "builtin definitions".fmt(f)
+            true => write!(f, "builtin definitions"),
         }
     }
 }
@@ -234,7 +234,7 @@ pub struct String_ {
     x: ll::CXString
 }
 
-impl fmt::String for String_ {
+impl fmt::Display for String_ {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.x.data.is_null() {
             return "".fmt(f);

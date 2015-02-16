@@ -13,7 +13,7 @@ git = "https://github.com/alexcrichton/toml-rs.git"
 [dependencies.phf]
 git = "https://github.com/sfackler/rust-phf"
 
-[dependencies.phf_mac]
+[dependencies.phf_macros]
 git = "https://github.com/sfackler/rust-phf"
 
 [dependencies]
