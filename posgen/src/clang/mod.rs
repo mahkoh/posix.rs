@@ -1,7 +1,7 @@
 use libc::{c_uint, c_int};
 use std::{ffi, str, mem, ptr};
 use std::fmt::{self, Display};
-use std::hash::{Hash, Hasher, Writer};
+use std::hash::{Hash, Hasher};
 
 pub mod ll;
 
@@ -79,8 +79,8 @@ impl PartialEq for Cursor {
 
 impl Eq for Cursor {}
 
-impl<H: Hasher+Writer> Hash<H> for Cursor {
-    fn hash(&self, state: &mut H) {
+impl Hash for Cursor {
+    fn hash<H: Hasher>(&self, state: &mut H) {
         self.x.kind.hash(state);
         self.x.xdata.hash(state);
         self.x.data[0].hash(state);
