@@ -8,7 +8,7 @@ pub struct timeval {
 #[repr(C)]
 #[derive(Copy)]
 pub struct fd_set {
-    _bits: [::long_t; 16us],
+    _bits: [::long_t; 16usize],
 }
 
 new!(fd_set);
@@ -31,5 +31,5 @@ pub fn FD_SET(fd: ::int_t, set: &mut fd_set) {
 }
 
 pub fn FD_ZERO(set: &mut fd_set) {
-    set._bits = [0; 16us];
+    set._bits = [0; 16usize];
 }

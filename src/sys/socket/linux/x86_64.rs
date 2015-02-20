@@ -12,7 +12,7 @@ pub const SOL_SOCKET: ::int_t = 1;
 #[derive(Copy)]
 pub struct sockaddr {
     pub sa_family: sa_family_t,
-    pub sa_data: [::char_t; 14us],
+    pub sa_data: [::char_t; 14usize],
 }
 
 impl ::AsSlice for sockaddr { }
@@ -25,7 +25,7 @@ new!(sockaddr);
 pub struct sockaddr_storage {
     pub ss_family: sa_family_t,
     __ss_align: ::ulong_t,
-    __ss_padding: [::char_t; 112us],
+    __ss_padding: [::char_t; 112usize],
 }
 
 new!(sockaddr_storage);

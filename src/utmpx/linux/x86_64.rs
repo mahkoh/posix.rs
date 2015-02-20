@@ -10,15 +10,15 @@ struct __exit_status {
 pub struct utmpx {
     pub ut_type:          ::short_t,
     pub ut_pid:           ::sys::types::pid_t,
-    pub ut_line:          [::char_t; 32us],
-    pub ut_id:            [::char_t; 4us],
-    pub ut_user:          [::char_t; 32us],
-    pub ut_host:          [::char_t; 256us],
+    pub ut_line:          [::char_t; 32usize],
+    pub ut_id:            [::char_t; 4usize],
+    pub ut_user:          [::char_t; 32usize],
+    pub ut_host:          [::char_t; 256usize],
     ut_exit:          __exit_status,
     pub ut_session:       i32,
     pub ut_tv:            ::sys::time::timeval,
-    pub ut_addr_v6:       [i32; 4us],
-    __glibc_reserved: [::char_t; 20us],
+    pub ut_addr_v6:       [i32; 4usize],
+    __glibc_reserved: [::char_t; 20usize],
 }
 
 new!(utmpx);

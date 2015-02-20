@@ -49,7 +49,7 @@ pub struct strrecvfd {
     pub fd: ::int_t,
     pub uid: ::sys::types::uid_t,
     pub gid: ::sys::types::gid_t,
-    __fill: [::char_t; 8us],
+    __fill: [::char_t; 8usize],
 }
 
 new!(strrecvfd);
@@ -57,7 +57,7 @@ new!(strrecvfd);
 #[repr(C)]
 #[derive(Copy)]
 pub struct str_mlist {
-    pub l_name: [::char_t; 9us],
+    pub l_name: [::char_t; 9usize],
 }
 
 #[repr(C)]

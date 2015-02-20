@@ -29,5 +29,5 @@ pub fn FD_SET(fd: ::int_t, set: &mut fd_set) {
 }
 
 pub fn FD_ZERO(set: &mut fd_set) {
-    set._bits = [0; 32us];
+    set._bits = [0; 32usize];
 }

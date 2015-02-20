@@ -5,7 +5,7 @@ pub struct dirent {
     pub d_off: ::sys::types::off_t,
     pub d_reclen: ::ushort_t,
     pub d_type: ::uchar_t,
-    pub d_name: [::char_t; 256us],
+    pub d_name: [::char_t; 256usize],
 }
 
 new!(dirent);
